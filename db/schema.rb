@@ -10,10 +10,70 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409180542) do
+ActiveRecord::Schema.define(version: 20180409192302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "detailed_films", force: :cascade do |t|
+    t.integer "speech"
+    t.bigint "film_title_id"
+    t.bigint "format_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["film_title_id"], name: "index_detailed_films_on_film_title_id"
+    t.index ["format_id"], name: "index_detailed_films_on_format_id"
+  end
+
+  create_table "film_titles", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "formats", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "formats_screens", force: :cascade do |t|
+    t.bigint "format_id"
+    t.bigint "screen_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["format_id"], name: "index_formats_screens_on_format_id"
+    t.index ["screen_id"], name: "index_formats_screens_on_screen_id"
+  end
+
+  create_table "screenings", force: :cascade do |t|
+    t.integer "initial_tickets"
+    t.datetime "session_time"
+    t.datetime "closing_time"
+    t.bigint "detailed_film_id"
+    t.bigint "screen_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["detailed_film_id"], name: "index_screenings_on_detailed_film_id"
+    t.index ["screen_id"], name: "index_screenings_on_screen_id"
+  end
+
+  create_table "screens", force: :cascade do |t|
+    t.integer "capacity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sold_tickets", force: :cascade do |t|
+    t.integer "price"
+    t.datetime "purchase_time"
+    t.bigint "screening_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["screening_id"], name: "index_sold_tickets_on_screening_id"
+    t.index ["user_id"], name: "index_sold_tickets_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,8 +88,17 @@ ActiveRecord::Schema.define(version: 20180409180542) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "detailed_films", "film_titles"
+  add_foreign_key "detailed_films", "formats"
+  add_foreign_key "formats_screens", "formats"
+  add_foreign_key "formats_screens", "screens"
+  add_foreign_key "screenings", "detailed_films"
+  add_foreign_key "screenings", "screens"
+  add_foreign_key "sold_tickets", "screenings"
+  add_foreign_key "sold_tickets", "users"
 end

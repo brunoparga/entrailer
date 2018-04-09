@@ -1,6 +1,12 @@
 source 'https://rubygems.org'
 ruby '2.4.3'
 
+gem 'capybara'
+gem 'cloudinary'
+gem 'pg_search'
+gem 'pundit'
+
+
 gem 'devise'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
@@ -22,6 +28,10 @@ group :development do
 end
 
 group :development, :test do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'rspec-rails', '~> 3.7'
+
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'listen', '~> 3.0.5'
