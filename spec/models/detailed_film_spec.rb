@@ -2,14 +2,24 @@ require 'rails_helper'
 
 RSpec.describe DetailedFilm, type: :model do
   context 'when running validations' do
-    it 'is not valid with a duplicate combination of film, speech and format' do
-      aranha = FilmTitle.create(title: 'Homem-Aranha')
-      format = 1
-      DetailedFilm.create(film_title: aranha, format_id: format, speech: 0)
+    let(:aranha) { FilmTitle.create(title: 'Homem-Aranha') }
+    let(:std) { Format.create(name: 'standard') }
 
-      errado = DetailedFilm.new(film_title: aranha, format_id: format, speech: 0)
+    before do
+      DetailedFilm.create(film_title: aranha, format: std, speech: 0)
+    end
+
+    it 'is not valid with a duplicate combination of film, speech and format' do
+      errado = DetailedFilm.new(film_title: aranha, format: std, speech: 0)
 
       expect(errado.valid?).to eq false
+      expect(errado.errors.details).to eq(speech: [{ error: :taken, value: 0 }])
+    end
+
+    it 'is valid when only two fields match' do
+      certo = DetailedFilm.new(film_title: aranha, format: std, speech: 1)
+
+      expect(certo.valid?).to eq true
     end
   end
 end
