@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409192302) do
+ActiveRecord::Schema.define(version: 20180409195907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20180409192302) do
     t.bigint "format_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["film_title_id", "speech", "format_id"], name: "index_detailed_films_on_film_title_id_and_speech_and_format_id", unique: true
     t.index ["film_title_id"], name: "index_detailed_films_on_film_title_id"
     t.index ["format_id"], name: "index_detailed_films_on_format_id"
   end
