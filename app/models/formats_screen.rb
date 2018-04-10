@@ -4,4 +4,6 @@ class FormatsScreen < ApplicationRecord
 
   validates :format, presence: true
   validates :screen, presence: true
+
+  # Uniqueness
 end

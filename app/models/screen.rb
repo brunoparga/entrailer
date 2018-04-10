@@ -12,4 +12,6 @@ class Screen < ApplicationRecord
   def build_std_format
     formats.build(name: 'standard')
   end
+
+  # add address
 end
