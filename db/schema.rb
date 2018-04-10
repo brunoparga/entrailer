@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20180410184924) do
     t.bigint "screen_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["format_id", "screen_id"], name: "index_formats_screens_on_format_id_and_screen_id", unique: true
     t.index ["format_id"], name: "index_formats_screens_on_format_id"
     t.index ["screen_id"], name: "index_formats_screens_on_screen_id"
   end
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 20180410184924) do
     t.datetime "updated_at", null: false
     t.index ["detailed_film_id"], name: "index_screenings_on_detailed_film_id"
     t.index ["screen_id"], name: "index_screenings_on_screen_id"
+    t.index ["session_time", "detailed_film_id", "screen_id"], name: "film_screen_time_uniqueness_index", unique: true
   end
 
   create_table "screens", force: :cascade do |t|
@@ -65,6 +67,7 @@ ActiveRecord::Schema.define(version: 20180410184924) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "address", null: false
+    t.string "name", null: false
   end
 
   create_table "sold_tickets", force: :cascade do |t|
