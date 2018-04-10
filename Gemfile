@@ -1,11 +1,15 @@
 source 'https://rubygems.org'
 ruby '2.4.3'
 
+# Gems we added
+
 gem 'capybara'
 gem 'cloudinary'
+gem 'money-rails'
 gem 'pg_search'
 gem 'pundit'
 
+# Le Wagon template gems
 
 gem 'devise'
 gem 'figaro'
@@ -14,6 +18,8 @@ gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.1.6'
 gem 'redis'
+
+# Default Rails gems
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
