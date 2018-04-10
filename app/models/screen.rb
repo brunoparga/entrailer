@@ -12,6 +12,6 @@ class Screen < ApplicationRecord
   private
 
   def build_std_format
-    formats.build(name: 'standard')
+    formats << Format.find_by(name: 'standard')
   end
 end
