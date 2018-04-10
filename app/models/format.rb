@@ -3,5 +3,5 @@ class Format < ApplicationRecord
   has_many :formats_screens
   has_many :screens, through: :formats_screens
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 end
