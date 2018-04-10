@@ -5,6 +5,8 @@ class Screen < ApplicationRecord
   has_many :formats, through: :formats_screens
   has_many :screenings
 
+  validates :name, presence: true, uniqueness: true
+  validates :address, presence: true
   validates :capacity, presence: true
 
   private

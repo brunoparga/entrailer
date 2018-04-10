@@ -3,7 +3,9 @@ class Screening < ApplicationRecord
   belongs_to :screen
   has_many :sold_tickets
 
-  validates :session_time, presence: true
+  validates :session_time,
+            presence: true,
+            uniqueness: { scope: %i[detailed_film_id screen_id] }
   validates :closing_time, presence: true
   validates :initial_tickets, presence: true
   validate :initial_tickets_must_be_lte_screen_capacity

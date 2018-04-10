@@ -4,8 +4,8 @@ class SoldTicket < ApplicationRecord
 
   validates :screening, presence: true
   validates :user, presence: true
-  validates :price, presence: true    ## MUDAR PARA CENTAVOS
-  validates :purchase_time, presence: true    ## Botar null:false na DB aqui etc
+  validates :price_centavos, presence: true
+  validates :purchase_time, presence: true
   validate :purchase_time_must_be_lte_closing_time
 
   private
