@@ -3,5 +3,5 @@ class FilmTitle < ApplicationRecord
 
   validates :title, presence: true
 
-  # incluir IMDb
+  # incluir IMDb -> uniqueness
 end
