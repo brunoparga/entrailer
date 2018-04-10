@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20180410184924) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "format_uniqueness_index", unique: true
   end
 
   create_table "formats_screens", force: :cascade do |t|
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(version: 20180410184924) do
     t.datetime "updated_at", null: false
     t.text "address", null: false
     t.string "name", null: false
+    t.index ["name"], name: "screens_uniqueness_index", unique: true
   end
 
   create_table "sold_tickets", force: :cascade do |t|
