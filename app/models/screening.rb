@@ -9,12 +9,19 @@ class Screening < ApplicationRecord
   validates :closing_time, presence: true
   validates :initial_tickets, presence: true
   validate :initial_tickets_must_be_lte_screen_capacity
+  validate :screen_must_have_film_format
 
   private
 
   def initial_tickets_must_be_lte_screen_capacity
     if initial_tickets > screen.capacity
       errors.add(:initial_tickets, "must be <= screen capacity")
+    end
+  end
+
+  def screen_must_have_film_format
+    unless screen.formats.include?(detailed_film.format)
+      errors.add(:screen, 'must have proper format for film')
     end
   end
 end
