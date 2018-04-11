@@ -41,16 +41,27 @@ formats.each do |format|
   end
 end
 
+puts 'Creating users...'
+roberto = User.create!(email: 'roberto@roberto.rob',
+                       address: 'Robertolândia, RB',
+                       password: 'modelosmodelos')
+banana = User.create!(email: 'banana@example.com',
+                      address: 'Rua da Bananeira, 123',
+                      password: 'senhasenha')
+
 puts 'Creating screens...'
 screen1 = Screen.create!(name: 'Cinemark Metrô Santa Cruz 3',
                          address: 'Rua Pedro de Toledo',
-                         capacity: 250)
+                         capacity: 250,
+                         user: banana)
 screen2 = Screen.create!(name: 'Espaço Itaú Augusta 5',
                          address: 'Rua Augusta',
-                         capacity: 50)
+                         capacity: 50,
+                         user: roberto)
 screen3 = Screen.create!(name: 'Playarte Bristol 8',
                          address: 'Av. Paulista',
-                         capacity: 180)
+                         capacity: 180,
+                         user: roberto)
 
 puts 'Creating screen formats...'
 FormatsScreen.create!(format: formats[1], screen: screen1)
@@ -68,14 +79,6 @@ screening2 = Screening.create!(screen: screen2,
                                session_time: time,
                                closing_time: time,
                                detailed_film: films[7])
-
-puts 'Creating users...'
-roberto = User.create!(email: 'roberto@roberto.rob',
-                       address: 'Robertolândia, RB',
-                       password: 'modelosmodelos')
-banana = User.create!(email: 'banana@example.com',
-                      address: 'Rua da Bananeira, 123',
-                      password: 'senhasenha')
 
 puts 'Creating sold tickets...'
 SoldTicket.create!(purchase_time: time,
