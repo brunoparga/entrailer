@@ -1,6 +1,5 @@
 class FilmTitlesController < ApplicationController
-  #before_validation :get_imdb_id, only: :create
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, :only => [:index, :show]
 
   def index
   end
