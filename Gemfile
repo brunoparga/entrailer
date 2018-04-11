@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.4.3'
 
 # Gems we added
-gem 'httparty'
+
 gem 'capybara'
 gem 'cloudinary'
 gem 'money-rails'
