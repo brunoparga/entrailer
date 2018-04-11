@@ -1,5 +1,5 @@
 class Screen < ApplicationRecord
-  after_initialize :build_std_format
+  before_save :build_std_format
 
   has_many :formats_screens
   has_many :formats, through: :formats_screens
@@ -9,6 +9,12 @@ class Screen < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :address, presence: true
   validates :capacity, presence: true
+
+  # This method ensures the owner sees an intelligible string rather than a
+  # jumble of an Object in the screening#new page.
+  def prepare_for_display
+    ["#{name} (#{capacity} seats)", "#{id}"]
+  end
 
   private
 
