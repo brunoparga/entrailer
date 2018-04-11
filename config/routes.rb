@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   resources :formats, only: %i[edit update]
   resources :screens, except: %[update] do
     resources :formats_screens, only: :index
-    resources :screenings do
-      resources :sold_tickets
-    end
+  end
+  resources :screenings do
+    resources :sold_tickets, only: :create
   end
 
 

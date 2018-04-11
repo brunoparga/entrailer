@@ -1,6 +1,8 @@
 class DetailedFilm < ApplicationRecord
   belongs_to :film_title
   belongs_to :format
+
+  has_many :screenings
   has_many :sessions
 
   enum speech: { dubbed: 0, subtitled: 1, original: 2, silent: 3 }
