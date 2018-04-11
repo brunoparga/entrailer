@@ -16,4 +16,6 @@ Rails.application.routes.draw do
     resources :sold_tickets, only: :create
   end
 
+  resources :sold_tickets, only: :show
+
 end

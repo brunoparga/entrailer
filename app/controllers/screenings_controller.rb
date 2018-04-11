@@ -2,15 +2,23 @@ class ScreeningsController < ApplicationController
   skip_before_action :authenticate_user!, :only => [:index, :show]
 
   def index
-    @screenings = Screening.all
+    @screenings = policy_scope(Screening)
+    authorize @screenings
   end
 
   def show
     @screening = Screening.find(params[:id])
+    # require 'pry'; binding.pry
+    authorize @screening
+    @new_ticket = @screening.sold_tickets.build
+    # authorize @new_ticket
+    @sold_tickets = @screening.sold_tickets.count
+    session[:ticket_price] = calculate_price(@screening)
   end
 
   def new
     @screening = Screening.new
+    authorize @screening
     @films = DetailedFilm.all.map { |film| film.prepare_for_display }
     # @screens = current_user.screens
     @screens = Screen.all.map { |screen| screen.prepare_for_display }
@@ -30,6 +38,10 @@ class ScreeningsController < ApplicationController
   end
 
   private
+
+  def calculate_price(screening)
+    screening.max_price_centavos
+  end
 
   def params_screening
     params.require(:screening).permit(:initial_tickets, :detailed_film_id,

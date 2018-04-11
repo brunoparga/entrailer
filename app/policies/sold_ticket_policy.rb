@@ -12,7 +12,7 @@ class SoldTicketPolicy < ApplicationPolicy
 
   def create?
     #user
-    record.user == user
+    true
   end
 
 end
