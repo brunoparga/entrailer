@@ -1,7 +1,7 @@
 class FilmTitlePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope
     end
   end
 
@@ -17,7 +17,7 @@ class FilmTitlePolicy < ApplicationPolicy
 
   def create?
     #owner
-    user.theater_owner == true
+    user.role == :theater_owner
   end
 
 
