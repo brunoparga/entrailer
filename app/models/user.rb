@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :sold_tickets
   validates :address, presence: true
+  has_many :screens
 
   enum role: [:user, :theater_owner, :admin]
 

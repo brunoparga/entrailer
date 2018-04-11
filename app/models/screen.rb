@@ -4,6 +4,7 @@ class Screen < ApplicationRecord
   has_many :formats_screens
   has_many :formats, through: :formats_screens
   has_many :screenings
+  belongs_to :user
 
   validates :name, presence: true, uniqueness: true
   validates :address, presence: true

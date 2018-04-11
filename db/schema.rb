@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180411142513) do
+ActiveRecord::Schema.define(version: 20180411170048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,7 +69,9 @@ ActiveRecord::Schema.define(version: 20180411142513) do
     t.datetime "updated_at", null: false
     t.text "address", null: false
     t.string "name", null: false
+    t.bigint "user_id"
     t.index ["name"], name: "screens_uniqueness_index", unique: true
+    t.index ["user_id"], name: "index_screens_on_user_id"
   end
 
   create_table "sold_tickets", force: :cascade do |t|
