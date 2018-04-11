@@ -1,6 +1,35 @@
-<h1>FilmTitles#index</h1>
-<% @film_titles.each do |film| %>
-<p><%= film.title %></p>
-<p><%= link_to 'Ver mais', film_title_path(film) %></p>
-<% end %>
+<div class="container">
+  <h1>List of FilmTitles by Screenings</h1>
+  <div class="row">
+    <% @film_titles.each do |title| %>
+      <div class="film-card">
+        <p><%= title.title %></p>
 
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Address</th>
+              <th>Seats</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% title.screenings.each do |screening| %>
+            <tr>
+              <td>
+                <%= screening.session_time %>
+              </td>
+              <td>
+                <%= screening.screen.address %>
+              </td>
+              <td>
+                <%= screening.screen.capacity %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
+</div>

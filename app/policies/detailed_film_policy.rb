@@ -1,13 +1,13 @@
 class DetailedFilmPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope
     end
   end
 
   def index?
     #only owners
-    user.role == 'theater_owner'
+    true
   end
 
   def show?
