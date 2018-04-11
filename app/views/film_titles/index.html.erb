@@ -1,5 +1,6 @@
 <h1>FilmTitles#index</h1>
-<% @film_titles.each do |title| %>
-<p><%= title.title %></p>
+<% @film_titles.each do |film| %>
+<p><%= film.title %></p>
+<p><%= link_to 'Ver mais', film_title_path(film) %></p>
 <% end %>
 
