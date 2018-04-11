@@ -1,18 +1,2 @@
-<div class="container">
 <h1>FilmTitles#new</h1>
 <p>Find me in app/views/film_titles/new.html.erb</p>
-
-<input type="text" id="movie_title">
-<button class="btn btn-primary" id="btn-search">Search</button>
-
-<!-- <div class="hidden"> -->
-<%= simple_form_for @film do |f| %>
-<%= f.input :title %>
-<%= f.input :imdb_id %>
-
-<p></p>
-<%= f.button :submit, id: 'create_film' %>
-<% end %>
-<!-- </div> -->
-<ul id="movie_list"></ul>
-</div>
