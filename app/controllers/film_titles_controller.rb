@@ -1,5 +1,5 @@
 class FilmTitlesController < ApplicationController
-  skip_before_action :authenticate_user!, :only => [:index, :show]
+  skip_before_action :authenticate_user!
 
   def index
   end
@@ -8,9 +8,17 @@ class FilmTitlesController < ApplicationController
   end
 
   def new
+    @film = FilmTitle.new
   end
 
   def create
+    @film = FilmTitle.new(film_params)
+    @film.user = current_user
+    if @film.save
+      redirect_to film_path(@film)
+    else
+      render :new
+    end
   end
 
   def edit
