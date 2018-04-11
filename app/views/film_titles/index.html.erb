@@ -1,2 +1,5 @@
 <h1>FilmTitles#index</h1>
-<p>Find me in app/views/film_titles/index.html.erb</p>
+<% @film_titles.each do |title| %>
+<p><%= title.title %></p>
+<% end %>
+

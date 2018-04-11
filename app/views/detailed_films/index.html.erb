@@ -1,2 +1,6 @@
 <h1>DetailedFilms#index</h1>
-<p>Find me in app/views/detailed_films/index.html.erb</p>
+<% @detailed_films.each do |film| %>
+<p> <%= film.film_title.title %> </p>
+<p> <%= film.speech %> </p>
+<p> <%= film.format.name %></p>
+<% end %>
