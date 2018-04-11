@@ -1,5 +1,6 @@
 class FilmTitle < ApplicationRecord
   has_many :detailed_films
+  has_many :screenings, through: :detailed_films
 
   validates :title, presence: true
 

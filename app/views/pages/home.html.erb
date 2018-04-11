@@ -1,2 +1,19 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BBIq2dU.img?h=373&w=624&m=6&q=60&o=f&l=f');">
+  <div class="banner-content text-center">
+    <h1>Movies on!</h1>
+    <p>Reserve the best cinema seats</p>
+    <div>
+      <%= form_tag film_titles_path, method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+        placeholder: "Type the full film title" %>
+
+        <p></p>
+        <%= submit_tag 'Find your movies' , class: 'btn btn-primary'%>
+        <% end %>
+    </div>
+  </div>
+</div>
