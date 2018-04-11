@@ -10,6 +10,11 @@ class ScreeningPolicy < ApplicationPolicy
     true
   end
 
+  def new?
+    # TODO: ver se é isso mesmo
+    true
+  end
+
   def show?
     #anyone
     true

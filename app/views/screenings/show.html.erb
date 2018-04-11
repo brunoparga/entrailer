@@ -1,2 +1,5 @@
-<h1>Screenings#show</h1>
-<p>Find me in app/views/screenings/show.html.erb</p>
+<h1>Screening</h1>
+<h2><%= @screening.detailed_film.film_title.title %></h2>
+<p><%= @screening.initial_tickets - @sold_tickets %> tickets available!</p>
+
+<%= button_to 'Comprar!', [@screening, @new_ticket], { class: 'btn btn-primary' } %>
