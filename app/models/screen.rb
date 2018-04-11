@@ -10,6 +10,12 @@ class Screen < ApplicationRecord
   validates :address, presence: true
   validates :capacity, presence: true
 
+  # This method ensures the owner sees an intelligible string rather than a
+  # jumble of an Object in the screening#new page.
+  def prepare_for_display
+    ["#{name} (#{capacity} seats)", "#{id}"]
+  end
+
   private
 
   def build_std_format

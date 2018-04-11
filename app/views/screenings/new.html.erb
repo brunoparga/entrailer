@@ -2,9 +2,11 @@
 <%= simple_form_for @screening do |f| %>
 <%= f.association :detailed_film,
                   collection: @films,
+                  label_method: :first, value_method: :second,
                   label: 'Please select which film you are showing: ' %>
 <%= f.association :screen,
-                  collection: @screens.map { |screen| screen.name },
+                  collection: @screens,
+                  label_method: :first, value_method: :second,
                   label: 'Please select which screen you are showing it at: ' %>
 <% min_price_label = "Please select the minimum price. \
 This should equal your marginal cost." %>

@@ -9,6 +9,8 @@ class DetailedFilm < ApplicationRecord
   validates :format_id, presence: true
   validates :speech, presence: true, uniqueness: { scope: [:film_title_id, :format_id] }
 
+  # This method ensures the owner sees an intelligible string rather than a
+  # jumble of an Object in the screening#new page.
   def prepare_for_display
     ["#{film_title.title} #{speech} #{format.name}", "#{id}"]
   end

@@ -17,7 +17,7 @@ class ScreeningPolicy < ApplicationPolicy
 
   def create?
     #owner
-    user.theater_owner == true
+    ['theater_owner', 'admin'].include?(user.role)
   end
 
   def update?
