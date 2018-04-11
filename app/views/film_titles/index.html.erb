@@ -1,9 +1,10 @@
 <div class="container">
   <h1>List of FilmTitles by Screenings</h1>
   <div class="row">
-    <% @film_titles.each do |title| %>
+    <% @film_titles.each do |film| %>
       <div class="film-card">
-        <p><%= title.title %></p>
+        <p><%= film.title %></p>
+        <p><%= link_to 'Ver mais', film_title_path(film) %></p>
 
         <table>
           <thead>
@@ -14,7 +15,7 @@
             </tr>
           </thead>
           <tbody>
-            <% title.screenings.each do |screening| %>
+            <% film.screenings.each do |screening| %>
             <tr>
               <td>
                 <%= screening.session_time %>
