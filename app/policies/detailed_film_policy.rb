@@ -1,13 +1,13 @@
 class DetailedFilmPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope
+      scope.all
     end
   end
 
   def index?
     #only owners
-    true
+    user.role == 'theater_owner'
   end
 
   def show?
@@ -16,13 +16,13 @@ class DetailedFilmPolicy < ApplicationPolicy
 
   def create?
     #only owners
-    user.theater_owner
+    user.role == 'theater_owner'
   end
 
   def update?
     #owners
     record.user == user
-    user.theater_owner
+    user.role == 'theater_owner'
   end
 
 
