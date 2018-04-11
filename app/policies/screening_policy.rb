@@ -27,13 +27,13 @@ class ScreeningPolicy < ApplicationPolicy
 
   def update?
     #owner
-    user.theater_owner == true
+    user.role == 'theater_owner'
     record.user == user
   end
 
   def destroy?
     #owner
-    user.theater_owner == true
+    user.role == 'theater_owner'
     record.user == user
   end
 
