@@ -8,9 +8,18 @@ class FilmTitlesController < ApplicationController
   end
 
   def new
+   @film = FilmTitle.new
   end
 
   def create
+    @film = FilmTitle.new(film_params)
+    @film.user = current_user
+    if @film.save
+      redirect_to film_path(@film)
+    else
+      render :new
+    end
+
   end
 
   def edit
@@ -18,4 +27,5 @@ class FilmTitlesController < ApplicationController
 
   def update
   end
+
 end
