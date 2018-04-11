@@ -1,5 +1,5 @@
 class Screen < ApplicationRecord
-  after_initialize :build_std_format
+  before_save :build_std_format
 
   has_many :formats_screens
   has_many :formats, through: :formats_screens

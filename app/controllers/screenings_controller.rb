@@ -11,10 +11,13 @@ class ScreeningsController < ApplicationController
 
   def new
     @screening = Screening.new
+    @films = DetailedFilm.all.map { |film| film.prepare_for_display }
+    # @screens = current_user.screens
+    @screens = Screen.all
   end
 
   def create
-    @screening = screening.new(params_screening)
+    @screening = Screening.new(params_screening)
     authorize @screening
     if @screening.save
       redirect_to screen_screening_path(@screening)
@@ -29,8 +32,7 @@ class ScreeningsController < ApplicationController
   private
 
   def params_screening
-    params.require(:screening).permit(:initial_tickets,
-                                      :detailed_film_id,
+    params.require(:screening).permit(:initial_tickets, :detailed_film_id,
                                       :screen_id, :session_time, :closing_time)
   end
 end
