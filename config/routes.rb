@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :detailed_films, except: %i[new create]
 
   resources :formats, only: %i[edit update]
-  resources :screens, except: %[update] do
+  resources :screens do
     resources :formats_screens, only: :index
   end
 
