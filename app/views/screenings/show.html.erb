@@ -1,5 +1,12 @@
-<h1>Screening</h1>
-<h2><%= @screening.detailed_film.film_title.title %></h2>
-<p><%= @screening.initial_tickets - @sold_tickets %> tickets available!</p>
+<div class="container">
+  <h2><%= @screening.detailed_film.film_title.title %></h2>
+  <p><%= @screening.detailed_film.speech %>
+    - <%= @screening.detailed_film.format.name %></p>
+  <p>Sala: <%= @screening.screen.name %> - <%= @screening.screen.address %>
+  </p>
+  <p>Horário: <%= @screening.session_time.strftime("%H:%M") %></p>
+  <p><%= @screening.initial_tickets - @sold_tickets %> tickets available.</p>
+  <p>Buy yours now for only R$ <%= (session[:ticket_price] / 100.0).round(2) %>!</p>
 
-<%= button_to 'Comprar!', [@screening, @new_ticket], { class: 'btn btn-primary' } %>
+  <%= button_to 'Comprar!', [@screening, @new_ticket], { class: 'btn btn-primary' } %>
+</div>
