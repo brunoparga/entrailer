@@ -10,6 +10,10 @@ class SoldTicket < ApplicationRecord
 
   monetize :price_centavos
 
+  def title
+    self.screening.detailed_film.film_title.title
+  end
+
   private
 
   def purchase_time_must_be_lte_closing_time

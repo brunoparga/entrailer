@@ -1,6 +1,10 @@
 class SoldTicketsController < ApplicationController
+  def index
+    @sold_tickets = policy_scope(SoldTicket)
+  end
+
   def show
-    @ticket = SoldTicket.find(params[:id])
+    @sold_ticket = SoldTicket.find(params[:id])
     authorize @ticket
   end
 
