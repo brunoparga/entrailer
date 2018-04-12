@@ -4,6 +4,7 @@ class FilmTitlesController < ApplicationController
   def index
     @film_titles = policy_scope(FilmTitle.search_by_title("#{params[:query]}"))
     @film_titles = policy_scope(FilmTitle) if @film_titles.count.zero?
+
     authorize @film_titles
   end
 

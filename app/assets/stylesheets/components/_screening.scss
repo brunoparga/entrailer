@@ -1,0 +1,28 @@
+.screening {
+  border: 1px solid $black;
+  border-radius: $border-radius;
+  position: relative;
+  margin-top: 20px;
+
+}
+
+.screening a:hover {
+  text-decoration: none;
+}
+
+.screening-info {
+ padding: 5px;
+}
+
+.screening-info a p {
+  margin-bottom: 0px;
+
+}
+
+.screening-img img {
+  width: 100%;
+
+}
+
+
+

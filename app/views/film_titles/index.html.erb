@@ -1,16 +1,22 @@
   <div class="container">
+    <div class='info-search row'>
+      <h2>Sessões do filme: <%= @film_titles.first.title %></h2>
+    </div>
     <div class="row">
       <% @film_titles.each do |film| %>
         <% film.screenings.each do |screening| %>
-        <div class="col-xs-12 col-sm-4">
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
-                <div class="card-category">Popular</div>
-                <div class="card-description">
-                  <h2><%= screening.session_time %></h2>
-                  <p><%= screening.screen.address %></p>
-                  <%= screening.screen.capacity %>
+          <div class="col-xs-12 col-sm-4">
+              <div class="screening">
+                <a href=<%= screening_path(screening) %>>
+                <div class="screening-img">
+                  <img src='http://picsum.photos/300/200/?random'>
+                  <p>Horário: <%= screening.session_time.strftime("%H:%M") %></p>
                 </div>
-                <a class="card-link"><%= link_to '', screening_path(screening) %></a>
+                <div class='screening-info'>
+                  <p><%= screening.screen.address %></p>
+                  <p>Ingressos disponíveis: <%= screening.initial_tickets - screening.sold_tickets.count %></p>
+                </div>
+              </a>
             </div>
           </div>
         <% end %>
