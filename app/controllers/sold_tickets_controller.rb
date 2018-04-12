@@ -21,7 +21,6 @@ class SoldTicketsController < ApplicationController
       render :show
     else
       redirect_to screening_path(@screening)
-
     end
   end
 
