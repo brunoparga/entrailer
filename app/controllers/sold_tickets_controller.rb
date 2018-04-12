@@ -18,7 +18,7 @@ class SoldTicketsController < ApplicationController
     authorize @sold_ticket
     if @sold_ticket.save
       session[:ticket_price] = nil
-      redirect_to sold_ticket_path(@current_user)
+      render :show
     else
       redirect_to screening_path(@screening)
 

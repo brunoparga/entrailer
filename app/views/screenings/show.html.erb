@@ -2,4 +2,4 @@
 <h2><%= @screening.detailed_film.film_title.title %></h2>
 <p><%= @screening.initial_tickets - @sold_tickets %> tickets available!</p>
 
-<%= link_to 'Comprar', sold_tickets_path, class: 'btn btn-primary' %>
+<%= button_to 'Comprar!', [@screening, @new_ticket], { class: 'btn btn-primary' } %>
