@@ -1,5 +1,5 @@
 .screening {
-  border: 1px solid $black;
+  border: 1px dotted $black;
   border-radius: $border-radius;
   position: relative;
   margin-top: 20px;
@@ -11,12 +11,12 @@
 }
 
 .screening-info {
- padding: 5px;
+  padding: 5px;
 }
 
-.screening-info a p {
+.screening-info p {
   margin-bottom: 0px;
-
+  color: black;
 }
 
 .screening-img img {

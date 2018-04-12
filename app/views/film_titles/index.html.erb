@@ -10,9 +10,9 @@
                 <a href=<%= screening_path(screening) %>>
                 <div class="screening-img">
                   <img src='http://picsum.photos/300/200/?random'>
-                  <p>Horário: <%= screening.session_time.strftime("%H:%M") %></p>
                 </div>
                 <div class='screening-info'>
+                  <p>Horário: <%= screening.session_time.strftime("%H:%M") %></p>
                   <p><%= screening.screen.address %></p>
                   <p>Ingressos disponíveis: <%= screening.initial_tickets - screening.sold_tickets.count %></p>
                 </div>
