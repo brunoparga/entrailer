@@ -4,10 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :sold_tickets
-  validates :address, presence: true
-  has_many :screens
-
   enum role: [:user, :theater_owner, :admin]
 
+  has_many :sold_tickets
+  has_many :screens
+
+  validates :address, presence: true
+  validates :first_name, presence: true, length: { minimum: 1 }
+  validates :last_name, presence: true, length: { minimum: 1 }
 end
