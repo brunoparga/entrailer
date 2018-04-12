@@ -7,7 +7,7 @@ class DetailedFilmPolicy < ApplicationPolicy
 
   def index?
     #only owners
-    user.role == 'theater_owner'
+    true
   end
 
   def show?
