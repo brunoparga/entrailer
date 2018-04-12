@@ -1,13 +1,14 @@
 class ScreensController < ApplicationController
+  before_action :set_screen, only: [:show, :edit, :update]
   def index
     @screens = policy_scope(Screen)
     authorize @screens
   end
 
   def show
-    @screen = Screen.find(params[:id])
     authorize @screen
   end
+
   def new
     @screen = Screen.new
     authorize @screen
@@ -25,13 +26,11 @@ class ScreensController < ApplicationController
   end
 
   def edit
-    set_screen
   end
 
   def update
-    set_screen
     @screen.update(params_screen)
-    #binding.pry
+    binding.pry
     if @screen.save
       redirect_to screen_path(@screen)
     else
@@ -40,14 +39,15 @@ class ScreensController < ApplicationController
   end
 
 
-private
-def set_screen
-  @screen = Screen.find(params[:id])
-  authorize @screen
-end
+  private
 
-def params_screen
-  params.require(:screen).permit(:capacity, :address, :name)
-end
+  def set_screen
+    @screen = Screen.find(params[:id])
+    authorize @screen
+  end
+
+  def params_screen
+    params.require(:screen).permit(:capacity, :address, :name)
+  end
 
 end
