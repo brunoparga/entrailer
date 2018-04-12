@@ -8,10 +8,8 @@ class ScreeningsController < ApplicationController
 
   def show
     @screening = Screening.find(params[:id])
-    # require 'pry'; binding.pry
     authorize @screening
     @new_ticket = @screening.sold_tickets.build
-    # authorize @new_ticket
     @sold_tickets = @screening.sold_tickets.count
     session[:ticket_price] = calculate_price(@screening)
   end
