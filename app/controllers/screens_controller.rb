@@ -30,7 +30,6 @@ class ScreensController < ApplicationController
 
   def update
     @screen.update(params_screen)
-    binding.pry
     if @screen.save
       redirect_to screen_path(@screen)
     else
