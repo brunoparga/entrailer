@@ -1,15 +1,18 @@
+<div class="mini banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://picsum.photos/800/600/?random');">
+</div>
+
 <div class="container">
 
   <div class="row">
     <div class="movie-details">
-      <img src='http://picsum.photos/200/300/?random'>
+      <a href=<%= film_title_path(@screening.detailed_film.film_title) %>>
+      <img src='http://picsum.photos/200/300/?random'></a>
       <div class="movie-description">
-        <h2><%= @screening.detailed_film.film_title.title %></h2>
-        <p><%= @screening.detailed_film.speech %>
-          - <%= @screening.detailed_film.format.name %></p>
-        <p>Sala: <%= @screening.screen.name %> - <%= @screening.screen.address %>
-        </p>
-        <p>Horário: <%= @screening.session_time.strftime("%H:%M") %></p>
+        <h1><%= @screening.detailed_film.film_title.title %></h2>
+        <h4><%= @screening.detailed_film.speech %></h4>
+        <h4><%= @screening.detailed_film.format.name %></h4>
+        <h4>Sala: <%= @screening.screen.name %> - <%= @screening.screen.address %></h4>
+        <h4>Horário: <%= @screening.session_time.strftime("%H:%M") %></h4>
       </div>
     </div>
   </div>
@@ -17,11 +20,13 @@
   <div class="row">
     <div class="buy-options">
       <div>
-        <p><%= @screening.initial_tickets - @sold_tickets %> tickets available.</p>
-        <p>Buy yours now for only R$ <%= (session[:ticket_price] / 100.0).round(2) %>!</p>
+        <h4><%= @screening.initial_tickets - @sold_tickets %> ingressos disponíveis.</h4>
       </div>
       <div>
-      <%= button_to 'Comprar!', [@screening, @new_ticket], { class: 'btn btn-primary' } %>
+        <h4>Por apenas R$ <%= (session[:ticket_price] / 100.0).round(2) %>!</h4>
+      </div>
+      <div>
+        <%= button_to 'Comprar!', [@screening, @new_ticket], { class: 'btn btn-medium' } %>
       </div>
     </div>
   </div>
