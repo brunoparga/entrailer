@@ -20,5 +20,9 @@ class FilmTitlePolicy < ApplicationPolicy
     user.role == 'theater_owner'
   end
 
+  def update?
+    user.role == 'theater_owner'
+  end
+
 
 end

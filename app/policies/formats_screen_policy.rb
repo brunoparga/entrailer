@@ -7,23 +7,21 @@ class FormatsScreenPolicy < ApplicationPolicy
 
   def index?
     #owner
-    user.theater_owner == true
+    user.role == 'theater_owner'
   end
 
   def create?
     #owner
-    user.theater_owner == true
+    user.role == 'theater_owner'
   end
 
   def update?
     #owner
-    record.user == user
-    user.theater_owner == true
+    user.role == 'theater_owner'
   end
 
   def destroy?
     #owner
-    record.user == user
-    user.theater_owner == true
+    user.role == 'theater_owner'
   end
 end

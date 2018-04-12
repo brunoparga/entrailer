@@ -19,9 +19,8 @@ class FilmTitlesController < ApplicationController
 
   def create
     @film_title = FilmTitle.new(film_title_params)
-    @film_title.user = current_user
     authorize @film_title
-    if @film.save
+    if @film_title.save
       redirect_to film_title_path(@film_title)
     else
       render :new
@@ -29,8 +28,21 @@ class FilmTitlesController < ApplicationController
   end
 
   def edit
+    set_film_title
+    authorize @film_title
   end
 
   def update
+  end
+
+  private
+
+  def set_film_title
+    @film_title = FilmTitle.find(params[:id])
+    authorize @film_title
+  end
+
+  def film_title_params
+    params.require(:film_title).permit(:title, :imdb_id)
   end
 end

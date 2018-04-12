@@ -7,11 +7,11 @@ class FormatPolicy < ApplicationPolicy
 
   def index?
     #owner
-    user.theater_owner == true
+    user.role == 'theater_owner'
   end
 
   def create?
     #owner
-    user.theater_owner == true
+    user.role == 'theater_owner'
   end
 end
