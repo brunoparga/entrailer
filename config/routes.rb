@@ -16,5 +16,7 @@ Rails.application.routes.draw do
     resources :sold_tickets, only: :create
   end
 
-  resources :sold_tickets, only: %i[show index]
+  resources :sold_tickets, only: %i[show index] do
+    resources :payments, only: %i[new create]
+  end
 end
