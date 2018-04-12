@@ -4,7 +4,10 @@ class SoldTicketsController < ApplicationController
   end
 
   def show
-    @sold_ticket = SoldTicket.find(params[:id])
+    @sold_ticket = current_user
+                   .sold_tickets
+                   .where(status: 'paid')
+                   .find(params[:id])
     authorize @ticket
   end
 

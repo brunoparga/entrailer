@@ -1,9 +1,9 @@
-<h2>Ticket for <%= @screening.detailed_film.film_title.title %></h2>
-<p><%= "#{@screening.screen.name}, #{@screening.session_time.strftime('%H:%M')}" %></p>
-<%= form_tag order_payments_path(@screening) do %>
+<h2>Ticket for <%= @sold_ticket.screening.detailed_film.film_title.title %></h2>
+<p><%= "#{@sold_ticket.screening.screen.name}, #{@sold_ticket.screening.session_time.strftime('%H:%M')}" %></p>
+<%= form_tag sold_ticket_payments_path(@sold_ticket.screening) do %>
   <article>
     <label class="price">
-      <span>Amount: R$ <%= (@screening.price_centavos / 100.0).round(2) %></span>
+      <span>Amount: R$ <%= @sold_ticket.price %></span>
     </label>
   </article>
 
@@ -11,7 +11,7 @@
     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
     data-name="Film ticket"
     data-email="<%= current_user.email %>"
-    data-description="Movie <%= @screening.detailed_film.film_title.title %>"
-    data-amount="<%= @screening.price_centavos %>"
-    data-currency="<%= @screening.price_centavos.currency %>"></script>
+    data-description="Movie <%= @sold_ticket.screening.detailed_film.film_title.title %>"
+    data-amount="<%= @sold_ticket.price_centavos %>"
+    data-currency="<%= @sold_ticket.price.currency %>"></script>
 <% end %>
