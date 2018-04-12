@@ -9,7 +9,6 @@ class User < ApplicationRecord
   has_many :sold_tickets
   has_many :screens
 
-  validates :address, presence: true
   validates :first_name, presence: true, length: { minimum: 1 }
   validates :last_name, presence: true, length: { minimum: 1 }
 end

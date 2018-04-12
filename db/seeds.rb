@@ -45,12 +45,10 @@ puts 'Creating users...'
 roberto = User.create!(email: 'roberto@roberto.rob',
                        first_name: 'Roberto',
                        last_name: 'Barros',
-                       address: 'Robertolândia, RB',
                        password: 'modelosmodelos')
 banana = User.create!(email: 'banana@example.com',
                       first_name: 'Banana',
                       last_name: 'Caturra',
-                      address: 'Rua da Bananeira, 123',
                       password: 'senhasenha')
 
 puts 'Creating screens...'
