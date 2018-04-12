@@ -1,1 +1,57 @@
-<h1>PARABÉNS VOCÊ COMPROU UM INGRESSO</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-offset-3 col-md-6">
+      <h2><%= @ticket.user.first_name.capitalize %>, você vai ao cinema!</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-offset-3 col-md-3">
+      <p class="text-center">Filme: <%= @ticket.screening.detailed_film.film_title.title %></p>
+    </div>
+    <div class="col-xs-12 col-md-3">
+      <p class="text-center">
+        <em><%= @ticket.screening.detailed_film.speech %>
+        - <%= @ticket.screening.detailed_film.format.name %></em>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-offset-3 col-md-3">
+      <p class="text-center">
+        Sala: <%= @ticket.screening.screen.name %>
+      </p>
+    </div>
+    <div class="col-xs-12 col-md-3">
+      <p class="text-center">
+        <%= @ticket.screening.screen.address %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6 col-md-offset-3 col-md-3">
+      <p class="text-center">
+        Horário: <%= @ticket.screening.session_time.strftime("%H:%M") %>
+        <% time_to_session = (@ticket.screening.session_time - Time.now) %>
+        <% if time_to_session > 0 %>
+          <% minutes = (time_to_session / 60).round %>
+          <% hours = (minutes / 60).round %>
+          <% minutes %= 60 %>
+          <br><em>(faltam <%= "#{hours} horas e " if hours > 0 %><%= minutes %> minutos para a sua sessão!)</em>
+        <% end %>
+      </p>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <p class="text-center">
+        Data: <%= @ticket.screening.session_time.strftime("%A, %d/%m/%Y") %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-offset-3 col-md-6">
+      <p class="text-center small">
+        Comprado dia <%= @ticket.purchase_time.strftime("%d/%m/%Y") %> às
+        <%= @ticket.purchase_time.strftime("%H:%M:%S") %> por R$ <%= @ticket.price %>
+      </p>
+    </div>
+  </div>
+</div>

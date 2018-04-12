@@ -8,6 +8,8 @@ class SoldTicket < ApplicationRecord
   validates :purchase_time, presence: true
   validate :purchase_time_must_be_lte_closing_time
 
+  monetize :price_centavos
+
   private
 
   def purchase_time_must_be_lte_closing_time
