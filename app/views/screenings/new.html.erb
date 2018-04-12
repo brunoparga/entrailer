@@ -1,21 +1,25 @@
-<h1>Create a new film screening</h1>
-<%= simple_form_for @screening do |f| %>
-<%= f.association :detailed_film,
-                  collection: @films,
-                  label_method: :first, value_method: :second,
-                  label: 'Please select which film you are showing: ' %>
-<%= f.association :screen,
-                  collection: @screens,
-                  label_method: :first, value_method: :second,
-                  label: 'Please select which screen you are showing it at: ' %>
-<% min_price_label = "Please select the minimum price. \
-This should equal your marginal cost." %>
-<%= f.input :min_price_centavos, label: min_price_label %>
-<% max_price_label = "Please select the maximum price. \
-These prices will determine the price charged at any given time." %>
-<%= f.input :max_price_centavos, label: max_price_label %>
-<%= f.input :initial_tickets, label: 'How many tickets are you selling?' %>
-<%= f.input :session_time, label: 'What time is the session?' %>
-<%= f.input :closing_time, label: 'What time should sales close?' %>
-<%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="form-style col-xs-12 col-md-offset-3 col-md-6">
+    <h1>Create a new film screening</h1>
+    <%= simple_form_for @screening do |f| %>
+    <%= f.association :detailed_film,
+    collection: @films,
+    label_method: :first, value_method: :second,
+    label: 'Please select which film you are showing: ' %>
+    <%= f.association :screen,
+    collection: @screens,
+    label_method: :first, value_method: :second,
+    label: 'Please select which screen you are showing it at: ' %>
+    <% min_price_label = "Please select the minimum price. \
+    This should equal your marginal cost." %>
+    <%= f.input :min_price_centavos, label: min_price_label %>
+    <% max_price_label = "Please select the maximum price. \
+    These prices will determine the price charged at any given time." %>
+    <%= f.input :max_price_centavos, label: max_price_label %>
+    <%= f.input :initial_tickets, label: 'How many tickets are you selling?' %>
+    <%= f.input :session_time, label: 'What time is the session?' %>
+    <%= f.input :closing_time, label: 'What time should sales close?' %>
+    <%= f.submit %>
+    <% end %>
+  </div>
+</div>
