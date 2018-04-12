@@ -12,7 +12,7 @@ class ScreeningPolicy < ApplicationPolicy
 
   def new?
     # TODO: ver se é isso mesmo
-    true
+    user.role == 'theater_owner'
   end
 
   def show?
