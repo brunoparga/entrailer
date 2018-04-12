@@ -17,5 +17,4 @@ Rails.application.routes.draw do
   end
 
   resources :sold_tickets, only: :show
-
 end
