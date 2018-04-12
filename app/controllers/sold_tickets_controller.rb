@@ -1,6 +1,6 @@
 class SoldTicketsController < ApplicationController
   def show
-    @ticket = SoldTicket.find(params[:id])
+    @sold_ticket = SoldTicket.find(params[:id])
     authorize @ticket
   end
 
