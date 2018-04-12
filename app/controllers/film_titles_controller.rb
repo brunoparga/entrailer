@@ -21,6 +21,7 @@ class FilmTitlesController < ApplicationController
     @film_title = FilmTitle.new(film_title_params)
     authorize @film_title
     if @film_title.save
+      FilmTitleMailer.analysis.deliver_now
       redirect_to film_title_path(@film_title)
     else
       render :new
