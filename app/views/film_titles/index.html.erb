@@ -1,36 +1,21 @@
-<div class="container">
-  <h1>List of FilmTitles by Screenings</h1>
-  <div class="row">
-    <% @film_titles.each do |film| %>
-      <div class="film-card">
-        <p><%= film.title %></p>
-        <p><%= link_to 'Ver mais', film_title_path(film) %></p>
-
-        <table>
-          <thead>
-            <tr>
-              <th>Time</th>
-              <th>Address</th>
-              <th>Seats</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% film.screenings.each do |screening| %>
-            <tr>
-              <td>
-                <%= screening.session_time %>
-              </td>
-              <td>
-                <%= screening.screen.address %>
-              </td>
-              <td>
-                <%= screening.screen.capacity %>
-              </td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    <% end %>
+  <div class="container">
+    <div class="row">
+      <% @film_titles.each do |film| %>
+        <% film.screenings.each do |screening| %>
+        <div class="col-xs-12 col-sm-4">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+                <div class="card-category">Popular</div>
+                <div class="card-description">
+                  <h2><%= screening.session_time %></h2>
+                  <p><%= screening.screen.address %></p>
+                  <%= screening.screen.capacity %>
+                </div>
+                <a class="card-link"><%= link_to '', screening_path(screening) %></a>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
+
+
