@@ -8,6 +8,7 @@ gem 'cloudinary'
 gem 'money-rails'
 gem 'pg_search'
 gem 'pundit'
+gem 'stripe'
 
 # Le Wagon template gems
 

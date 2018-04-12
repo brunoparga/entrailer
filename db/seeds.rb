@@ -75,11 +75,15 @@ screening1 = Screening.create!(screen: screen1,
                                initial_tickets: 250,
                                session_time: time,
                                closing_time: time,
+                               min_price_centavos: 462,
+                               max_price_centavos: 5705,
                                detailed_film: films[5])
 screening2 = Screening.create!(screen: screen2,
                                initial_tickets: 50,
                                session_time: time,
                                closing_time: time,
+                               min_price_centavos: 360,
+                               max_price_centavos: 4750,
                                detailed_film: films[7])
 
 puts 'Creating sold tickets...'
