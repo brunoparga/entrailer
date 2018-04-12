@@ -1,4 +1,8 @@
 class SoldTicketsController < ApplicationController
+  def index
+    @sold_tickets = policy_scope(SoldTicket)
+  end
+
   def show
     @ticket = SoldTicket.find(params[:id])
     authorize @ticket
@@ -14,9 +18,10 @@ class SoldTicketsController < ApplicationController
     authorize @sold_ticket
     if @sold_ticket.save
       session[:ticket_price] = nil
-      render :show
+      redirect_to sold_ticket_path(@current_user)
     else
       redirect_to screening_path(@screening)
+
     end
   end
 
