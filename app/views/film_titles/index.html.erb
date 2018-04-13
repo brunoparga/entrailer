@@ -13,7 +13,7 @@
               <div class="screening">
                 <a href=<%= screening_path(screening) %>>
                 <div class="screening-img">
-                  <img src="https://image.tmdb.org/t/p/original<%=screening.detailed_film.film_title.img_url%>" style=" height: 270px;"">
+                  <img src="https://image.tmdb.org/t/p/original<%= screening.detailed_film.film_title.img_url %>" style=" height: 270px;"">
                 </div>
                 <div class='screening-info'>
                   <p>Horário: <%= screening.session_time.strftime("%H:%M") %></p>
