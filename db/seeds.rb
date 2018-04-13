@@ -39,6 +39,25 @@ fantasia = FilmTitle.create!(title: 'Fantasia',
                               img_url: '/dYZ1r3MJnXVGBBSYKgpd8UWGyFw.jpg',
                               banner_url: '/oZBj2o3JVULRe1SlBalBpnkfp6x.jpg')
 
+friday13 = FilmTitle.create!(title: 'Friday the 13th',
+                              imdb_id: '13207',
+                              img_url: '/ewNYItHBmxHj3IEDhj1VnnLoTmb.jpg',
+                              banner_url: '/m7vZl6YTFIHm917fCBgNOb9c4Sp.jpg')
+
+freddyjason = FilmTitle.create!(title: 'Freddy vs. Jason',
+                              imdb_id: '6466',
+                              img_url: '/smD9JEIKuvsllgjgrGTOzzbATeN.jpg',
+                              banner_url: '/pHPi34ysBhhLVM9LVKwJ0nJPFqN.jpg')
+friday132 = FilmTitle.create!(title: 'Friday the 13th Part VIII: Jason Takes Manhattan',
+                              imdb_id: '10283',
+                              img_url: '/oAZTwZDHu56IUyq5OQM3q1xX9To.jpg',
+                              banner_url: '/pCTwz9ggIcfHTQrzb1xi3UQLPxb.jpg')
+
+freezerdemon = FilmTitle.create!(title: 'Demon in the Freezer',
+                              imdb_id: '397973',
+                              img_url: '/1AD6EIKrWsiuRdyeTkBZW9iIu8w.jpg',
+                              banner_url: '/dMU9M4RYi9DOnaebljtjSt0BSXm.jpg')
+
 puts 'Creating film formats...'
 formats = %w[standard 3D IMAX]
 formats.map! { |format| Format.create!(name: format) }
@@ -88,6 +107,30 @@ screen3 = Screen.create!(name: 'Playarte Bristol 8',
                          capacity: 180,
                          user: roberto)
 
+screen4 = Screen.create!(name: 'Playarte Bristol 5',
+                         address: 'Av. Paulista',
+                         screen_img: 'http://www.coop-himmelblau.at/uploads/made/uploads/images/Projects/0508_BCC/P_0508_F44_DM_1500_1004_85.jpg',
+                         capacity: 180,
+                         user: roberto)
+
+screen5 = Screen.create!(name: 'Playarte Bristol 2',
+                         address: 'Av. Paulista',
+                         screen_img: 'http://www.coop-himmelblau.at/uploads/made/uploads/images/Projects/0508_BCC/P_0508_F44_DM_1500_1004_85.jpg',
+                         capacity: 180,
+                         user: roberto)
+
+screen6 = Screen.create!(name: 'Espaço Itaú Augusta 2',
+                         address: 'Rua Augusta',
+                         screen_img: 'https://itpworld.files.wordpress.com/2015/12/empty-cinema-and-white-screen.jpg',
+                         capacity: 50,
+                         user: roberto)
+
+screen7 = Screen.create!(name: 'Cinemark Metrô Santa Cruz 1',
+                         address: 'Rua Pedro de Toledo',
+                         capacity: 250,
+                         screen_img: 'http://img2.thejournal.ie/article/3275421/river?version=3275440&width=1340',
+                         user: banana)
+
 puts 'Creating screen formats...'
 FormatsScreen.create!(format: formats[1], screen: screen1)
 FormatsScreen.create!(format: formats[2], screen: screen1)
@@ -100,14 +143,70 @@ screening1 = Screening.create!(screen: screen1,
                                closing_time: time,
                                min_price_centavos: 462,
                                max_price_centavos: 5705,
-                               detailed_film: films[5])
+                               detailed_film: films[6])
 screening2 = Screening.create!(screen: screen2,
                                initial_tickets: 50,
                                session_time: time,
                                closing_time: time,
                                min_price_centavos: 360,
                                max_price_centavos: 4750,
-                               detailed_film: films[7])
+                               detailed_film: films[1])
+screening2 = Screening.create!(screen: screen3,
+                               initial_tickets: 120,
+                               session_time: time,
+                               closing_time: time,
+                               min_price_centavos: 360,
+                               max_price_centavos: 3200,
+                               detailed_film: films[3])
+screening2 = Screening.create!(screen: screen4,
+                               initial_tickets: 50,
+                               session_time: time,
+                               closing_time: time,
+                               min_price_centavos: 340,
+                               max_price_centavos: 6000,
+                               detailed_film: films[10])
+screening2 = Screening.create!(screen: screen5,
+                               initial_tickets: 50,
+                               session_time: time,
+                               closing_time: time,
+                               min_price_centavos: 360,
+                               max_price_centavos: 8200,
+                               detailed_film: films[8])
+screening2 = Screening.create!(screen: screen6,
+                               initial_tickets: 20,
+                               session_time: time,
+                               closing_time: time,
+                               min_price_centavos: 1120,
+                               max_price_centavos: 4000,
+                               detailed_film: films[2])
+screening2 = Screening.create!(screen: screen7,
+                               initial_tickets: 50,
+                               session_time: time,
+                               closing_time: time,
+                               min_price_centavos: 730,
+                               max_price_centavos: 3750,
+                               detailed_film: films[10])
+screening2 = Screening.create!(screen: screen1,
+                               initial_tickets: 40,
+                               session_time: time,
+                               closing_time: time,
+                               min_price_centavos: 360,
+                               max_price_centavos: 4750,
+                               detailed_film: films[15])
+screening2 = Screening.create!(screen: screen3,
+                               initial_tickets: 100,
+                               session_time: time,
+                               closing_time: time,
+                               min_price_centavos: 120,
+                               max_price_centavos: 4750,
+                               detailed_film: films[14])
+screening2 = Screening.create!(screen: screen5,
+                               initial_tickets: 20,
+                               session_time: time,
+                               closing_time: time,
+                               min_price_centavos: 400,
+                               max_price_centavos: 4750,
+                               detailed_film: films[9])
 
 puts 'Creating sold tickets...'
 SoldTicket.create!(purchase_time: time,
