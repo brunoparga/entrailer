@@ -1,8 +1,10 @@
 .screening {
-  border: 1px dotted $black;
+  border: 1px solid $black;
   border-radius: $border-radius;
   position: relative;
   margin-top: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
 
 }
 
@@ -21,7 +23,6 @@
 
 .screening-img img {
   width: 100%;
-
 }
 
 
