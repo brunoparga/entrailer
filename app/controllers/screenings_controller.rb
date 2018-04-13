@@ -15,6 +15,7 @@ class ScreeningsController < ApplicationController
     @detailed_film = DetailedFilm.find(id = @screening.detailed_film_id)
     @film_title = FilmTitle.find(id = @detailed_film.film_title_id)
     authorize @film_title
+    session[:ticket_price] = @screening.calculate_price(Time.now)
   end
 
   def new
@@ -39,10 +40,6 @@ class ScreeningsController < ApplicationController
   end
 
   private
-
-  def calculate_price(screening)
-    screening.max_price_centavos
-  end
 
   def params_screening
     params.require(:screening).permit(:initial_tickets, :detailed_film_id,
