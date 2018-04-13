@@ -1,13 +1,17 @@
 <div class="container form-new">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <h1>Cadastrar Novo Filme</h1>
+      <h3>Cadastrar Filme</h3>
+      <div class="form-format">
       <%= simple_form_for([@film_title, @detailed_film], :html => { :class => 'form-inline' }) do |form| %>
-        <%= form.input :speech, collection: %w(dubbed subtitled original silent) %>
-        <%= form.input :format_id, collection: Format.all %>
-        <%= form.submit %>
+       <p> <%= form.input :speech, collection: %w(dubbed subtitled original silent) %> </p>
+       <p> <%= form.input :format_id, collection: Format.all %> </p>
+       <p> <%= form.submit %> </p>
       <% end %>
+      </div>
+      <div class="row">
       <%= link_to 'Voltar', detailed_films_path %>
+      </div>
     </div>
   </div>
 </div>
