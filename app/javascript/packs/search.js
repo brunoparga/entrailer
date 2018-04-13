@@ -12,11 +12,12 @@ const bindfilmbutton = (element) => {
       const film_title_title = document.getElementById("film_title_title");
       const film_title_imdb_id = document.getElementById("film_title_imdb_id");
       const film_title_poster_path = document.getElementById("film_title_img_url");
+      const film_title_banner_path = document.getElementById("film_title_banner_url");
       const create_film = document.getElementById("create_film");
       film_title_title.value = element.dataset.movieTitle
       film_title_imdb_id.value = element.dataset.movieId
       film_title_poster_path.value = element.dataset.moviePoster
-      console.log(film_title_poster_path.value)
+      film_title_banner_path.value = element.dataset.movieBanner
       //create_film.click()
 
   });
@@ -40,6 +41,7 @@ const api_key = "5540735874a63598d8aff185327238bb";
           data-movie-title = "${movie.original_title}"
           data-movie-id = ${movie.id}
           data-movie-poster = ${movie.poster_path}
+          data-movie-banner = ${movie.backdrop_path}
 
         >
           ADD FILM
