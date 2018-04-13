@@ -45,6 +45,6 @@ class FilmTitlesController < ApplicationController
   end
 
   def film_title_params
-    params.require(:film_title).permit(:title, :imdb_id)
+    params.require(:film_title).permit(:title, :imdb_id, :img_url)
   end
 end

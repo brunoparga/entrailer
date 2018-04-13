@@ -1,15 +1,19 @@
   <div class="container">
     <div class='info-search row'>
-      <h2>Sessões do filme: <%= @film_titles.first.title %></h2>
+      <% if @film_titles.count > 1 %>
+          <h3>Filme não encontrado. Mostrando todas as sessões disponíveis.</h3>
+      <% elsif @film_titles.count == 1 %>
+          <h3>Sessões do filme: <%= @film_titles.first.title %></h3>
+      <%end%>
     </div>
     <div class="row">
       <% @film_titles.each do |film| %>
         <% film.screenings.each do |screening| %>
-          <div class="col-xs-12 col-sm-4">
+          <div class="col-xs-12 col-sm-4 col-md-3">
               <div class="screening">
                 <a href=<%= screening_path(screening) %>>
                 <div class="screening-img">
-                  <img src='http://picsum.photos/300/200/?random'>
+                  <img src="https://image.tmdb.org/t/p/original<%=screening.detailed_film.film_title.img_url%>" style=" height: 270px;"">
                 </div>
                 <div class='screening-info'>
                   <p>Horário: <%= screening.session_time.strftime("%H:%M") %></p>
