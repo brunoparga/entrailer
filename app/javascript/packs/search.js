@@ -33,11 +33,11 @@ const api_key = "5540735874a63598d8aff185327238bb";
   .then((data) => {
     data.results.forEach((movie) => {
       const item = `
-        <li> <strong> ${movie.title} </strong> - Release date: ${movie.release_date} - ${movie.id} - </li>
+        <li> <strong> ${movie.original_title} </strong> - Release date: ${movie.release_date} - ${movie.id} - </li>
         <a
           href="#"
           class="btn-add-film"
-          data-movie-title = "${movie.title}"
+          data-movie-title = "${movie.original_title}"
           data-movie-id = ${movie.id}
           data-movie-poster = ${movie.poster_path}
 
