@@ -28,6 +28,7 @@
         <div class="dropdown">
           <a type='button' class="dropdown-toggle navbar-wagon-link" id="navbar-wagon-menu" data-toggle="dropdown"><%= current_user.email %></a>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li><%= link_to "Add Film", new_film_title_path %></li>
             <li><%= link_to "Add Screen", new_screen_path %></li>
             <li><%= link_to "List Screens", screens_path %></li>
             <li><%= link_to "Add Screening", new_screening_path %></li>
