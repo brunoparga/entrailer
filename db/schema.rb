@@ -86,6 +86,8 @@ ActiveRecord::Schema.define(version: 20180413021254) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "price_centavos", default: 0, null: false
+    t.string "status"
+    t.jsonb "payment"
     t.index ["screening_id"], name: "index_sold_tickets_on_screening_id"
     t.index ["user_id"], name: "index_sold_tickets_on_user_id"
   end
