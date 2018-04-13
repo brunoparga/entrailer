@@ -1,6 +1,8 @@
-<h2>Ticket for <%= @sold_ticket.screening.detailed_film.film_title.title %></h2>
-<p><%= "#{@sold_ticket.screening.screen.name}, #{@sold_ticket.screening.session_time.strftime('%H:%M')}" %></p>
-<%= form_tag sold_ticket_payments_path(@sold_ticket) do %>
+
+<div class="container">
+  <h2>Ticket for <%= @sold_ticket.screening.detailed_film.film_title.title %></h2>
+  <p><%= "#{@sold_ticket.screening.screen.name}, #{@sold_ticket.screening.session_time.strftime('%H:%M')}" %></p>
+  <%= form_tag sold_ticket_payments_path(@sold_ticket) do %>
   <article>
     <label class="price">
       <span>Amount: R$ <%= @sold_ticket.price %></span>
@@ -8,10 +10,11 @@
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-    data-name="Film ticket"
-    data-email="<%= current_user.email %>"
-    data-description="Movie <%= @sold_ticket.screening.detailed_film.film_title.title %>"
-    data-amount="<%= @sold_ticket.price_centavos %>"
-    data-currency="<%= @sold_ticket.price.currency %>"></script>
-<% end %>
+  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+  data-name="Film ticket"
+  data-email="<%= current_user.email %>"
+  data-description="Movie <%= @sold_ticket.screening.detailed_film.film_title.title %>"
+  data-amount="<%= @sold_ticket.price_centavos %>"
+  data-currency="<%= @sold_ticket.price.currency %>"></script>
+  <% end %>
+</div>

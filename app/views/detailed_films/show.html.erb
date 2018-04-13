@@ -1,6 +1,6 @@
-<h1>DetailedFilms#show</h1>
-<p> <%= @detailed_film.film_title.title %>
-<%= @detailed_film.speech %>
-<%= @detailed_film.format.name %></p>
-<%= link_to 'Adicionar Filme', new_film_title_detailed_film_path(@detailed_film) %>
-<%= link_to 'Voltar', detailed_films_path %>
+<div class="container">
+  <%= @detailed_film.speech %>
+  <%= @detailed_film.format.name %></p>
+  <%= link_to 'Adicionar Filme', new_film_title_detailed_film_path(@detailed_film) %>
+  <%= link_to 'Voltar', detailed_films_path %>
+</div>

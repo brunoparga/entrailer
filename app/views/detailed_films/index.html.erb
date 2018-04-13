@@ -1,9 +1,11 @@
-<h1>DetailedFilms#index</h1>
-<% @detailed_films.each do |film| %>
-<p> <%= film.film_title.title %>
-<%= film.speech %>
-<%= film.format.name %></p>
-<%= link_to 'Ver mais', detailed_film_path(film.film_title)  %>
-<% end %>
+<div class="container">
+  <h3>List of detailed films</h3>
+  <% @detailed_films.each do |film| %>
+  <p> <%= film.film_title.title %>
+    <%= film.speech %>
+    <%= film.format.name %></p>
+    <%= link_to 'Ver mais', detailed_film_path(film)  %>
+    <% end %>
 
-<%= link_to 'Voltar', root_path %>
+    <%= link_to 'Voltar', root_path %>
+</div>
