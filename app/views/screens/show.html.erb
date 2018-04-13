@@ -1,13 +1,17 @@
+<div class="mini banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= @screen.screen_img %>);">
+</div>
 
 <div class='container'>
   <div class="row">
-    <div class="screen-details crop">
-      <img src=<%= @screen.screen_img %>>
-      <div class="screen-description">
+    <div class='col-xs-12 col-sm-12 col-md-6'>
+      <div class="map-row">
+      </div>
+    </div>
+    <div class='col-xs-12 col-sm-12 col-md-6'>
+      <div class="screen-details">
         <p><strong>Name:</strong>  <%= @screen.name %></p>
         <p><strong>Address:</strong>  <%= @screen.address %></p>
         <p><strong>Capacity:</strong>  <%= @screen.capacity %></p>
-
       </div>
     </div>
   </div>

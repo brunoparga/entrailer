@@ -22,8 +22,22 @@ User.destroy_all
 time = Time.now
 
 puts 'Creating film titles...'
-titles = ['Spider-Man', 'Inception', 'The Departed', 'Fantasia']
-titles.map! { |title| FilmTitle.create!(title: title, imdb_id: rand(1..9_999)) }
+spiderman = FilmTitle.create!(title: 'Spider-Man',
+                              imdb_id: '557',
+                              img_url: '/rZd0y1X1Gw4t5B3f01Qzj8DYY66.jpg',
+                              banner_url: '/5yAEbTXiJZQpNx7eCyyOhnY9MYw.jpg')
+thedeparted = FilmTitle.create!(title: 'The Departed',
+                              imdb_id: '1422',
+                              img_url: '/tGLO9zw5ZtCeyyEWgbYGgsFxC6i.jpg',
+                              banner_url: '/8Od5zV7Q7zNOX0y9tyNgpTmoiGA.jpg')
+inception = FilmTitle.create!(title: 'Inception',
+                              imdb_id: '27205',
+                              img_url: '/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg',
+                              banner_url: '/s2bT29y0ngXxxu2IA8AOzzXTRhd.jpg')
+fantasia = FilmTitle.create!(title: 'Fantasia',
+                              imdb_id: '756',
+                              img_url: '/dYZ1r3MJnXVGBBSYKgpd8UWGyFw.jpg',
+                              banner_url: '/oZBj2o3JVULRe1SlBalBpnkfp6x.jpg')
 
 puts 'Creating film formats...'
 formats = %w[standard 3D IMAX]
@@ -31,6 +45,7 @@ formats.map! { |format| Format.create!(name: format) }
 
 puts 'Creating detailed films...'
 films = []
+titles = FilmTitle.all
 formats.each do |format|
   titles.each do |title|
     2.times do |speech|
@@ -50,6 +65,11 @@ banana = User.create!(email: 'banana@example.com',
                       first_name: 'Banana',
                       last_name: 'Caturra',
                       password: 'senhasenha')
+ownit = User.create!(email: 'owner@entrailer.com',
+                     role: 'theater_owner',
+                     first_name: 'Owner',
+                     last_name: 'Owner',
+                     password: 'ownerowner')
 
 puts 'Creating screens...'
 screen1 = Screen.create!(name: 'Cinemark Metrô Santa Cruz 3',
