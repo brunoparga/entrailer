@@ -11,7 +11,6 @@ class ScreeningsController < ApplicationController
     authorize @screening
     @new_ticket = @screening.sold_tickets.build
     @sold_tickets = @screening.sold_tickets.count
-    session[:ticket_price] = calculate_price(@screening)
     @detailed_film = DetailedFilm.find(id = @screening.detailed_film_id)
     @film_title = FilmTitle.find(id = @detailed_film.film_title_id)
     authorize @film_title
