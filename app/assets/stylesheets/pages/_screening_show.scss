@@ -11,6 +11,7 @@
 
 .movie-details h4 {
   margin-bottom: 20px;
+  text-decoration: none;
 }
 
 .movie-details h5 {
@@ -36,8 +37,7 @@
 
 .movie-description {
   margin-left: 40px;
-  flex-grow: 1;
-}
+  }
 
 .mini {
   height: 300px !important;
