@@ -1,6 +1,6 @@
 <h2>Ticket for <%= @sold_ticket.screening.detailed_film.film_title.title %></h2>
 <p><%= "#{@sold_ticket.screening.screen.name}, #{@sold_ticket.screening.session_time.strftime('%H:%M')}" %></p>
-<%= form_tag sold_ticket_payments_path(@sold_ticket.screening) do %>
+<%= form_tag sold_ticket_payments_path(@sold_ticket) do %>
   <article>
     <label class="price">
       <span>Amount: R$ <%= @sold_ticket.price %></span>

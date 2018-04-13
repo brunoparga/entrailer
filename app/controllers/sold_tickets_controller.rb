@@ -8,7 +8,7 @@ class SoldTicketsController < ApplicationController
                    .sold_tickets
                    .where(status: 'paid')
                    .find(params[:id])
-    authorize @ticket
+    authorize @sold_ticket
   end
 
   def create
