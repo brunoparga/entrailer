@@ -8,9 +8,11 @@
       <a href=<%= film_title_path(@screening.detailed_film.film_title) %>>
       <img src='http://picsum.photos/200/300/?random'></a>
       <div class="movie-description">
-        <h1><%= @screening.detailed_film.film_title.title %></h2>
-        <h4><%= @screening.detailed_film.speech %></h4>
-        <h4><%= @screening.detailed_film.format.name %></h4>
+        <h1><%= @screening.detailed_film.film_title.title %></h1>
+        <h5>
+          <span class='tag'><%= @screening.detailed_film.speech %></span>
+          <span class='tag'><%= @screening.detailed_film.format.name %></span>
+        </h5>
         <h4>Sala: <%= @screening.screen.name %> - <%= @screening.screen.address %></h4>
         <h4>Horário: <%= @screening.session_time.strftime("%H:%M") %></h4>
       </div>
