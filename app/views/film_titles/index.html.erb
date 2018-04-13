@@ -9,11 +9,11 @@
     <div class="row">
       <% @film_titles.each do |film| %>
         <% film.screenings.each do |screening| %>
-          <div class="col-xs-12 col-sm-4 col-md-3">
+          <div class="col-xs-12 col-sm-4 col-md-4">
               <div class="screening">
                 <a href=<%= screening_path(screening) %>>
                 <div class="screening-img">
-                  <img src="https://image.tmdb.org/t/p/original<%=screening.detailed_film.film_title.img_url%>" style=" height: 270px;"">
+                  <img src=<%= screening.screen.screen_img %>>
                 </div>
                 <div class='screening-info'>
                   <p>Horário: <%= screening.session_time.strftime("%H:%M") %></p>
