@@ -11,7 +11,7 @@ class ScreeningsController < ApplicationController
     authorize @screening
     @new_ticket = @screening.sold_tickets.build
     @sold_tickets = @screening.sold_tickets.count
-    session[:ticket_price] = calculate_price(@screening, Time.now)
+    session[:ticket_price] = @screening.calculate_price(Time.now)
   end
 
   def new
