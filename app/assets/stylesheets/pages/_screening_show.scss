@@ -1,12 +1,61 @@
 .movie-details {
   display: flex;
-  margin-top: 20px;
+  margin-top: 40px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.movie-details h1 {
+  margin-bottom: 25px;
+}
+
+.movie-details h4 {
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+.movie-details h5 {
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+
+.movie-details img {
+  border-radius: $border-radius;
 }
 
 .buy-options {
-  margin-top: 30px;
+  border: 1px solid $black;
+  border-radius: $border-radius;
+  justify-content: space-between;
+  display: flex;
+  margin-top: 80px;
+  margin-bottom: 30px;
+  margin-right: 30px;
+  margin-left: 30px;
+  padding: 20px 20px 20px 20px;
 }
 
 .movie-description {
-  margin-left: 20px;
+  margin-left: 40px;
+  }
+
+.mini {
+  height: 300px !important;
+}
+
+.container {
+  height: 1000px;
+}
+
+.tag {
+  border: 1px solid $black;
+  border-radius: $border-radius;
+  background-color: $white;
+  padding: 5px 5px 5px 5px;
+  margin-right: 10px;
+}
+
+.tag-container {
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
