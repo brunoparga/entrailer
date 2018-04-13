@@ -16,6 +16,7 @@
                    <img src=<%= screening.screen.screen_img %>>
                 </div>
                 <div class='screening-info'>
+                  <p><%= screening.detailed_film.film_title.title %></p>
                   <p>Horário: <%= screening.session_time.strftime("%H:%M") %></p>
                   <p><%= screening.screen.name %></p>
                   <p>Ingressos disponíveis: <%= screening.initial_tickets - screening.sold_tickets.count %></p>

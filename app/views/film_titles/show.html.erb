@@ -2,12 +2,14 @@
 </div>
 
 <div class="container">
-
   <div class="row">
-    <div class="movie-details">
-      <img src='https://image.tmdb.org/t/p/w154<%= @film_title.img_url %>'>
-      <div class="movie-description">
-        <h1><%= @film_title.title %></h1>
+    <div class="col-xs-12 col-sm-12">
+      <div class="movie-details">
+        <a href=''>
+        <img src='https://image.tmdb.org/t/p/w200<%= @film_title.img_url %>'></a>
+        <div class="movie-description">
+          <h1><%= @film_title.title %></h1>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -15,4 +17,9 @@
 
     </div>
   </div>
+
+  <div class="map row">
+
+  </div>
+
 </div>
