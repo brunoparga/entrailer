@@ -39,6 +39,7 @@ class ScreeningsController < ApplicationController
 
   def params_screening
     params.require(:screening).permit(:initial_tickets, :detailed_film_id,
-                                      :screen_id, :session_time, :closing_time)
+                                      :screen_id, :session_time, :closing_time,
+                                      :max_price_centavos, :min_price_centavos)
   end
 end
