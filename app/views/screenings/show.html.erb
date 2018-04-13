@@ -1,8 +1,11 @@
+<div class="mini banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://image.tmdb.org/t/p/original<%=@screening.detailed_film.film_title.img_url%>');">
+</div>
+
 <div class="container">
 
   <div class="row">
     <div class="movie-details">
-      <img src='http://picsum.photos/200/300/?random'>
+      <img src="https://image.tmdb.org/t/p/w185<%=@screening.detailed_film.film_title.img_url%>">
       <div class="movie-description">
         <h2><%= @screening.detailed_film.film_title.title %></h2>
         <p><%= @screening.detailed_film.speech %>
