@@ -55,13 +55,16 @@ puts 'Creating screens...'
 screen1 = Screen.create!(name: 'Cinemark Metrô Santa Cruz 3',
                          address: 'Rua Pedro de Toledo',
                          capacity: 250,
+                         screen_img: 'http://img2.thejournal.ie/article/3275421/river?version=3275440&width=1340',
                          user: banana)
 screen2 = Screen.create!(name: 'Espaço Itaú Augusta 5',
                          address: 'Rua Augusta',
+                         screen_img: 'https://itpworld.files.wordpress.com/2015/12/empty-cinema-and-white-screen.jpg',
                          capacity: 50,
                          user: roberto)
 screen3 = Screen.create!(name: 'Playarte Bristol 8',
                          address: 'Av. Paulista',
+                         screen_img: 'http://www.coop-himmelblau.at/uploads/made/uploads/images/Projects/0508_BCC/P_0508_F44_DM_1500_1004_85.jpg',
                          capacity: 180,
                          user: roberto)
 
