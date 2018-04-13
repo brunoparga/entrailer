@@ -58,9 +58,9 @@ RSpec.describe Screening, type: :model do
       end
 
       it 'increases linearly' do
-        now = hora - (297_000 + 10_800)
+        now = hora - (148500 + 10_800)
 
-        expect(screening.calculate_price(now)).to eq 3000
+        expect(screening.calculate_price(now)).to eq 4000
       end
 
       # it 'increases exponentially in the week prior to the session' do

@@ -77,7 +77,7 @@ class Screening < ApplicationRecord
 
   def increase(interval, max_price, min_price, max_price_time, min_price_time)
     duration = (max_price_time - min_price_time).abs
-    proportion = (interval - 10_800) / duration
+    proportion = 1 - ((interval - 10_800) / duration)
     price_range = max_price - min_price
     min_price + (proportion * price_range).round
   end
