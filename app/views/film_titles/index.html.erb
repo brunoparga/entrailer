@@ -21,7 +21,7 @@
                 <p><%= screening.session_time.strftime("%d/%m/%Y, %H:%M") %></p>
                 <p><em><%= screening.screen.name %></em></p>
                 <p>Ingressos disponíveis: <strong>
-                  <%= screening.initial_tickets - screening.sold_tickets.count %>
+                  <%= screening.initial_tickets - screening.tickets.count %>
                   </strong>
                 </p>
                 <p>A partir de R$ <%= Money.new(screening.calculate_price(Time.now), 'BRL') %> - compre já!</p>

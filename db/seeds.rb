@@ -10,7 +10,7 @@
 
 puts 'Cleaning database...'
 
-SoldTicket.destroy_all
+Ticket.destroy_all
 Screening.destroy_all
 DetailedFilm.destroy_all
 FilmTitle.destroy_all
@@ -208,20 +208,20 @@ screening2 = Screening.create!(screen: screen5,
                                max_price_centavos: 4750,
                                detailed_film: films[9])
 
-puts 'Creating sold tickets...'
-SoldTicket.create!(purchase_time: time,
+puts 'Creating tickets...'
+Ticket.create!(purchase_time: time,
                    screening: screening1,
                    user: roberto,
                    price_centavos: 1640)
-SoldTicket.create!(purchase_time: time,
+Ticket.create!(purchase_time: time,
                    screening: screening2,
                    user: roberto,
                    price_centavos: 1370)
-SoldTicket.create!(purchase_time: time,
+Ticket.create!(purchase_time: time,
                    screening: screening1,
                    user: banana,
                    price_centavos: 2240)
-SoldTicket.create!(purchase_time: time,
+Ticket.create!(purchase_time: time,
                    screening: screening2,
                    user: banana,
                    price_centavos: 3100)

@@ -1,4 +1,4 @@
-class SoldTicket < ApplicationRecord
+class Ticket < ApplicationRecord
   belongs_to :screening
   belongs_to :user
 

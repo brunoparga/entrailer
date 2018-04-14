@@ -1,7 +1,7 @@
 class Screening < ApplicationRecord
   belongs_to :detailed_film
   belongs_to :screen
-  has_many :sold_tickets
+  has_many :tickets
 
   validates :session_time,
             presence: true,
