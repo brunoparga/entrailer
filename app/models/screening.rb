@@ -24,8 +24,8 @@ class Screening < ApplicationRecord
 
     # TODO: use closing time, include it in the price decay period.
     # TODO: use demand, measured by remaining tickets.
-    # TODO: use a params hash for easier change and maintenance.
     # TODO: change the increase and decay from exponential to logistic/tanh?
+    # TODO: return a Money object?
 
     price_params =
       { decay_end: 0,             # Prices finish decaying at session time
