@@ -1,0 +1,27 @@
+.tickets {
+  border: 1px solid $black;
+  border-radius: $border-radius;
+  position: relative;
+  margin-top: 20px;
+}
+
+.tickets a:hover {
+  text-decoration: none;
+}
+
+.tickets h1 {
+  text-decoration: none;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.tickets {
+  padding: 5px;
+}
+
+.tickets p {
+  margin-bottom: 0px;
+  color: black;
+}
+
+
