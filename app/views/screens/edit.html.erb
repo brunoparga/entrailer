@@ -1,14 +1,6 @@
 <div class="container">
-
   <div class="data-inst col-xs-12 col-md-offset-4 col-md-4">
     <h4>Edit the screen</h4>
-    <%= simple_form_for @screen do |f| %>
-    <%= f.input :name, label: "Screen Name" %>
-    <%= f.input :address, label: 'Address' %>
-    <%= f.input :capacity, label: 'Capacity' %>
-    <%= f.submit %>
-    <% end %>
-    <p></p>
+    <%= render 'form' %>
   </div>
-
 </div>
