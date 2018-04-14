@@ -13,9 +13,9 @@
           <div class="screening">
             <%= link_to screening_path(screening) do %>
               <%# TODO: CSS this p tag %>
-              <p><%= film.title %></p>
               <div class="screening-img">
-                 <%= image_tag "https://image.tmdb.org/t/p/w200#{film.img_url}" %>
+                <p><%= film.title %></p>
+                <%= image_tag "#{screening.screen.screen_img}" %>
               </div>
               <div class='screening-info'>
                 <p><%= screening.session_time.strftime("%d/%m/%Y, %H:%M") %></p>
