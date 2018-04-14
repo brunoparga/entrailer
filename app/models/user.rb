@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   enum role: [:user, :theater_owner, :admin]
 
-  has_many :sold_tickets
+  has_many :tickets
   has_many :screens
 
   validates :first_name, presence: true, length: { minimum: 1 }

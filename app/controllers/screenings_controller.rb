@@ -9,8 +9,8 @@ class ScreeningsController < ApplicationController
   def show
     @screening = Screening.find(params[:id])
     authorize @screening
-    @new_ticket = @screening.sold_tickets.build
-    @sold_tickets = @screening.sold_tickets.count
+    @ticket = @screening.tickets.build
+    @tickets = @screening.tickets.count
     @detailed_film = DetailedFilm.find(id = @screening.detailed_film_id)
     @film_title = FilmTitle.find(id = @detailed_film.film_title_id)
     authorize @film_title

@@ -24,13 +24,13 @@
   <div class="row">
       <div class="buy-options">
         <div class="col-xs-12 col-sm-4">
-          <h4><%= @screening.initial_tickets - @sold_tickets %> ingressos disponíveis.</h4>
+          <h4><%= @screening.initial_tickets - @tickets %> ingressos disponíveis.</h4>
         </div>
         <div class="col-xs-12 col-sm-4">
           <h4>Por apenas R$ <%= (session[:ticket_price] / 100.0).round(2) %>!</h4>
         </div>
         <div class="col-xs-12 col-sm-4">
-          <%= button_to 'Comprar!', [@screening, @new_ticket], { class: 'btn btn-medium' } %>
+          <%= button_to 'Comprar!', [@screening, @ticket], { class: 'btn btn-medium' } %>
         </div>
       </div>
   </div>
@@ -52,7 +52,7 @@
               <p><%= screening.detailed_film.film_title.title %></p>
               <p>Horário: <%= screening.session_time.strftime("%H:%M") %></p>
               <p><%= screening.screen.name %></p>
-              <p>Ingressos disponíveis: <%= screening.initial_tickets - screening.sold_tickets.count %></p>
+              <p>Ingressos disponíveis: <%= screening.initial_tickets - screening.tickets.count %></p>
             </div>
           </a>
         </div>
@@ -60,4 +60,3 @@
     <% end %>
   </div>
 </div>
-

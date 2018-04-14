@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20180413021254) do
     t.index ["user_id"], name: "index_screens_on_user_id"
   end
 
-  create_table "sold_tickets", force: :cascade do |t|
+  create_table "tickets", force: :cascade do |t|
     t.datetime "purchase_time"
     t.bigint "screening_id", null: false
     t.bigint "user_id", null: false
@@ -88,8 +88,8 @@ ActiveRecord::Schema.define(version: 20180413021254) do
     t.integer "price_centavos", default: 0, null: false
     t.string "status"
     t.jsonb "payment"
-    t.index ["screening_id"], name: "index_sold_tickets_on_screening_id"
-    t.index ["user_id"], name: "index_sold_tickets_on_user_id"
+    t.index ["screening_id"], name: "index_tickets_on_screening_id"
+    t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -118,6 +118,6 @@ ActiveRecord::Schema.define(version: 20180413021254) do
   add_foreign_key "formats_screens", "screens"
   add_foreign_key "screenings", "detailed_films"
   add_foreign_key "screenings", "screens"
-  add_foreign_key "sold_tickets", "screenings"
-  add_foreign_key "sold_tickets", "users"
+  add_foreign_key "tickets", "screenings"
+  add_foreign_key "tickets", "users"
 end

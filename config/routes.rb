@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   end
 
   resources :screenings do
-    resources :sold_tickets, only: :create
+    resources :tickets, only: :create
   end
 
-  resources :sold_tickets, only: %i[show index] do
+  resources :tickets, only: %i[show index] do
     resources :payments, only: %i[new create]
   end
 end

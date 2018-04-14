@@ -1,4 +1,4 @@
-class SoldTicketPolicy < ApplicationPolicy
+class TicketPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.where(user: user)

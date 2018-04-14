@@ -1,0 +1,6 @@
+<h1>User: <%= current_user.email %></h1>
+<% @tickets.each do |ticket| %>
+
+  <p>title: <%= ticket.title %></p>
+  <p>Preço: <%= ticket.price_centavos %></p>
+<% end %>
