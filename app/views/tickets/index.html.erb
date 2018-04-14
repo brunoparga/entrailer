@@ -1,21 +1,65 @@
+<% t = 0 %>
+<% c = 0 %>
+
 <div class="container">
   <h1>Olá, <%= current_user.first_name %> <%= current_user.last_name %>!</h1>
+
   <% @tickets.each do |ticket| %>
-    <div class="row tickets">
-      <a href=<%=ticket_path(ticket) %>>
-      <h1><%= ticket.title %></h1>
-      <p>Preço: <%= ticket.price_centavos %></p>
-      <span>
-        <p>Data: <%= ticket.screening.session_time.strftime("%d/%m/%y") %></p>
-        <p>Horário: <%= ticket.screening.session_time.strftime("%H:%M") %></p>
-      </span>
-      <p>Local: <%= ticket.screening.screen.name  %></p>
-      <% if ticket.status == 'paid' %>
-        <p> Pagamento aprovado </p>
-      <% else %>
-        <p> Pagamento a ser aprovado</p>
+    <% if ticket.screening.session_time > DateTime.now %>
+      <% if t == 0 %>
+        <h2>Ingressos para sessões futuras:</h2>
       <% end %>
-    </div>
+      <% t += 1 %>
+      <div class="row">
+        <div class="tickets">
+          <div class="col-xs-12 col-sm-6">
+            <a href=<%= screening_path(ticket.screening.id)%>>
+              <h1><%= ticket.title %></h1>
+            </a>
+            <p>Preço: <%= ticket.price_centavos %></p>
+            <span>
+              <p>Data: <%= ticket.screening.session_time.strftime("%d/%m/%y") %></p>
+              <p>Horário: <%= ticket.screening.session_time.strftime("%H:%M") %></p>
+            </span>
+            <a href=<%= screen_path(ticket.screening.screen.id)%>>
+              <p> Local: <%= ticket.screening.screen.name %></p>
+            </a>
+            <% if ticket.status == 'paid' %>
+              <%= link_to 'Imprimir', ticket_path(ticket), class: 'btn btn-medium'%>
+            <% else %>
+              <p> Pagamento a ser aprovado</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <% if c == 0 %>
+        <h2>Ingressos para sessões antigas:</h2>
+      <% end %>
+      <% c += 1 %>
+      <div class="row tickets">
+        <div class="col-xs-12 col-sm-6">
+          <a href=<%= screening_path(ticket.screening.id)%>>
+            <h1><%= ticket.title %></h1>
+          </a>
+          <span>
+            <p>Data: <%= ticket.screening.session_time.strftime("%d/%m/%y") %></p>
+            <p>Horário: <%= ticket.screening.session_time.strftime("%H:%M") %></p>
+          </span>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <a href=<%= screen_path(ticket.screening.screen.id)%>>
+            <p> Local: <%= ticket.screening.screen.name %></p>
+          </a>
+          <p>Preço: <%= ticket.price_centavos %></p>
+          <% if ticket.status == 'paid' %>
+            <p> Ticket indisponível</p>
+          <% else %>
+            <p> Pagamento não foi aprovado</p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 </div>
 
