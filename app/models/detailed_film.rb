@@ -5,7 +5,7 @@ class DetailedFilm < ApplicationRecord
   has_many :screenings
   has_many :sessions
 
-  enum speech: { dubbed: 0, subtitled: 1, original: 2, silent: 3 }
+  enum speech: { dublado: 0, legendado: 1, brasileiro: 2, mudo: 3 }
 
   validates :film_title_id, presence: true
   validates :format_id, presence: true

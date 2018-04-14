@@ -32,7 +32,7 @@ RSpec.describe Screening, type: :model do
 
   context 'price function' do
     let(:aranha) { FilmTitle.new(title: 'Homem-Aranha') }
-    let(:std) { Format.new(name: 'standard') }
+    let(:std) { Format.new(name: 'convencional') }
     let(:cinemark) { Screen.new(capacity: 200) }
     let(:aranha_detailed) { DetailedFilm.new(film_title: aranha,
                                              format: std,
