@@ -1,17 +1,15 @@
 <div class="container">
   <div class='info-search row'>
-    <% if @film_titles.count > 1 %>
+    <% if @film_titles.count != 1 %>
         <h3>Filme não encontrado. Mostrando todas as sessões disponíveis.</h3>
     <% elsif @film_titles.count == 1 %>
         <h3>Sessões do filme: <%= @film_titles.first.title %></h3>
-        <%# TODO: e o else? Isto é, e se count == 0? %>
     <%end%>
   </div>
   <div class="row">
     <% @film_titles.each do |film| %>
       <% film.screenings.each do |screening| %>
         <div class="col-xs-12 col-sm-4 col-md-4">
-          <%# TODO: não é melhor colocar essa classe 'screening' junto com as colunas do Bootstrap? %>
           <div class="screening">
             <%= link_to screening_path(screening) do %>
               <%# TODO: CSS this p tag %>
