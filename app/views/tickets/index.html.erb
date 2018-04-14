@@ -1,6 +1,21 @@
-<h1>User: <%= current_user.email %></h1>
-<% @tickets.each do |ticket| %>
+<div class="container">
+  <h1>Olá, <%= current_user.first_name %> <%= current_user.last_name %>!</h1>
+  <% @tickets.each do |ticket| %>
+    <div class="row tickets">
+      <a href=<%=ticket_path(ticket) %>>
+      <h1><%= ticket.title %></h1>
+      <p>Preço: <%= ticket.price_centavos %></p>
+      <span>
+        <p>Data: <%= ticket.screening.session_time.strftime("%d/%m/%y") %></p>
+        <p>Horário: <%= ticket.screening.session_time.strftime("%H:%M") %></p>
+      </span>
+      <p>Local: <%= ticket.screening.screen.name  %></p>
+      <% if ticket.status == 'paid' %>
+        <p> Pagamento aprovado </p>
+      <% else %>
+        <p> Pagamento a ser aprovado</p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
-  <p>title: <%= ticket.title %></p>
-  <p>Preço: <%= ticket.price_centavos %></p>
-<% end %>
