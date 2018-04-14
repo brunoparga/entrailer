@@ -1,0 +1,20 @@
+<div class="col-xs-12 col-sm-4 col-md-4">
+  <div class="screening">
+    <%= link_to screening_path(screening) do %>
+      <%# TODO: CSS this p tag %>
+      <p><%= film.title if display_title %></p>
+      <div class="screening-img">
+         <%= image_tag "https://image.tmdb.org/t/p/w200#{film.img_url}" %>
+      </div>
+      <div class='screening-info'>
+        <p><%= screening.session_time.strftime("%d/%m/%Y, %H:%M") %></p>
+        <p><em><%= screening.screen.name %></em></p>
+        <p>Ingressos disponíveis: <strong>
+          <%= screening.initial_tickets - screening.tickets.count %>
+          </strong>
+        </p>
+        <p>A partir de R$ <%= Money.new(screening.calculate_price(Time.now), 'BRL') %> - compre já!</p>
+      </div>
+    <% end %>
+  </div>
+</div>

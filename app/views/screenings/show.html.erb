@@ -42,21 +42,10 @@
   <h3>Outras sessões do filme: <%= @screening.detailed_film.film_title.title %></h3>
   <div class="row">
     <% @film_title.screenings.each do |screening| %>
-      <div class="col-xs-12 col-sm-4 col-md-4">
-        <div class="screening">
-          <a href=<%= screening_path(screening) %>>
-            <div class="screening-img">
-              <img src=<%= screening.screen.screen_img %>>
-            </div>
-            <div class='screening-info'>
-              <p><%= screening.detailed_film.film_title.title %></p>
-              <p>Horário: <%= screening.session_time.strftime("%H:%M") %></p>
-              <p><%= screening.screen.name %></p>
-              <p>Ingressos disponíveis: <%= screening.initial_tickets - screening.tickets.count %></p>
-            </div>
-          </a>
-        </div>
-      </div>
+      <%= render 'screenings/screening_card',
+                 screening: screening,
+                 film: @screening.detailed_film.film_title,
+                 display_title: false %>
     <% end %>
   </div>
 </div>
