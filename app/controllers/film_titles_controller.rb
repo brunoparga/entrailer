@@ -2,9 +2,7 @@ class FilmTitlesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @film_titles = policy_scope(FilmTitle.search_by_title("#{params[:query]}"))
-    @film_titles = policy_scope(FilmTitle) if @film_titles.count.zero?
-
+    @film_titles
     authorize @film_titles
   end
 

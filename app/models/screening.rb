@@ -11,6 +11,13 @@ class Screening < ApplicationRecord
   validate :initial_tickets_must_be_lte_screen_capacity
   validate :screen_must_have_film_format
 
+  include PgSearch
+  pg_search_scope :search_by_session_time,
+    against: [ :session_time ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
   def calculate_price(purchase_time)
     # purchase_time is the time the controller calls this method
     # returns a price in centavos as an integer

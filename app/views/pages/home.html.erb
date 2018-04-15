@@ -3,14 +3,13 @@
     <h1>Em cartaz...</h1>
     <p>Compre ingressos de cinema mais baratos</p>
     <div>
-      <%= form_tag film_titles_path, method: :get do %>
+      <%= form_tag search_index_path, method: :get do %>
       <%= text_field_tag :query,
       params[:query],
       class: "form-control",
         placeholder: "Procure por filme, cinema ou horário" %>
         <%# TODO: ow, aqui era um bom lugar pra usar o Typed, hein? %>
-
-        <p></p>
+        <%# TODO: resolver este problema de espaço com CSS %>
         <%= submit_tag 'Encontrar sessões' , class: 'btn btn-medium'%>
         <% end %>
     </div>

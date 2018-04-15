@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   resources :tickets, only: %i[show index] do
     resources :payments, only: %i[new create]
   end
+  resources :search, only: :index
 end

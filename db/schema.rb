@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180413021254) do
+ActiveRecord::Schema.define(version: 20180414225041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20180413021254) do
     t.string "imdb_id", null: false
     t.string "img_url"
     t.string "banner_url"
+    t.text "synopsis"
   end
 
   create_table "formats", force: :cascade do |t|
@@ -50,6 +51,15 @@ ActiveRecord::Schema.define(version: 20180413021254) do
     t.index ["format_id", "screen_id"], name: "index_formats_screens_on_format_id_and_screen_id", unique: true
     t.index ["format_id"], name: "index_formats_screens_on_format_id"
     t.index ["screen_id"], name: "index_formats_screens_on_screen_id"
+  end
+
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
   end
 
   create_table "screenings", force: :cascade do |t|
