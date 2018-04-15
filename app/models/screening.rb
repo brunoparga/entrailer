@@ -28,7 +28,6 @@ class Screening < ApplicationRecord
     # TODO: use closing time, include it in the price decay period.
     # TODO: use demand, measured by remaining tickets.
     # TODO: change the increase and decay from exponential to logistic/tanh?
-    # TODO: return a Money object?
 
     price_params =
       { decay_end: 0,             # Prices finish decaying at session time
@@ -39,7 +38,9 @@ class Screening < ApplicationRecord
 
     # How long between now and session time?
     interval = session_time - purchase_time
-    price_calculator(interval, price_params)
+    Money
+      .new(price_calculator(interval, price_params), 'BRL')
+      .format(symbol_before_without_space: false)
   end
 
   private
