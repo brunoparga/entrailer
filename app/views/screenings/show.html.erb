@@ -17,6 +17,7 @@
           <h4>Sala: <%= @screening.screen.name %></h4>
           </a>
           <h4>Horário: <%= @screening.session_time.strftime("%H:%M") %></h4>
+          <p><em><%= @film_title.synopsis %></em></p>
         </div>
       </div>
     </div>

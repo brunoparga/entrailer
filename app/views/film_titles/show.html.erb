@@ -5,21 +5,22 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12">
       <div class="movie-details">
-        <a href=''>
-        <img src='https://image.tmdb.org/t/p/w200<%= @film_title.img_url %>'></a>
+        <%# TODO: what is this link doing? %>
+        <%= link_to '' do %>
+          <%= image_tag "https://image.tmdb.org/t/p/w200#{@film_title.img_url}" %>
+        <% end %>
         <div class="movie-description">
           <h1><%= @film_title.title %></h1>
+          <p><em><%= @film_title.synopsis %></em></p>
         </div>
       </div>
     </div>
     <div class="row">
       <%= link_to "Criar filme detalhado", new_film_title_detailed_film_path(@film_title.id) %>
-
     </div>
   </div>
 
   <div class="map row">
-
+    <%# TODO: what is this div doing? %>
   </div>
-
 </div>
