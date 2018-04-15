@@ -94,9 +94,9 @@ class Screening < ApplicationRecord
     price_range = (start_price - end_price).abs
     min_price = [start_price, end_price].min
     time_range = end_time - start_time
-    mid_time = (time_range / 2).round
-    slope = 1
-    min_price + (price_range / (1 + Math.exp(-slope * (interval - mid_time))))
+    # mid_time = (time_range / 2).round
+    slope = -0.001
+    min_price + (price_range / (1 + Math.exp(-slope * interval)))
   end
 
   def decay(interval, max_price, min_price, max_price_time, min_price_time)
