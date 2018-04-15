@@ -50,7 +50,7 @@
     <div class="col-xs-12 col-md-offset-3 col-md-6">
       <p class="text-center small">
         Comprado dia <%= @ticket.purchase_time.strftime("%d/%m/%Y") %> às
-        <%= @ticket.purchase_time.strftime("%H:%M:%S") %> por R$ <%= @ticket.price %>
+        <%= @ticket.purchase_time.strftime("%H:%M:%S") %> por <%= @ticket.price %>
       </p>
     </div>
   </div>
