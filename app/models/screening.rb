@@ -28,17 +28,17 @@ class Screening < ApplicationRecord
     # TODO: use closing time, include it in the price decay period.
     # TODO: use demand, measured by remaining tickets.
     # TODO: change the increase and decay from exponential to logistic/tanh?
-    # TODO: return a Money object?
 
     price_params =
-      { decay_end: 0,             # Prices finish decaying at session time
-        decay_start: 900,         # Prices start decaying 15 minutes before session
-        increase_start: 604_800,  # Prices start increasing a week before session
-        max_start: 10_800,        # Prices peak three hours before session
-        early_bird_factor: 1 }    # A week before, prices are this times the minimum
+      { decay_end: 0,              # Prices finish decaying at session time
+        decay_start: -900,         # Prices start decaying 15 minutes before session
+        increase_start: -604_800,  # Prices start increasing a week before session
+        max_start: -10_800,        # Prices peak three hours before session
+        early_bird_factor: 1 }     # A week before, prices are this times the minimum
 
     # How long between now and session time?
-    interval = session_time - purchase_time
+    # This is a negative number as long as purchase is before session
+    interval = purchase_time - session_time
     Money
       .new(price_calculator(interval, price_params), 'BRL')
       .format(symbol_before_without_space: false)
@@ -50,20 +50,36 @@ class Screening < ApplicationRecord
     # interval: the duration between reference time and session start time
     # price_params are set at #calculate_price
     # returns the correct price in centavos
+<<<<<<< HEAD
     return min_price_cents if interval.negative?
 
     if interval <= price_params[:decay_start]
       return decay(interval,
                    max_price_cents,
                    min_price_cents,
+=======
+    return min_price_centavos if interval.positive?
+
+    if interval >= price_params[:decay_start]
+      return sigmoid(interval,
+                   max_price_centavos,
+                   min_price_centavos,
+>>>>>>> Modify the price function to use sigmoid (not working yet)
                    price_params[:decay_start],
                    price_params[:decay_end])
     end
 
+<<<<<<< HEAD
     return max_price_cents if interval <= price_params[:max_start]
 
     early_bird = min_price_cents * price_params[:early_bird_factor]
     if interval <= price_params[:increase_start]
+=======
+    return max_price_centavos if interval >= price_params[:max_start]
+
+    early_bird = min_price_centavos * price_params[:early_bird_factor]
+    if interval >= price_params[:increase_start]
+>>>>>>> Modify the price function to use sigmoid (not working yet)
       return increase(interval,
                       max_price_cents,
                       early_bird,
@@ -72,6 +88,15 @@ class Screening < ApplicationRecord
     end
 
     return early_bird
+  end
+
+  def sigmoid(interval, start_price, end_price, start_time, end_time)
+    price_range = (start_price - end_price).abs
+    min_price = [start_price, end_price].min
+    time_range = end_time - start_time
+    mid_time = (time_range / 2).round
+    slope = 1
+    min_price + (price_range / (1 + Math.exp(-slope * (interval - mid_time))))
   end
 
   def decay(interval, max_price, min_price, max_price_time, min_price_time)
