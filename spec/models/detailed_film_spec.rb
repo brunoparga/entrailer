@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe DetailedFilm, type: :model do
   context 'when running validations' do
     let(:aranha) { FilmTitle.create(title: 'Homem-Aranha') }
-    let(:std) { Format.create(name: 'standard') }
+    let(:std) { Format.create(name: 'convencional') }
 
     before do
       DetailedFilm.create(film_title: aranha, format: std, speech: 0)
