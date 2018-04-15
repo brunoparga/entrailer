@@ -28,7 +28,7 @@
           <h4><%= @screening.initial_tickets - @tickets %> ingressos disponíveis.</h4>
         </div>
         <div class="col-xs-12 col-sm-4">
-          <h4>Por apenas R$ <%= (session[:ticket_price] / 100.0).round(2) %>!</h4>
+          <h4>Por apenas <%= session[:ticket_price] %>!</h4>
         </div>
         <div class="col-xs-12 col-sm-4">
           <%= button_to 'Comprar!', [@screening, @ticket], { class: 'btn btn-medium' } %>
