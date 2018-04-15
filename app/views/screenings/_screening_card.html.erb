@@ -13,7 +13,7 @@
           <%= screening.initial_tickets - screening.tickets.count %>
           </strong>
         </p>
-        <p>A partir de R$ <%= Money.new(screening.calculate_price(Time.now), 'BRL') %> - compre já!</p>
+        <p>A partir de <%= screening.calculate_price(Time.now) %> - compre já!</p>
       </div>
     <% end %>
   </div>
