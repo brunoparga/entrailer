@@ -11,6 +11,9 @@ class Screening < ApplicationRecord
   validate :initial_tickets_must_be_lte_screen_capacity
   validate :screen_must_have_film_format
 
+  monetize :min_price_centavos, as: :min_price
+  monetize :max_price_centavos, as: :max_price
+
   include PgSearch
   pg_search_scope :search_by_session_time,
     against: [ :session_time ],
