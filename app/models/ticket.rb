@@ -8,7 +8,7 @@ class Ticket < ApplicationRecord
   validates :purchase_time, presence: true
   validate :purchase_time_must_be_lte_closing_time
 
-  monetize :price_centavos
+  monetize :price_centavos, as: :price
 
   def title
     self.screening.detailed_film.film_title.title
