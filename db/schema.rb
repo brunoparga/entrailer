@@ -70,8 +70,8 @@ ActiveRecord::Schema.define(version: 20180415203311) do
     t.bigint "screen_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "min_price_cents", default: 0, null: false
-    t.integer "max_price_cents", default: 0, null: false
+    t.integer "min_price_centavos", default: 0, null: false
+    t.integer "max_price_centavos", default: 0, null: false
     t.index ["detailed_film_id"], name: "index_screenings_on_detailed_film_id"
     t.index ["screen_id"], name: "index_screenings_on_screen_id"
     t.index ["session_time", "detailed_film_id", "screen_id"], name: "film_screen_time_uniqueness_index", unique: true
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20180415203311) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "price_cents", default: 0, null: false
+    t.integer "price_centavos", default: 0, null: false
     t.string "status"
     t.jsonb "payment"
     t.index ["screening_id"], name: "index_tickets_on_screening_id"
