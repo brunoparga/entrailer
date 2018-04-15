@@ -1,24 +1,26 @@
 <div class="container">
   <div class="form-style col-xs-12 col-md-offset-3 col-md-6">
-    <h3>Create a new film screening</h3>
+    <h3>Criar uma nova sessão</h3>
     <%= simple_form_for @screening do |f| %>
     <%= f.association :detailed_film,
-    collection: @films,
-    label_method: :first, value_method: :second,
-    label: 'Please select which film you are showing: ' %>
+                      collection: @films,
+                      label_method: :first,
+                      value_method: :second,
+                      label: 'Selecione o filme desta sessão: ' %>
     <%= f.association :screen,
-    collection: @screens,
-    label_method: :first, value_method: :second,
-    label: 'Please select which screen you are showing it at: ' %>
-    <% min_price_label = "Please select the minimum price. \
-    This should equal your marginal cost." %>
+                      collection: @screens,
+                      label_method: :first,
+                      value_method: :second,
+                      label: 'Selecione a sala desta sessão: ' %>
+    <% min_price_label = "Selecione o preço mínimo. \
+    Ele deve ser igual ao seu custo marginal." %>
     <%= f.input :min_price_centavos, label: min_price_label %>
-    <% max_price_label = "Please select the maximum price. \
-    These prices will determine the price charged at any given time." %>
+    <% max_price_label = "Selecione o preço máximo. \
+    Estes valores determinarão o preço cobrado num dado momento." %>
     <%= f.input :max_price_centavos, label: max_price_label %>
-    <%= f.input :initial_tickets, label: 'How many tickets are you selling?' %>
-    <%= f.input :session_time, label: 'What time is the session?' %>
-    <%= f.input :closing_time, label: 'What time should sales close?' %>
+    <%= f.input :initial_tickets, label: 'Quantos ingressos você quer vender?' %>
+    <%= f.input :session_time, label: 'Qual é o horário da sessão?' %>
+    <%= f.input :closing_time, label: 'Que hora deve encerrar as vendas?' %>
     <%= f.submit %>
     <% end %>
   </div>

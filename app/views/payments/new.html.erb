@@ -1,10 +1,10 @@
 <div class="container">
-  <h2>Ticket for <%= @ticket.screening.detailed_film.film_title.title %></h2>
+  <h2>Ingreso para <%= @ticket.screening.detailed_film.film_title.title %></h2>
   <p><%= "#{@ticket.screening.screen.name}, #{@ticket.screening.session_time.strftime('%H:%M')}" %></p>
   <%= form_tag ticket_payments_path(@ticket) do %>
   <article>
     <label class="price">
-      <span>Amount: R$ <%= @ticket.price %></span>
+      <span>Preço: R$ <%= @ticket.price %></span>
     </label>
   </article>
 
