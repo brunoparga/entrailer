@@ -125,4 +125,12 @@
     <% end %>
   </div>
   <%end%>
+  <hr>
+  <div class="row text-center"> Onde estão as Sessões de Cinema </div>
+  <div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+></div>
 </div>

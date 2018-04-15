@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180414225041) do
+ActiveRecord::Schema.define(version: 20180415203311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,8 @@ ActiveRecord::Schema.define(version: 20180414225041) do
     t.string "name", null: false
     t.bigint "user_id"
     t.string "screen_img"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["name"], name: "screens_uniqueness_index", unique: true
     t.index ["user_id"], name: "index_screens_on_user_id"
   end
