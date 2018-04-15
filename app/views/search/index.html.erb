@@ -20,7 +20,7 @@
                   <%= screening.initial_tickets - screening.tickets.count %>
                   </strong>
                   </p>
-                  <p>A partir de R$ <%= Money.new(screening.calculate_price(Time.now), 'BRL') %> -    compre já!</p>
+                  <p>A partir de R$ <%= screening.calculate_price(Time.now) %> -    compre já!</p>
                 </div>
               <% end %>
             </div>
@@ -49,7 +49,7 @@
                   <%= screening.initial_tickets - screening.tickets.count %>
                   </strong>
                 </p>
-                <p>A partir de R$ <%= Money.new(screening.calculate_price(Time.now), 'BRL') %> - compre já!</p>
+                <p>A partir de R$ <%= screening.calculate_price(Time.now) %> - compre já!</p>
               </div>
             <% end %>
           </div>
@@ -85,7 +85,7 @@
                         <%= screening.initial_tickets - screening.tickets.count %>
                         </strong>
                       </p>
-                      <p>A partir de R$ <%= Money.new(screening.calculate_price(Time.now), 'BRL') %> - compre já!</p>
+                      <p>A partir de R$ <%= screening.calculate_price(Time.now) %> - compre já!</p>
                     </div>
                   <% end %>
                 </div>
@@ -117,7 +117,7 @@
                   <%= screening.initial_tickets - screening.tickets.count %>
                   </strong>
                 </p>
-                <p>A partir de R$ <%= Money.new(screening.calculate_price(Time.now), 'BRL') %> - compre já!</p>
+                <p>A partir de R$ <%= screening.calculate_price(Time.now) %> - compre já!</p>
               </div>
             <% end %>
           </div>
@@ -125,4 +125,12 @@
     <% end %>
   </div>
   <%end%>
+  <hr>
+  <div class="row text-center"> Onde estão as Sessões de Cinema </div>
+  <div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+></div>
 </div>

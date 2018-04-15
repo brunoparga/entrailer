@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180414225041) do
+ActiveRecord::Schema.define(version: 20180415203311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,8 +70,8 @@ ActiveRecord::Schema.define(version: 20180414225041) do
     t.bigint "screen_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "min_price_centavos", default: 0, null: false
-    t.integer "max_price_centavos", default: 0, null: false
+    t.integer "min_price_cents", default: 0, null: false
+    t.integer "max_price_cents", default: 0, null: false
     t.index ["detailed_film_id"], name: "index_screenings_on_detailed_film_id"
     t.index ["screen_id"], name: "index_screenings_on_screen_id"
     t.index ["session_time", "detailed_film_id", "screen_id"], name: "film_screen_time_uniqueness_index", unique: true
@@ -85,6 +85,8 @@ ActiveRecord::Schema.define(version: 20180414225041) do
     t.string "name", null: false
     t.bigint "user_id"
     t.string "screen_img"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["name"], name: "screens_uniqueness_index", unique: true
     t.index ["user_id"], name: "index_screens_on_user_id"
   end
@@ -95,7 +97,7 @@ ActiveRecord::Schema.define(version: 20180414225041) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "price_centavos", default: 0, null: false
+    t.integer "price_cents", default: 0, null: false
     t.string "status"
     t.jsonb "payment"
     t.index ["screening_id"], name: "index_tickets_on_screening_id"
