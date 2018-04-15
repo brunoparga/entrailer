@@ -3,7 +3,7 @@ class ScreensController < ApplicationController
   before_action :set_screen, only: [:show, :edit, :update]
 
   def index
-    @screens = policy_scope(Screen)
+    @screens
     authorize @screens
   end
 

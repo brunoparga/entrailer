@@ -10,6 +10,14 @@ class Screen < ApplicationRecord
   validates :address, presence: true
   validates :capacity, presence: true
 
+  include PgSearch
+  pg_search_scope :search_by_name,
+    against: [ :name ],
+    using: {
+      tsearch: { prefix: true }
+      #:ignoring => :accents
+    }
+
   # This method ensures the owner sees an intelligible string rather than a
   # jumble of an Object in the screening#new page.
   def prepare_for_display

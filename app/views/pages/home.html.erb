@@ -3,14 +3,14 @@
     <h1>Movies on!</h1>
     <p>Reserve the best cinema seats</p>
     <div>
-      <%= form_tag film_titles_path, method: :get do %>
+      <%= form_tag search_index_path, method: :get do %>
       <%= text_field_tag :query,
       params[:query],
       class: "form-control",
-        placeholder: "Type the full film title" %>
+        placeholder: "Procure o seu filme!" %>
 
         <p></p>
-        <%= submit_tag 'Find your movies' , class: 'btn btn-medium'%>
+        <%= submit_tag 'BUSCA' , class: 'btn btn-medium'%>
         <% end %>
     </div>
   </div>
