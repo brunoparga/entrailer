@@ -6,7 +6,7 @@ RSpec.describe Screen, type: :model do
       screen = Screen.new
 
       expect(screen.formats).not_to be_empty
-      expect(screen.formats.first.name).to eq 'standard'
+      expect(screen.formats.first.name).to eq 'convencional'
     end
   end
 end

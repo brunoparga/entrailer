@@ -59,7 +59,7 @@ freezerdemon = FilmTitle.create!(title: 'Demon in the Freezer',
                               banner_url: '/dMU9M4RYi9DOnaebljtjSt0BSXm.jpg')
 
 puts 'Creating film formats...'
-formats = %w[standard 3D IMAX]
+formats = %w[convencional 3D IMAX]
 formats.map! { |format| Format.create!(name: format) }
 
 puts 'Creating detailed films...'

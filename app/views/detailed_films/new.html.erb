@@ -3,8 +3,8 @@
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <h3>Cadastrar Filme</h3>
       <div class="form-format">
-      <%= simple_form_for([@film_title, @detailed_film], :html => { :class => 'form-inline' }) do |form| %>
-       <p> <%= form.input :speech, collection: %w(dubbed subtitled original silent) %> </p>
+      <%= simple_form_for([@film_title, @detailed_film], html: { class: 'form-inline' }) do |form| %>
+       <p> <%= form.input :speech, collection: %w(dublado legendado brasileiro mudo) %> </p>
        <p> <%= form.input :format_id, collection: Format.all %> </p>
        <p> <%= form.submit %> </p>
       <% end %>
