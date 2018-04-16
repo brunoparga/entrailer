@@ -65,12 +65,16 @@ class Screening < ApplicationRecord
     return min_price_centavos if interval.positive?
 
     if interval >= price_params[:decay_start]
-      return sigmoid(interval,
-                   max_price_centavos,
+      return linear(interval,
                    min_price_centavos,
+<<<<<<< HEAD
 >>>>>>> Modify the price function to use sigmoid (not working yet)
+=======
+                   max_price_centavos,
+>>>>>>> Maybe make linear work?
                    price_params[:decay_start],
-                   price_params[:decay_end])
+                   price_params[:decay_end],
+                   0)
     end
 
 <<<<<<< HEAD
@@ -83,17 +87,27 @@ class Screening < ApplicationRecord
 
     early_bird = min_price_centavos * price_params[:early_bird_factor]
     if interval >= price_params[:increase_start]
+<<<<<<< HEAD
 >>>>>>> Modify the price function to use sigmoid (not working yet)
       return increase(interval,
                       max_price_cents,
                       early_bird,
                       price_params[:increase_start],
                       price_params[:max_start])
+=======
+      return linear(interval,
+                    max_price_centavos,
+                    early_bird,
+                    price_params[:increase_start],
+                    price_params[:max_start],
+                    10_800)
+>>>>>>> Maybe make linear work?
     end
 
     return early_bird
   end
 
+<<<<<<< HEAD
   def sigmoid(interval, start_price, end_price, start_time, end_time)
     price_range = (start_price - end_price).abs
     min_price = [start_price, end_price].min
@@ -117,8 +131,11 @@ class Screening < ApplicationRecord
   end
 
   def increase(interval, max_price, min_price, max_price_time, min_price_time)
+=======
+  def linear(interval, max_price, min_price, max_price_time, min_price_time, delay)
+>>>>>>> Maybe make linear work?
     duration = (max_price_time - min_price_time).abs
-    proportion = 1 - ((interval - 10_800) / duration)
+    proportion = 1 - ((interval - delay) / duration)
     price_range = max_price - min_price
     min_price + (proportion * price_range).round
   end
