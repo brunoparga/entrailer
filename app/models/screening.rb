@@ -28,17 +28,13 @@ class Screening < ApplicationRecord
     # TODO: use closing time, include it in the price decay period.
     # TODO: use demand, measured by remaining tickets.
     # TODO: change the increase and decay from exponential to logistic/tanh?
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> Remove a TODO comment that keeps spawning back to life. Sai, Exu
     price_params =
       { decay_end: 0,              # Prices finish decaying at session time
         decay_start: -900,         # Prices start decaying 15 minutes before session
-        increase_start: -604_800,  # Prices start increasing a week before session
+        increase_start: -615_600,  # Prices start increasing a week and 3 hours before session
         max_start: -10_800,        # Prices peak three hours before session
-        early_bird_factor: 1 }     # A week before, prices are this times the minimum
+        early_bird_factor: 1 }     # A week and three hours before, prices are this times the minimum
 
     # How long between now and session time?
     # This is a negative number as long as purchase is before session
@@ -54,90 +50,36 @@ class Screening < ApplicationRecord
     # interval: the duration between reference time and session start time
     # price_params are set at #calculate_price
     # returns the correct price in centavos
-<<<<<<< HEAD
-    return min_price_cents if interval.negative?
-
-    if interval <= price_params[:decay_start]
-      return decay(interval,
-                   max_price_cents,
-                   min_price_cents,
-=======
-    return min_price_centavos if interval.positive?
+    return min_price_cents if interval.positive?
 
     if interval >= price_params[:decay_start]
       return linear(interval,
-                   min_price_centavos,
-<<<<<<< HEAD
->>>>>>> Modify the price function to use sigmoid (not working yet)
-=======
-                   max_price_centavos,
->>>>>>> Maybe make linear work?
-                   price_params[:decay_start],
-                   price_params[:decay_end],
-                   0)
+                    max_price_cents,
+                    min_price_cents,
+                    price_params[:decay_start],
+                    price_params[:decay_end])
     end
 
-<<<<<<< HEAD
-    return max_price_cents if interval <= price_params[:max_start]
+    return max_price_cents if interval >= price_params[:max_start]
 
     early_bird = min_price_cents * price_params[:early_bird_factor]
-    if interval <= price_params[:increase_start]
-=======
-    return max_price_centavos if interval >= price_params[:max_start]
-
-    early_bird = min_price_centavos * price_params[:early_bird_factor]
     if interval >= price_params[:increase_start]
-<<<<<<< HEAD
->>>>>>> Modify the price function to use sigmoid (not working yet)
-      return increase(interval,
-                      max_price_cents,
-                      early_bird,
-                      price_params[:increase_start],
-                      price_params[:max_start])
-=======
       return linear(interval,
-                    max_price_centavos,
                     early_bird,
+                    max_price_cents,
                     price_params[:increase_start],
-                    price_params[:max_start],
-                    10_800)
->>>>>>> Maybe make linear work?
+                    price_params[:max_start])
     end
 
     return early_bird
   end
 
-<<<<<<< HEAD
-  def sigmoid(interval, start_price, end_price, start_time, end_time)
-    price_range = (start_price - end_price).abs
-    min_price = [start_price, end_price].min
-    time_range = end_time - start_time
-    # mid_time = (time_range / 2).round
-    slope = -0.001
-    min_price + (price_range / (1 + Math.exp(-slope * interval)))
-  end
-
-  def decay(interval, max_price, min_price, max_price_time, min_price_time)
-    price_range = max_price - min_price
-    duration = max_price_time - min_price_time
-
-    # Add 1 to price_range because it is subtracted later
-    exp_constant = Math.log(price_range + 1) / duration
-
-    # Subtract 1 because this is added to e^0=1
-    min = min_price_cents - 1
-
-    (min + Math.exp(interval * exp_constant)).round
-  end
-
-  def increase(interval, max_price, min_price, max_price_time, min_price_time)
-=======
-  def linear(interval, max_price, min_price, max_price_time, min_price_time, delay)
->>>>>>> Maybe make linear work?
-    duration = (max_price_time - min_price_time).abs
-    proportion = 1 - ((interval - delay) / duration)
-    price_range = max_price - min_price
-    min_price + (proportion * price_range).round
+  def linear(interval, start_price, end_price, start_time, end_time)
+    duration = end_time - start_time
+    # proportion is <1 because interval is a negative number
+    proportion = 1 + ((interval - end_time) / duration)
+    price_range = end_price - start_price
+    start_price + (proportion * price_range).round
   end
 
   def initial_tickets_must_be_lte_screen_capacity
