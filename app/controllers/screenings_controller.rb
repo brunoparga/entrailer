@@ -2,7 +2,7 @@ class ScreeningsController < ApplicationController
   skip_before_action :authenticate_user!, :only => [:index, :show]
 
   def index
-    @screenings
+    @screenings = policy_scope(Screening)
     authorize @screenings
   end
 

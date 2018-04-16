@@ -1,9 +1,8 @@
 class ScreensController < ApplicationController
-  skip_before_action :authenticate_user!, only: :show
   before_action :set_screen, only: [:show, :edit, :update]
 
   def index
-    @screens
+    @screens = policy_scope(Screen)
     authorize @screens
   end
 

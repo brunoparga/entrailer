@@ -5,12 +5,13 @@ class ScreenPolicy < ApplicationPolicy
     end
   end
 
-  def index
+  def index?
     user.role == 'theater_owner'
   end
 
-  def show
-    true
+  def show?
+    user.role == 'theater_owner'
+    record.user == user
   end
 
   def create?
