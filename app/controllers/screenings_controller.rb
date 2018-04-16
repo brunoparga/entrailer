@@ -10,11 +10,11 @@ class ScreeningsController < ApplicationController
     @screening = Screening.find(params[:id])
     authorize @screening
     @ticket = @screening.tickets.build
-    @tickets = @screening.tickets.count
+    @available_tickets = @screening.initial_tickets - @screening.tickets.count
     @detailed_film = DetailedFilm.find(id = @screening.detailed_film_id)
     @film_title = FilmTitle.find(id = @detailed_film.film_title_id)
     authorize @film_title
-    session[:ticket_price] = @screening.calculate_price(Time.now)
+    session[:ticket_price] = @screening.calculate_price(Time.now, @available_tickets)
   end
 
   def new
