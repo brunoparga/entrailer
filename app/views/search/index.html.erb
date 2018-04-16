@@ -57,10 +57,9 @@
       <% end %>
     <% end %>
   </div>
-  <%end%>
-    </div>
+ </div>
   <div class='info-search row'>
-  <% if @screens.count > 0 %>
+  <% elsif @screens.count > 0 && @film_titles.count != 1 && @screenings == nil %>
     <h3>Sessões do Cinema escolhido </h3>
   </div>
       <div class="row">
@@ -77,7 +76,6 @@
                     <div class="screening-img">
                        <%= image_tag "https://image.tmdb.org/t/p/w200#{img}" %>
                     </div>
-                    <%#console%>
                     <div class='screening-info'>
                       <p><%= screening.session_time.strftime("%d/%m/%Y, %H:%M") %></p>
                       <p><em><%= screening.screen.name %></em></p>
@@ -93,9 +91,8 @@
             <% end %>
           <% end %>
       </div>
-  <%end%>
   <div class='info-search row'>
-  <% if @screenings.count != 0 %>
+  <% elsif @screenings.count != 0 %>
     <h3>Sessões no horário escolhido</h3>
   </div>
   <div class="row">
