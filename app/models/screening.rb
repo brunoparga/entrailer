@@ -25,10 +25,9 @@ class Screening < ApplicationRecord
     # purchase_time is the time the controller calls this method
     # returns a price in centavos as an integer
 
-    # TODO: use closing time, include it in the price decay period.
-    # TODO: use demand, measured by remaining tickets.
-    # TODO: change the increase and decay from exponential to logistic/tanh?
-    # TODO: Prices start increasing between a week and two weeks (+ 3 hours) before session
+    # TODO: use closing time, include it in the price decay period?.
+    # TODO?: change the increase and decay from exponential to logistic/tanh?
+    # TODO?: Prices start increasing between a week and two weeks (+ 3 hours) before session
     # increase_start: -615_600 - 604_800 * occupancy,
 
     occupancy = occupancy(available_tickets)
