@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180414223707) do
+ActiveRecord::Schema.define(version: 20180414225041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20180414223707) do
     t.string "imdb_id", null: false
     t.string "img_url"
     t.string "banner_url"
+    t.text "synopsis"
   end
 
   create_table "formats", force: :cascade do |t|
@@ -52,6 +53,15 @@ ActiveRecord::Schema.define(version: 20180414223707) do
     t.index ["screen_id"], name: "index_formats_screens_on_screen_id"
   end
 
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
+  end
+
   create_table "screenings", force: :cascade do |t|
     t.integer "initial_tickets", null: false
     t.datetime "session_time"
@@ -60,8 +70,8 @@ ActiveRecord::Schema.define(version: 20180414223707) do
     t.bigint "screen_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "min_price_centavos", default: 0, null: false
-    t.integer "max_price_centavos", default: 0, null: false
+    t.integer "min_price_cents", default: 0, null: false
+    t.integer "max_price_cents", default: 0, null: false
     t.index ["detailed_film_id"], name: "index_screenings_on_detailed_film_id"
     t.index ["screen_id"], name: "index_screenings_on_screen_id"
     t.index ["session_time", "detailed_film_id", "screen_id"], name: "film_screen_time_uniqueness_index", unique: true
@@ -85,7 +95,7 @@ ActiveRecord::Schema.define(version: 20180414223707) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "price_centavos", default: 0, null: false
+    t.integer "price_cents", default: 0, null: false
     t.string "status"
     t.jsonb "payment"
     t.index ["screening_id"], name: "index_tickets_on_screening_id"

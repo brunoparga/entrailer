@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# This seed is based on the following version of the schema: 20180410184924
+# This seed is based on the following version of the schema: 20180414225041
 
 puts 'Cleaning database...'
 
@@ -22,44 +22,57 @@ User.destroy_all
 time = Time.now
 
 puts 'Creating film titles...'
-spiderman = FilmTitle.create!(title: 'Spider-Man',
-                              imdb_id: '557',
-                              img_url: '/rZd0y1X1Gw4t5B3f01Qzj8DYY66.jpg',
-                              banner_url: '/5yAEbTXiJZQpNx7eCyyOhnY9MYw.jpg')
-thedeparted = FilmTitle.create!(title: 'The Departed',
-                              imdb_id: '1422',
-                              img_url: '/tGLO9zw5ZtCeyyEWgbYGgsFxC6i.jpg',
-                              banner_url: '/8Od5zV7Q7zNOX0y9tyNgpTmoiGA.jpg')
-inception = FilmTitle.create!(title: 'Inception',
-                              imdb_id: '27205',
-                              img_url: '/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg',
-                              banner_url: '/s2bT29y0ngXxxu2IA8AOzzXTRhd.jpg')
-fantasia = FilmTitle.create!(title: 'Fantasia',
-                              imdb_id: '756',
-                              img_url: '/dYZ1r3MJnXVGBBSYKgpd8UWGyFw.jpg',
-                              banner_url: '/oZBj2o3JVULRe1SlBalBpnkfp6x.jpg')
-
-friday13 = FilmTitle.create!(title: 'Friday the 13th',
-                              imdb_id: '13207',
-                              img_url: '/ewNYItHBmxHj3IEDhj1VnnLoTmb.jpg',
-                              banner_url: '/m7vZl6YTFIHm917fCBgNOb9c4Sp.jpg')
-
-freddyjason = FilmTitle.create!(title: 'Freddy vs. Jason',
-                              imdb_id: '6466',
-                              img_url: '/smD9JEIKuvsllgjgrGTOzzbATeN.jpg',
-                              banner_url: '/pHPi34ysBhhLVM9LVKwJ0nJPFqN.jpg')
-friday132 = FilmTitle.create!(title: 'Friday the 13th Part VIII: Jason Takes Manhattan',
-                              imdb_id: '10283',
-                              img_url: '/oAZTwZDHu56IUyq5OQM3q1xX9To.jpg',
-                              banner_url: '/pCTwz9ggIcfHTQrzb1xi3UQLPxb.jpg')
-
-freezerdemon = FilmTitle.create!(title: 'Demon in the Freezer',
-                              imdb_id: '397973',
-                              img_url: '/1AD6EIKrWsiuRdyeTkBZW9iIu8w.jpg',
-                              banner_url: '/dMU9M4RYi9DOnaebljtjSt0BSXm.jpg')
+FilmTitle
+  .create!(title: 'Spider-Man',
+           imdb_id: '557',
+           img_url: '/rZd0y1X1Gw4t5B3f01Qzj8DYY66.jpg',
+           banner_url: '/5yAEbTXiJZQpNx7eCyyOhnY9MYw.jpg',
+           synopsis: 'Homem-Aranha, Homem-Aranha: nunca bate, só apanha')
+FilmTitle
+  .create!(title: 'The Departed',
+           imdb_id: '1422',
+           img_url: '/tGLO9zw5ZtCeyyEWgbYGgsFxC6i.jpg',
+           banner_url: '/8Od5zV7Q7zNOX0y9tyNgpTmoiGA.jpg',
+           synopsis: 'Dois infiltrados, um tenta pegar o outro, um acaba pegando a mina do outro')
+FilmTitle
+  .create!(title: 'Inception',
+           imdb_id: '27205',
+           img_url: '/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg',
+           banner_url: '/s2bT29y0ngXxxu2IA8AOzzXTRhd.jpg',
+           synopsis: 'Temos que ir mais fundo!! *Buóóóin*')
+FilmTitle
+  .create!(title: 'Fantasia',
+           imdb_id: '756',
+           img_url: '/dYZ1r3MJnXVGBBSYKgpd8UWGyFw.jpg',
+           banner_url: '/oZBj2o3JVULRe1SlBalBpnkfp6x.jpg',
+           synopsis: 'Melhor metáfora de inteligência artificial que há')
+FilmTitle
+  .create!(title: 'Friday the 13th',
+           imdb_id: '13207',
+           img_url: '/ewNYItHBmxHj3IEDhj1VnnLoTmb.jpg',
+           banner_url: '/m7vZl6YTFIHm917fCBgNOb9c4Sp.jpg',
+           synopsis: 'Cuidado, ele vai te pegar!')
+FilmTitle
+  .create!(title: 'Freddy vs. Jason',
+           imdb_id: '6466',
+           img_url: '/smD9JEIKuvsllgjgrGTOzzbATeN.jpg',
+           banner_url: '/pHPi34ysBhhLVM9LVKwJ0nJPFqN.jpg',
+           synopsis: 'O crossover mais ambicioso da história')
+FilmTitle
+  .create!(title: 'Friday the 13th Part VIII: Jason Takes Manhattan',
+           imdb_id: '10283',
+           img_url: '/oAZTwZDHu56IUyq5OQM3q1xX9To.jpg',
+           banner_url: '/pCTwz9ggIcfHTQrzb1xi3UQLPxb.jpg',
+           synopsis: 'Olha, dessa vez é sério, ele vai te pegar mesmo hein')
+FilmTitle
+  .create!(title: 'Demon in the Freezer',
+           imdb_id: '397973',
+           img_url: '/1AD6EIKrWsiuRdyeTkBZW9iIu8w.jpg',
+           banner_url: '/dMU9M4RYi9DOnaebljtjSt0BSXm.jpg',
+           synopsis: 'Sabe aquele frango que você botou pra congelar e esqueceu?')
 
 puts 'Creating film formats...'
-formats = %w[standard 3D IMAX]
+formats = %w[convencional 3D IMAX]
 formats.map! { |format| Format.create!(name: format) }
 
 puts 'Creating detailed films...'

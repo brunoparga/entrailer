@@ -1,0 +1,128 @@
+<div class="container">
+  <div class='info-search row'>
+    <% if @screens.count == 0 && @screenings.count == 0 && @film_titles.count > 1 %>
+        <h3>Filme não encontrado. Mostrando todas as sessões disponíveis.</h3>
+    <div class="row">
+    <% @film_titles.each do |film| %>
+      <% film.screenings.each do |screening| %>
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <div class="screening">
+            <%= link_to screening_path(screening) do %>
+                <%# TODO: CSS this p tag %>
+                <p><%= film.title %></p>
+                <div class="screening-img">
+                 <%= image_tag "https://image.tmdb.org/t/p/w200#{film.img_url}" %>
+                </div>
+                <div class='screening-info'>
+                  <p><%= screening.session_time.strftime("%d/%m/%Y, %H:%M") %></p>
+                  <p><em><%= screening.screen.name %></em></p>
+                  <p>Ingressos disponíveis: <strong>
+                  <%= screening.initial_tickets - screening.tickets.count %>
+                  </strong>
+                  </p>
+                  <p>A partir de R$ <%= Money.new(screening.calculate_price(Time.now), 'BRL') %> -    compre já!</p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <% elsif @film_titles.count == 1 %>
+    <h3>Sessões do filme: <%= @film_titles.first.title %></h3>
+  <div class="row">
+    <% @film_titles.each do |film| %>
+      <% film.screenings.each do |screening| %>
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <div class="screening">
+            <%= link_to screening_path(screening) do %>
+              <%# TODO: CSS this p tag %>
+              <p><%= film.title %></p>
+              <div class="screening-img">
+                 <%= image_tag "https://image.tmdb.org/t/p/w200#{film.img_url}" %>
+              </div>
+              <div class='screening-info'>
+                <p><%= screening.session_time.strftime("%d/%m/%Y, %H:%M") %></p>
+                <p><em><%= screening.screen.name %></em></p>
+                <p>Ingressos disponíveis: <strong>
+                  <%= screening.initial_tickets - screening.tickets.count %>
+                  </strong>
+                </p>
+                <p>A partir de R$ <%= Money.new(screening.calculate_price(Time.now), 'BRL') %> - compre já!</p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <%end%>
+    </div>
+  <div class='info-search row'>
+  <% if @screens.count > 0 %>
+    <h3>Sessões do Cinema escolhido </h3>
+  </div>
+      <div class="row">
+        <% @screens.each do |screen| %>
+          <% screen.screenings.each do |screening| %>
+              <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="screening">
+                  <%= link_to screening_path(screening) do %>
+              <%# TODO: CSS this p tag %>
+                    <% detailed_film = screening.detailed_film_id %>
+                    <% film = DetailedFilm.find(detailed_film) %>
+                    <% img = film.film_title.img_url %>
+
+                    <div class="screening-img">
+                       <%= image_tag "https://image.tmdb.org/t/p/w200#{img}" %>
+                    </div>
+                    <%#console%>
+                    <div class='screening-info'>
+                      <p><%= screening.session_time.strftime("%d/%m/%Y, %H:%M") %></p>
+                      <p><em><%= screening.screen.name %></em></p>
+                      <p>Ingressos disponíveis: <strong>
+                        <%= screening.initial_tickets - screening.tickets.count %>
+                        </strong>
+                      </p>
+                      <p>A partir de R$ <%= Money.new(screening.calculate_price(Time.now), 'BRL') %> - compre já!</p>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+      </div>
+  <%end%>
+  <div class='info-search row'>
+  <% if @screenings.count != 0 %>
+    <h3>Sessões no horário escolhido</h3>
+  </div>
+  <div class="row">
+    <% @screenings.each do |screening| %>
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <div class="screening">
+            <%= link_to screening_path(screening) do %>
+              <%# TODO: CSS this p tag %>
+              <% detailed_film = screening.detailed_film_id %>
+              <% film = DetailedFilm.find(detailed_film) %>
+              <% img = film.film_title.img_url %>
+              <div class="screening-img">
+                 <%= image_tag "https://image.tmdb.org/t/p/w200#{img}" %>
+              </div>
+              <div class='screening-info'>
+                <p><%= screening.session_time.strftime("%d/%m/%Y, %H:%M") %></p>
+                <p><em><%= screening.screen.name %></em></p>
+                <p>Ingressos disponíveis: <strong>
+                  <%= screening.initial_tickets - screening.tickets.count %>
+                  </strong>
+                </p>
+                <p>A partir de R$ <%= Money.new(screening.calculate_price(Time.now), 'BRL') %> - compre já!</p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+  <%end%>
+</div>

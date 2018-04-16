@@ -11,13 +11,22 @@ class Screening < ApplicationRecord
   validate :initial_tickets_must_be_lte_screen_capacity
   validate :screen_must_have_film_format
 
+  monetize :min_price_centavos, as: :min_price
+  monetize :max_price_centavos, as: :max_price
+
+  include PgSearch
+  pg_search_scope :search_by_session_time,
+    against: [ :session_time ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
   def calculate_price(purchase_time)
     # purchase_time is the time the controller calls this method
     # returns a price in centavos as an integer
 
     # TODO: use closing time, include it in the price decay period.
     # TODO: use demand, measured by remaining tickets.
-    # TODO: use a params hash for easier change and maintenance.
     # TODO: change the increase and decay from exponential to logistic/tanh?
 
     price_params =
@@ -29,7 +38,9 @@ class Screening < ApplicationRecord
 
     # How long between now and session time?
     interval = session_time - purchase_time
-    price_calculator(interval, price_params)
+    Money
+      .new(price_calculator(interval, price_params), 'BRL')
+      .format(symbol_before_without_space: false)
   end
 
   private
