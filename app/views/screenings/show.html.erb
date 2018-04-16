@@ -25,7 +25,7 @@
   <div class="row">
       <div class="buy-options">
         <div class="col-xs-12 col-sm-4">
-          <h4><%= @screening.initial_tickets - @tickets %> ingressos disponíveis.</h4>
+          <h4><%= @available_tickets %> ingressos disponíveis.</h4>
         </div>
         <div class="col-xs-12 col-sm-4">
           <h4>Por apenas <%= session[:ticket_price] %>!</h4>
