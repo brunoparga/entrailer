@@ -5,6 +5,7 @@ ruby '2.4.3'
 
 gem 'capybara'
 gem 'cloudinary'
+gem 'letter_opener'
 gem 'money-rails'
 gem 'pg_search'
 gem 'pundit'
