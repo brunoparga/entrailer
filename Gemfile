@@ -41,9 +41,9 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'rspec-rails', '~> 3.7'
 
+  gem 'listen', '~> 3.0.5'
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end

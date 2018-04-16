@@ -54,39 +54,31 @@ RSpec.describe Screening, type: :model do
       it 'starts at the early bird price' do
         now = hora - 1_000_000
 
-        expect(screening.calculate_price(now)).to eq 1000
+        expect(screening.calculate_price(now)).to eq 'R$ ' + Money.new(1000, 'BRL').to_s
       end
 
-      it 'increases linearly' do
-        now = hora - (148500 + 10_800)
+      it 'increases linearly in the week prior to the session' do
+        now = hora - (151_200 + 10_800)  # 3/4 of the way through the increase phase
 
-        expect(screening.calculate_price(now)).to eq 4000
+        expect(screening.calculate_price(now)).to eq 'R$ ' + Money.new(4000, 'BRL').to_s
       end
-
-      # it 'increases exponentially in the week prior to the session' do
-      #   now = hora - (86_400 + 10_800)
-      #   now2 = hora - 14_400
-
-      #   expect(screening.calculate_price(now2)).to eq 3805
-      #   expect(screening.calculate_price(now)).to eq 1197
-      # end
 
       it 'equals the maximum price 20 minutes before the session begins' do
         now = hora - 1200
 
-        expect(screening.calculate_price(now)).to eq 5000
+        expect(screening.calculate_price(now)).to eq 'R$ ' + Money.new(5000, 'BRL').to_s
       end
 
       it 'equals the minimum price right at the session time' do
         now = hora
 
-        expect(screening.calculate_price(now)).to eq 1000
+        expect(screening.calculate_price(now)).to eq 'R$ ' + Money.new(1000, 'BRL').to_s
       end
 
-      it 'follows exponential decay in the last 15 minutes' do
-        now = hora - 450
+      it 'follows linear decay in the last 15 minutes' do
+        now = hora - 225
 
-        expect(screening.calculate_price(now)).to eq 1062
+        expect(screening.calculate_price(now)).to eq 'R$ ' + Money.new(2000, 'BRL').to_s
       end
     end
   end
