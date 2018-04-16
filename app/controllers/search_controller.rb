@@ -15,13 +15,19 @@ class SearchController < ApplicationController
       @screens = policy_scope(Screen) if @screens.count.nil?
     end
 
+    @markers = @screens.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }
+    end
     if Screening.search_by_session_time("#{params[:query]}") != nil
       @screenings = policy_scope(Screening.search_by_session_time("#{params[:query]}"))
      # @film_titles = policy_scope(FilmTitle)
     else
       @screenings = policy_scope(Screening) if @screenings.count.nil?
     end
-
   end
 
 end
