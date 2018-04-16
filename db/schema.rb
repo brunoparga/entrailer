@@ -70,8 +70,8 @@ ActiveRecord::Schema.define(version: 20180414225041) do
     t.bigint "screen_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "min_price_centavos", default: 0, null: false
-    t.integer "max_price_centavos", default: 0, null: false
+    t.integer "min_price_cents", default: 0, null: false
+    t.integer "max_price_cents", default: 0, null: false
     t.index ["detailed_film_id"], name: "index_screenings_on_detailed_film_id"
     t.index ["screen_id"], name: "index_screenings_on_screen_id"
     t.index ["session_time", "detailed_film_id", "screen_id"], name: "film_screen_time_uniqueness_index", unique: true
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 20180414225041) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "price_centavos", default: 0, null: false
+    t.integer "price_cents", default: 0, null: false
     t.string "status"
     t.jsonb "payment"
     t.index ["screening_id"], name: "index_tickets_on_screening_id"
@@ -118,6 +118,9 @@ ActiveRecord::Schema.define(version: 20180414225041) do
     t.integer "role", default: 0, null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
