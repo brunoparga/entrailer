@@ -92,16 +92,19 @@ puts 'Creating users...'
 roberto = User.create!(email: 'roberto@roberto.rob',
                        first_name: 'Roberto',
                        last_name: 'Barros',
-                       password: 'modelosmodelos')
+                       password: 'modelosmodelos',
+                       confirmed_at: Time.now)
 banana = User.create!(email: 'banana@example.com',
                       first_name: 'Banana',
                       last_name: 'Caturra',
-                      password: 'senhasenha')
+                      password: 'senhasenha',
+                      confirmed_at: Time.now)
 ownit = User.create!(email: 'owner@entrailer.com',
                      role: 'theater_owner',
                      first_name: 'Owner',
                      last_name: 'Owner',
-                     password: 'ownerowner')
+                     password: 'ownerowner',
+                     confirmed_at: Time.now)
 
 puts 'Creating screens...'
 screen1 = Screen.create!(name: 'Cinemark Metrô Santa Cruz 3',
@@ -152,71 +155,71 @@ FormatsScreen.create!(format: formats[1], screen: screen3)
 puts 'Creating screenings...'
 screening1 = Screening.create!(screen: screen1,
                                initial_tickets: 250,
-                               session_time: time,
-                               closing_time: time,
+                               session_time: time + 600,      # dez minutos
+                               closing_time: time + 600,
                                min_price_cents: 462,
                                max_price_cents: 5705,
                                detailed_film: films[6])
 screening2 = Screening.create!(screen: screen2,
                                initial_tickets: 50,
-                               session_time: time,
-                               closing_time: time,
+                               session_time: time + 306_000,  # meia semana
+                               closing_time: time + 306_000,  # + 3 horas
                                min_price_cents: 360,
                                max_price_cents: 4750,
                                detailed_film: films[1])
-screening2 = Screening.create!(screen: screen3,
+screening3 = Screening.create!(screen: screen3,
                                initial_tickets: 120,
-                               session_time: time,
-                               closing_time: time,
+                               session_time: time + 3600,     # uma hora
+                               closing_time: time + 3600,
                                min_price_cents: 360,
                                max_price_cents: 3200,
                                detailed_film: films[3])
-screening2 = Screening.create!(screen: screen4,
+screening4 = Screening.create!(screen: screen4,
                                initial_tickets: 50,
-                               session_time: time,
-                               closing_time: time,
+                               session_time: time + 14_400,   # quatro horas
+                               closing_time: time + 14_400,
                                min_price_cents: 340,
                                max_price_cents: 6000,
                                detailed_film: films[10])
-screening2 = Screening.create!(screen: screen5,
+screening5 = Screening.create!(screen: screen5,
                                initial_tickets: 50,
-                               session_time: time,
-                               closing_time: time,
+                               session_time: time + 86_400,   # um dia
+                               closing_time: time + 86_400,
                                min_price_cents: 360,
                                max_price_cents: 8200,
                                detailed_film: films[8])
-screening2 = Screening.create!(screen: screen6,
+screening6 = Screening.create!(screen: screen6,
                                initial_tickets: 20,
-                               session_time: time,
-                               closing_time: time,
+                               session_time: time + 604_800,  # uma semana
+                               closing_time: time + 604_800,
                                min_price_cents: 1120,
                                max_price_cents: 4000,
                                detailed_film: films[2])
-screening2 = Screening.create!(screen: screen7,
+screening7 = Screening.create!(screen: screen7,
                                initial_tickets: 50,
-                               session_time: time,
-                               closing_time: time,
+                               session_time: time + 691_200,  # 8 dias
+                               closing_time: time + 691_200,
                                min_price_cents: 730,
                                max_price_cents: 3750,
                                detailed_film: films[10])
-screening2 = Screening.create!(screen: screen1,
+screening8 = Screening.create!(screen: screen1,
                                initial_tickets: 40,
-                               session_time: time,
-                               closing_time: time,
+                               session_time: time + 300,      # 5 minutos
+                               closing_time: time + 300,
                                min_price_cents: 360,
                                max_price_cents: 4750,
                                detailed_film: films[15])
-screening2 = Screening.create!(screen: screen3,
+screening9 = Screening.create!(screen: screen3,
                                initial_tickets: 100,
-                               session_time: time,
-                               closing_time: time,
+                               session_time: time + 450,      # 7.5 minutos
+                               closing_time: time + 450,
                                min_price_cents: 120,
                                max_price_cents: 4750,
                                detailed_film: films[14])
-screening2 = Screening.create!(screen: screen5,
+screeningA = Screening.create!(screen: screen5,
                                initial_tickets: 20,
-                               session_time: time,
-                               closing_time: time,
+                               session_time: time - 600,      # dez minutos atrás
+                               closing_time: time - 600,
                                min_price_cents: 400,
                                max_price_cents: 4750,
                                detailed_film: films[9])
