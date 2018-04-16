@@ -13,7 +13,7 @@
   data-name="Film ticket"
   data-email="<%= current_user.email %>"
   data-description="Movie <%= @ticket.screening.detailed_film.film_title.title %>"
-  data-amount="<%= @ticket.price_centavos %>"
+  data-amount="<%= @ticket.price_cents %>"
   data-currency="<%= @ticket.price.currency %>"></script>
   <% end %>
 </div>

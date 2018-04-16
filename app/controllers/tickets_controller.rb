@@ -11,7 +11,7 @@ class TicketsController < ApplicationController
   def create
     @screening = Screening.find(params[:screening_id])
     @ticket = @screening.tickets.build(
-      price_centavos: session[:ticket_price],
+      price_cents: session[:ticket_price],
       purchase_time: Time.now,
       status: 'pending',
       user: current_user

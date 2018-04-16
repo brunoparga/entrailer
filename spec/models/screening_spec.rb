@@ -44,8 +44,8 @@ RSpec.describe Screening, type: :model do
                     closing_time: hora + 900,
                     detailed_film: aranha_detailed,
                     screen: cinemark,
-                    min_price_centavos: 1000,
-                    max_price_centavos: 5000)
+                    min_price_cents: 1000,
+                    max_price_cents: 5000)
     end
 
     # Stage one of testing: the function depends on time only

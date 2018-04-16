@@ -16,7 +16,7 @@
             <a href=<%= screening_path(ticket.screening.id)%>>
               <h1><%= ticket.title %></h1>
             </a>
-            <p>Preço: <%= ticket.price_centavos %></p>
+            <p>Preço: <%= ticket.price_cents %></p>
             <span>
               <p>Data: <%= ticket.screening.session_time.strftime("%d/%m/%y") %></p>
               <p>Horário: <%= ticket.screening.session_time.strftime("%H:%M") %></p>
@@ -51,7 +51,7 @@
           <a href=<%= screen_path(ticket.screening.screen.id)%>>
             <p> Local: <%= ticket.screening.screen.name %></p>
           </a>
-          <p>Preço: <%= ticket.price_centavos %></p>
+          <p>Preço: <%= ticket.price_cents %></p>
           <% if ticket.status == 'paid' %>
             <p> Ticket indisponível</p>
           <% else %>

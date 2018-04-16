@@ -11,8 +11,8 @@ class Screening < ApplicationRecord
   validate :initial_tickets_must_be_lte_screen_capacity
   validate :screen_must_have_film_format
 
-  monetize :min_price_centavos, as: :min_price
-  monetize :max_price_centavos, as: :max_price
+  monetize :min_price_cents, as: :min_price
+  monetize :max_price_cents, as: :max_price
 
   include PgSearch
   pg_search_scope :search_by_session_time,
@@ -49,22 +49,22 @@ class Screening < ApplicationRecord
     # interval: the duration between reference time and session start time
     # price_params are set at #calculate_price
     # returns the correct price in centavos
-    return min_price_centavos if interval.negative?
+    return min_price_cents if interval.negative?
 
     if interval <= price_params[:decay_start]
       return decay(interval,
-                   max_price_centavos,
-                   min_price_centavos,
+                   max_price_cents,
+                   min_price_cents,
                    price_params[:decay_start],
                    price_params[:decay_end])
     end
 
-    return max_price_centavos if interval <= price_params[:max_start]
+    return max_price_cents if interval <= price_params[:max_start]
 
-    early_bird = min_price_centavos * price_params[:early_bird_factor]
+    early_bird = min_price_cents * price_params[:early_bird_factor]
     if interval <= price_params[:increase_start]
       return increase(interval,
-                      max_price_centavos,
+                      max_price_cents,
                       early_bird,
                       price_params[:increase_start],
                       price_params[:max_start])
@@ -81,7 +81,7 @@ class Screening < ApplicationRecord
     exp_constant = Math.log(price_range + 1) / duration
 
     # Subtract 1 because this is added to e^0=1
-    min = min_price_centavos - 1
+    min = min_price_cents - 1
 
     (min + Math.exp(interval * exp_constant)).round
   end

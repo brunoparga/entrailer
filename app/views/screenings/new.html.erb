@@ -14,10 +14,10 @@
                       label: 'Selecione a sala desta sessão: ' %>
     <% min_price_label = "Selecione o preço mínimo. \
     Ele deve ser igual ao seu custo marginal." %>
-    <%= f.input :min_price_centavos, label: min_price_label %>
+    <%= f.input :min_price_cents, label: min_price_label %>
     <% max_price_label = "Selecione o preço máximo. \
     Estes valores determinarão o preço cobrado num dado momento." %>
-    <%= f.input :max_price_centavos, label: max_price_label %>
+    <%= f.input :max_price_cents, label: max_price_label %>
     <%= f.input :initial_tickets, label: 'Quantos ingressos você quer vender?' %>
     <%= f.input :session_time, label: 'Qual é o horário da sessão?' %>
     <%= f.input :closing_time, label: 'Que hora deve encerrar as vendas?' %>
