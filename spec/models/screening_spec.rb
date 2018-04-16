@@ -48,37 +48,137 @@ RSpec.describe Screening, type: :model do
                     max_price_cents: 5000)
     end
 
-    # Stage one of testing: the function depends on time only
-    # Stage two will incorporate available tickets
-    describe 'returns the correct price, which' do
-      it 'starts at the early bird price' do
-        now = hora - 1_000_000
+    describe 'sets the correct occupancy factor, which' do
+      it 'is zero when <=10% of the tickets have been sold' do
+        available_tickets = 190
 
-        expect(screening.calculate_price(now)).to eq 'R$ ' + Money.new(1000, 'BRL').to_s
+        expect(screening.occupancy(available_tickets)).to eq 0
       end
 
-      it 'increases linearly in the week prior to the session' do
-        now = hora - (151_200 + 10_800)  # 3/4 of the way through the increase phase
+      it 'is one when >=90% of the tickets have been sold' do
+        available_tickets = 10
 
-        expect(screening.calculate_price(now)).to eq 'R$ ' + Money.new(4000, 'BRL').to_s
+        expect(screening.occupancy(available_tickets)).to eq 1
       end
 
-      it 'equals the maximum price 20 minutes before the session begins' do
-        now = hora - 1200
+      it 'is 1/2 when 50% of the tickets are sold' do
+        available_tickets = 100
 
-        expect(screening.calculate_price(now)).to eq 'R$ ' + Money.new(5000, 'BRL').to_s
+        expect(screening.occupancy(available_tickets)).to eq 0.5
       end
 
-      it 'equals the minimum price right at the session time' do
-        now = hora
+      it 'is 1/4 when 30% of the tickets are sold' do
+        available_tickets = 140
 
-        expect(screening.calculate_price(now)).to eq 'R$ ' + Money.new(1000, 'BRL').to_s
+        expect(screening.occupancy(available_tickets)).to be_within(0.0001).of 0.25
       end
 
-      it 'follows linear decay in the last 15 minutes' do
-        now = hora - 225
+      it 'is 3/4 when 70% of the tickets are sold' do
+        available_tickets = 60
 
-        expect(screening.calculate_price(now)).to eq 'R$ ' + Money.new(2000, 'BRL').to_s
+        expect(screening.occupancy(available_tickets)).to be_within(0.0001).of 0.75
+      end
+    end
+
+    context 'with empty occupancy' do
+      describe 'returns the correct price, which' do
+        it 'starts at the early bird price' do
+          now = hora - 1_000_000
+
+          expect(screening.calculate_price(now, 190)).to eq 'R$ ' + Money.new(1000, 'BRL').to_s
+        end
+
+        it 'increases linearly in the week prior to the session' do
+          now = hora - (151_200 + 10_800)  # 3/4 of the way through the increase phase
+
+          expect(screening.calculate_price(now, 190)).to eq 'R$ ' + Money.new(4000, 'BRL').to_s
+        end
+
+        it 'equals the maximum price 20 minutes before the session begins' do
+          now = hora - 1200
+
+          expect(screening.calculate_price(now, 190)).to eq 'R$ ' + Money.new(5000, 'BRL').to_s
+        end
+
+        it 'equals the minimum price right at the session time' do
+          now = hora
+
+          expect(screening.calculate_price(now, 190)).to eq 'R$ ' + Money.new(1000, 'BRL').to_s
+        end
+
+        it 'follows linear decay in the last 15 minutes' do
+          now = hora - 225
+
+          expect(screening.calculate_price(now, 190)).to eq 'R$ ' + Money.new(2000, 'BRL').to_s
+        end
+      end
+    end
+
+    context 'with 1/3 occupancy' do
+      describe 'returns the correct price, which' do
+        it 'starts at the early bird price' do
+          now = hora - 1_000_000
+
+          expect(screening.calculate_price(now, 0)).to eq 'R$ ' + Money.new(1000, 'BRL').to_s
+        end
+
+        it 'increases linearly in the week prior to the session' do
+          now = hora - (151_200 + 10_800)  # 3/4 of the way through the increase phase
+
+          expect(screening.calculate_price(now, 0)).to eq 'R$ ' + Money.new(4000, 'BRL').to_s
+        end
+
+        it 'equals the maximum price 20 minutes before the session begins' do
+          now = hora - 1200
+
+          expect(screening.calculate_price(now, 0)).to eq 'R$ ' + Money.new(5000, 'BRL').to_s
+        end
+
+        it 'equals the minimum price right at the session time' do
+          now = hora
+
+          expect(screening.calculate_price(now, 0)).to eq 'R$ ' + Money.new(1000, 'BRL').to_s
+        end
+
+        it 'follows linear decay in the last 15 minutes' do
+          now = hora - 225
+
+          expect(screening.calculate_price(now, 0)).to eq 'R$ ' + Money.new(2000, 'BRL').to_s
+        end
+      end
+    end
+
+    context 'with full occupancy' do
+      describe 'returns the correct price, which' do
+        it 'starts at the early bird price' do
+          now = hora - 1_000_000
+
+          expect(screening.calculate_price(now, 0)).to eq 'R$ ' + Money.new(1000, 'BRL').to_s
+        end
+
+        it 'increases linearly in the week prior to the session' do
+          now = hora - (151_200 + 10_800)  # 3/4 of the way through the increase phase
+
+          expect(screening.calculate_price(now, 0)).to eq 'R$ ' + Money.new(4000, 'BRL').to_s
+        end
+
+        it 'equals the maximum price 20 minutes before the session begins' do
+          now = hora - 1200
+
+          expect(screening.calculate_price(now, 0)).to eq 'R$ ' + Money.new(5000, 'BRL').to_s
+        end
+
+        it 'equals the minimum price right at the session time' do
+          now = hora
+
+          expect(screening.calculate_price(now, 0)).to eq 'R$ ' + Money.new(1000, 'BRL').to_s
+        end
+
+        it 'follows linear decay in the last 15 minutes' do
+          now = hora - 225
+
+          expect(screening.calculate_price(now, 0)).to eq 'R$ ' + Money.new(2000, 'BRL').to_s
+        end
       end
     end
   end

@@ -21,20 +21,29 @@ class Screening < ApplicationRecord
       tsearch: { prefix: true }
     }
 
-  def calculate_price(purchase_time)
+  def calculate_price(purchase_time, available_tickets)
     # purchase_time is the time the controller calls this method
     # returns a price in centavos as an integer
 
     # TODO: use closing time, include it in the price decay period.
     # TODO: use demand, measured by remaining tickets.
     # TODO: change the increase and decay from exponential to logistic/tanh?
+    # TODO: Prices start increasing between a week and two weeks (+ 3 hours) before session
+    # increase_start: -615_600 - 604_800 * occupancy,
+
+    occupancy = occupancy(available_tickets)
 
     price_params =
-      { decay_end: 0,              # Prices finish decaying at session time
-        decay_start: -900,         # Prices start decaying 15 minutes before session
-        increase_start: -615_600,  # Prices start increasing a week and 3 hours before session
-        max_start: -10_800,        # Prices peak three hours before session
-        early_bird_factor: 1 }     # A week and three hours before, prices are this times the minimum
+      { # Prices finish decaying at session time
+        decay_end: 0,
+        # Prices start decaying 15 to 5 minutes before session, depending on occupancy
+        decay_start: -900 + 600 * occupancy,
+        # Prices start increasing a week and 3 hours before session
+        increase_start: -615_600,
+        # Prices peak between 2 and 4 hours before session
+        max_start: -7200 - 7200 * occupancy,
+        # Prices are this times the minimum before they start rising
+        early_bird_factor: 1 }
 
     # How long between now and session time?
     # This is a negative number as long as purchase is before session
@@ -42,6 +51,15 @@ class Screening < ApplicationRecord
     Money
       .new(price_calculator(interval, price_params), 'BRL')
       .format(symbol_before_without_space: false)
+  end
+
+  def occupancy(available_tickets)
+    fraction = 1 - (available_tickets / initial_tickets.to_f)
+    case fraction
+    when -> (n) { n <= 0.1 } then return 0.0
+    when -> (n) { n >= 0.9 } then return 1.0
+    else return (fraction - 0.1) * 1.25
+    end
   end
 
   private
