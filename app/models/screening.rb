@@ -28,7 +28,11 @@ class Screening < ApplicationRecord
     # TODO: use closing time, include it in the price decay period.
     # TODO: use demand, measured by remaining tickets.
     # TODO: change the increase and decay from exponential to logistic/tanh?
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> Remove a TODO comment that keeps spawning back to life. Sai, Exu
     price_params =
       { decay_end: 0,              # Prices finish decaying at session time
         decay_start: -900,         # Prices start decaying 15 minutes before session
