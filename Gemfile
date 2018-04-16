@@ -39,7 +39,6 @@ end
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'nyaplot'
   gem 'rspec-rails', '~> 3.7'
 
   gem 'listen', '~> 3.0.5'
