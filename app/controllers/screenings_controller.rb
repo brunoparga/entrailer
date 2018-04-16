@@ -21,8 +21,7 @@ class ScreeningsController < ApplicationController
     @screening = Screening.new
     authorize @screening
     @films = DetailedFilm.all.map { |film| film.prepare_for_display }
-    # TODO: @screens = current_user.screens
-    @screens = Screen.all.map { |screen| screen.prepare_for_display }
+    @screens = current_user.screens.map { |screen| screen.prepare_for_display }
   end
 
   def create
