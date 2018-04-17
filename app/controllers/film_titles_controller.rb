@@ -1,14 +1,9 @@
 class FilmTitlesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show]
+  skip_before_action :authenticate_user!, only: %i[index]
 
   def index
     @film_titles
     authorize @film_titles
-  end
-
-  def show
-    @film_title = FilmTitle.find(params[:id])
-    authorize @film_title
   end
 
   def new
@@ -20,19 +15,11 @@ class FilmTitlesController < ApplicationController
     @film_title = FilmTitle.new(film_title_params)
     authorize @film_title
     if @film_title.save
-      # FilmTitleMailer.analysis.deliver_now
-      redirect_to film_title_path(@film_title)
+      # TODO: FilmTitleMailer.analysis.deliver_now
+      redirect_to film_titles_path
     else
       render :new
     end
-  end
-
-  def edit
-    set_film_title
-    authorize @film_title
-  end
-
-  def update
   end
 
   private
