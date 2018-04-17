@@ -1,64 +1,75 @@
 <div class="container">
-  <div class='info-search row'>
-    <% if @screens.count == 0 && @screenings.count == 0 && @film_titles.count > 1 %>
-        <h3>Filme não encontrado. Mostrando todas as sessões disponíveis.</h3>
-    <div class="row">
-    <% @film_titles.each do |film| %>
-      <% film.screenings.each do |screening| %>
-          <%= render 'screenings/screening_card',
-                   screening: screening,
-                   film: film,
-                   display_title: true %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-  <% elsif @film_titles.count == 1 %>
-    <h3>Sessões do filme: <%= @film_titles.first.title %></h3>
   <div class="row">
-    <% @film_titles.each do |film| %>
-      <% film.screenings.each do |screening| %>
-          <%= render 'screenings/screening_card',
-                   screening: screening,
-                   film: film,
-                   display_title: true %>
-      <% end %>
-    <% end %>
-  </div>
- </div>
-  <div class='info-search row'>
-  <% elsif @screens.count > 0 && @film_titles.count != 1 && @screenings == nil %>
-    <h3>Sessões do Cinema escolhido </h3>
-  </div>
-      <div class="row">
-        <% @screens.each do |screen| %>
-          <% screen.screenings.each do |screening| %>
-              <%= render 'screenings/screening_card',
-                   screening: screening,
-                   film: screening.detailed_film.film_title,
-                   display_title: true %>
-            <% end %>
-          <% end %>
+      <div class="col-xs-12 col-md-8">
+          <div class='info-search row'>
+          <% if @screens.count == 0 && @screenings.count == 0 && @film_titles.count > 1 %>
+            <h3>Filme não encontrado. Mostrando todas as sessões disponíveis.</h3>
+          </div>
+          <div class="row">
+              <% @film_titles.each do |film| %>
+                <% film.screenings.each do |screening| %>
+                <%= render 'screenings/screening_card',
+                       screening: screening,
+                       film: film,
+                       display_title: true %>
+                <% end %>
+              <% end %>
+          </div>
+          <div class='info-search row'>
+          <% elsif @film_titles.count == 1 %>
+            <h3>Sessões do filme: <%= @film_titles.first.title %></h3>
+          </div>
+          <div class="row">
+            <% @film_titles.each do |film| %>
+              <% film.screenings.each do |screening| %>
+                <%= render 'screenings/screening_card',
+                         screening: screening,
+                         film: film,
+                         display_title: true %>
+                <% end %>
+              <% end %>
+          </div>
+          <div class='info-search row'>
+          <% elsif @screens.count > 0 && @film_titles.count != 1 && @screenings == nil %>
+            <h3>Sessões do Cinema escolhido </h3>
+          </div>
+          <div class="row">
+            <% @screens.each do |screen| %>
+              <% screen.screenings.each do |screening| %>
+                  <%= render 'screenings/screening_card',
+                       screening: screening,
+                       film: screening.detailed_film.film_title,
+                       display_title: true %>
+                <% end %>
+              <% end %>
+          </div>
+          <div class='info-search row'>
+          <% elsif @screenings.count != 0 %>
+            <h3>Sessões no horário escolhido</h3>
+          </div>
+            <div class="row">
+                <% @screenings.each do |screening| %>
+                <%= render 'screenings/screening_card',
+                       screening: screening,
+                       film: screening.detailed_film.film_title,
+                       display_title: true %>
+                <% end %>
+            </div>
+        <%end%>
       </div>
-  <div class='info-search row'>
-  <% elsif @screenings.count != 0 %>
-    <h3>Sessões no horário escolhido</h3>
+    </div>
+
+    <div class="col-xs-12 col-md-4 cinemap">
+      <div class="cineposition">
+      <div class="row text-center"> <p> Onde estão as Sessões de Cinema </p></div>
+          <div
+          id="map"
+          style="width: 100%;
+          height: 600px;"
+          data-markers="<%= @markers.to_json %>"
+          ></div>
+      </div>
+    </div>
+
   </div>
-  <div class="row">
-    <% @screenings.each do |screening| %>
-          <%= render 'screenings/screening_card',
-                   screening: screening,
-                   film: screening.detailed_film.film_title,
-                   display_title: true %>
-    <% end %>
-  </div>
-  <%end%>
-  <hr>
-  <div class="row text-center"> Onde estão as Sessões de Cinema </div>
-  <div
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @markers.to_json %>"
-></div>
 </div>
