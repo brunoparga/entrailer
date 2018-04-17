@@ -1,7 +1,12 @@
 .cinemap {
-  position: sticky;
+  position: relative;
   padding: 0px 0px 0px 0px !important;
   z-index: -1;
+
 }
 
+.fixit {
+  position: fixed;
+  width: 100%;
+}
 
