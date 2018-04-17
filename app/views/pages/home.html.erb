@@ -1,13 +1,13 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BBIq2dU.img?h=373&w=624&m=6&q=60&o=f&l=f');">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.1) 0%, rgba(0,36,41,0.8) 50%), url('https://images.unsplash.com/photo-1510827220565-c6a086ff31c8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6b9840fbcf9cdb13a5e708c1dcc9dcc9&auto=format&fit=crop&w=750&q=80');">
   <div class="banner-content text-center">
     <h1>Em cartaz:</h1>
     <p>Ingressos de cinema mais baratos</p>
     <div>
       <%= form_tag search_index_path, method: :get do %>
-        <%= submit_tag 'Buscar' , class: 'btn btn-medium'%>
         <%= text_field_tag :query,
                            params[:query],
                            id: "banner-typed-text" %>
+        <%= submit_tag 'Buscar' , class: 'btn btn-medium-home'%>
       <% end %>
     </div>
   </div>
