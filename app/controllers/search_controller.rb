@@ -26,6 +26,8 @@ class SearchController < ApplicationController
       @screenings << screening
     end
 
+    @screenings = policy_scope(Screening) if @screenings.empty?
+    
     @screens = @screenings.map { |screening| screening.screen }
     set_markers(@screens)
   end
