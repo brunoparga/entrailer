@@ -12,8 +12,9 @@
             <%= available_tickets %>
             </strong>
           </p>
-          <p>A partir de <%= screening.calculate_price(Time.now, available_tickets) %> - compre já!</p>
+          <% price = screening.calculate_price(Time.now, available_tickets) %>
+          <% session["screening_#{screening.id}_price".to_sym] = price %>
+          <p>A partir de <%= price %> - compre já!</p>
         </span>
     </div>
   <% end %>
-

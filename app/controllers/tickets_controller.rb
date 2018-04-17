@@ -14,7 +14,7 @@ class TicketsController < ApplicationController
     # Find match group 1
     # Remove the comma
     # Integrify it
-    cents = session[:ticket_price].match(/(\d+,\d{0,2})/)[1].sub(',', '').to_i
+    cents = session["screening_#{@screening.id}_price".to_sym].match(/(\d+,\d{0,2})/)[1].sub(',', '').to_i
     @ticket = @screening.tickets.build(
       price_cents: cents,
       purchase_time: Time.now,

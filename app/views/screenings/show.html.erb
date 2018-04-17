@@ -27,7 +27,7 @@
           <h4><%= @available_tickets %> ingressos disponíveis.</h4>
         </div>
         <div class="col-xs-12 col-sm-4">
-          <h4>Por apenas <%= session[:ticket_price] %>!</h4>
+          <h4>Por apenas <%= session["screening_#{@screening.id}_price".to_sym] %>!</h4>
         </div>
         <div class="col-xs-12 col-sm-4">
           <%= button_to 'Comprar!', [@screening, @ticket], { class: 'btn btn-medium' } %>
