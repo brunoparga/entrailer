@@ -1,0 +1,15 @@
+<%= link_to screening_path(screening) do %>
+    <%# TODO: CSS this p tag %>
+    <div class="minicard col-xs-12 col-md-6">
+      <div class='minicard-info'>
+        <p><%= screening.session_time.strftime("%d/%m/%Y, %H:%M") %></p>
+        <p><em><%= screening.screen.name %></em></p>
+        <p>Ingressos disponíveis: <strong>
+          <% available_tickets = screening.initial_tickets - screening.tickets.count %>
+          <%= available_tickets %>
+          </strong>
+        </p>
+        <p>A partir de <%= screening.calculate_price(Time.now, available_tickets) %> - compre já!</p>
+      </div>
+    </div>
+  <% end %>

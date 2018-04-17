@@ -31,7 +31,7 @@ class DetailedFilmsController < ApplicationController
   private
 
   def set_detailed_film
-    @detailed_film = detailed_film.find(params[:id])
+    @detailed_film = DetailedFilm.find(params[:id])
     authorize @detailed_film
   end
 
