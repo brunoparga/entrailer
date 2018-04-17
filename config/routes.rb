@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users do
+    resources :owners, only: %i[new create show]
+  end
   root to: 'pages#home'
 
   resources :film_titles, only: %i[index new create] do
