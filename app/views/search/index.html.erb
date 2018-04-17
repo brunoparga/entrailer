@@ -1,21 +1,6 @@
 <div class="col-xs-12 col-md-6 search-wrapper">
-
-<input id="tab1" type="radio" name="tabs" checked>
-<label for="tab1">Hoje</label>
-
-<input id="tab2" type="radio" name="tabs">
-<label for="tab2">Amanhã</label>
-
-<input id="tab3" type="radio" name="tabs">
-<label for="tab3"><%= (DateTime.now).strftime("%e/%m")%></label>
-
-<input id="tab4" type="radio" name="tabs">
-<label for="tab4"><%= (DateTime.now).strftime("%e/%m")%></label>
-
-
   <% @film_titles.each do |film| %>
-      <% film.screenings.each do |screening| %>
-
+    <% film.screenings.each do |screening| %>
     <%= render 'screenings/screening_card',
            screening: screening,
            film: film,
