@@ -1,12 +1,63 @@
 <div class="col-xs-12 col-md-6 search-wrapper">
-  <% @film_titles.each do |film| %>
-    <% film.screenings.each do |screening| %>
-    <%= render 'screenings/screening_card',
-           screening: screening,
-           film: film,
-           display_title: true %>
-    <% end %>
-  <% end %>
+
+  <div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#day0" aria-controls="day0" role="tab" data-toggle="tab"><p><%= (DateTime.now).strftime("%e/%m") %></p></a></li>
+    <li role="presentation"><a href="#day1" aria-controls="day1" role="tab" data-toggle="tab"> <p><%= (DateTime.now).strftime("%e/%m") %></p></a></li>
+    <li role="presentation"><a href="#day2" aria-controls="day2" role="tab" data-toggle="tab"> <p><%= (DateTime.now).strftime("%e/%m") %></p></a></li>
+    <li role="presentation"><a href="#day3" aria-controls="sday3" role="tab" data-toggle="tab"> <p><%= (DateTime.now).strftime("%e/%m") %></p></a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="day0">
+      <% @film_titles.each do |film| %>
+        <% film.screenings.each do |screening| %>
+          <% if screening.session_time.strftime("%e/%m") == (DateTime.now).strftime("%e/%m") %>
+            <%= render 'screenings/screening_card',
+              screening: screening,
+              film: film,
+              display_title: true %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="day1">
+      <% @film_titles.each do |film| %>
+        <% film.screenings.each do |screening| %>
+        <%= render 'screenings/screening_card',
+               screening: screening,
+               film: film,
+               display_title: true %>
+        <% end %>
+      <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="day2  ">
+      <% @film_titles.each do |film| %>
+        <% film.screenings.each do |screening| %>
+        <%= render 'screenings/screening_card',
+               screening: screening,
+               film: film,
+               display_title: true %>
+        <% end %>
+      <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="day3">
+      <% @film_titles.each do |film| %>
+        <% film.screenings.each do |screening| %>
+        <%= render 'screenings/screening_card',
+               screening: screening,
+               film: film,
+               display_title: true %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+
 </div>
 
 <div class="col-xs-12 col-md-6 cinemap">
