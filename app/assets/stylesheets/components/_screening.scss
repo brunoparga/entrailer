@@ -1,10 +1,10 @@
 .screening {
-  border: 1px solid $black;
+  border: solid $black 1px;
   border-radius: $border-radius;
   position: relative;
   margin-top: 20px;
-  margin-right: 10px;
-  margin-left: 10px;
+  margin-right: 30px;
+  margin-left: 30px;
 
 }
 
@@ -13,7 +13,14 @@
 }
 
 .screening-info {
-  padding: 5px;
+  padding: 10px;
+  position: relative;
+  text-decoration: none;
+  color: $black;
+}
+
+.screening-info h1 {
+  margin-bottom: 10px;
 }
 
 .screening-info p {
@@ -21,8 +28,19 @@
   color: black;
 }
 
-.screening-img img {
-  width: 100%;
+
+.screening-img {
+   padding-left: 0px !important;
+}
+
+
+.screening-img p {
+  position: absolute;
+  color: white;
+  font-size: 24px;
+  font-weight: lighter;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 
