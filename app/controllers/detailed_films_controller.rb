@@ -7,8 +7,7 @@ class DetailedFilmsController < ApplicationController
   end
 
   def show
-    @detailed_film = DetailedFilm.find(params[:id])
-    authorize @detailed_film
+    set_detailed_film
   end
 
   def new
@@ -27,13 +26,6 @@ class DetailedFilmsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def edit
-
-  end
-
-  def update
   end
 
   private
