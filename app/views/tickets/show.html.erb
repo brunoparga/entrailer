@@ -35,7 +35,7 @@
         <% if time_to_session > 0 %>
           <% minutes = (time_to_session / 60).to_i %>
           <% hours = (minutes / 60).to_i %>
-          <% days = (days / 24).to_i %>
+          <% days = (hours / 24).to_i %>
           <% hours %= 24 %>
           <% minutes %= 60 %>
           <br><em>(faltam <%= "#{days} dias, " if days > 0 %>
