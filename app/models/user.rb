@@ -11,4 +11,13 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true, length: { minimum: 1 }
   validates :last_name, presence: true, length: { minimum: 1 }
+  validate :must_have_cnpj_iff_owner
+
+  private
+
+  def must_have_cnpj_iff_owner
+    errors.add(:cnpj, 'must be theater owner') unless role == 'theater_owner' || cnpj.nil?
+    errors.add(:role, 'must have CNPJ') if role == 'theater_owner' && cnpj.nil?
+  end
+
 end
