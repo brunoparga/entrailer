@@ -1,25 +1,32 @@
 .search-wrapper {
   padding: 0px 20px 20px 20px;
   box-shadow: 1px 0px 2px 1px rgba(0,0,0,0.33);
+  min-height: 650px;
 }
 
 .screening {
   margin-top: 20px;
   margin-bottom: 10px;
   display: flex;
+  align-items: stretch;
   box-shadow: 1px 0px 2px 1px rgba(0,0,0,0.33);
-  border-radius: $border-radius;
-  text-decoration: none;
-
 }
 
-.screening:hover {
-  text-decoration: none;
+
+.price {
+  font-size: 44px;
+  color: $dark-red;
+  flex-grow: 2;
+  text-align: right;
+  padding-right: 20px;
+  padding-top: 20px;
+
 }
 
 .screening-info {
-  padding: 10px;
+  padding: 20px;
   color: $black;
+  vertical-align: center;
 }
 
 .screening-info h1 {
@@ -27,7 +34,7 @@
 }
 
 .screening-info p {
-  margin-bottom: 0px;
+  font-size: 20px;
   color: black;
 }
 

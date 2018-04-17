@@ -1,21 +1,23 @@
 <div class="col-xs-12 col-md-6 search-wrapper">
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#day0" aria-controls="day0" role="tab" data-toggle="tab"><p><%= (Date.today).strftime("%e/%m") %></p></a></li>
-    <li role="presentation"><a href="#day1" aria-controls="day1" role="tab" data-toggle="tab"> <p><%= (Date.today + 1).strftime("%a %e/%m") %></p></a></li>
+    <li role="presentation" class="active"><a href="#day0" aria-controls="day0" role="tab" data-toggle="tab"><p>Hoje</p></a></li>
+    <li role="presentation"><a href="#day1" aria-controls="day1" role="tab" data-toggle="tab"> <p>Amanhã</p></a></li>
     <li role="presentation"><a href="#day2" aria-controls="day2" role="tab" data-toggle="tab"> <p><%= (Date.today + 2).strftime("%a %e/%m") %></p></a></li>
     <li role="presentation"><a href="#day3" aria-controls="sday3" role="tab" data-toggle="tab"> <p><%= (Date.today + 3).strftime("%a %e/%m") %></p></a></li>
   </ul>
 
   <!-- Tab panes -->
-  <div class="tab-content">
+  <div class="tab-content red">
     <div role="tabpanel" class="tab-pane active" id="day0">
       <% @screenings.each do |screening| %>
-        <% if screening.session_time.strftime("%e/%m") == (DateTime.now).strftime("%e/%m") %>
-          <%= render 'screenings/screening_card',
-                     screening: screening,
-                     film: screening.detailed_film.film_title,
-                     display_title: true %>
+        <% if screening.session_time.strftime("%H/%M") >= (DateTime.now).strftime("%H/%M") %>
+          <% if screening.session_time.strftime("%e/%m") == (DateTime.now).strftime("%e/%m") %>
+            <%= render 'screenings/screening_card',
+                       screening: screening,
+                       film: screening.detailed_film.film_title,
+                       display_title: true %>
+          <% end %>
         <% end %>
       <% end %>
     </div>

@@ -2,9 +2,27 @@
 body {
   margin-top: 60px;
   background-color: $white; //TODO: I Think the minimun-Height of the page should be set here, not in the container
-  height: 3000px;
+  height: 2000px;
+  a:hover {
+    text-decoration: none;
+  }
 }
+
 
 .mini {
   height: 300px !important;
+}
+
+.nav {
+    background-color: $white !important;
+}
+
+.nav li a {
+    color: $dark-red !important;
+}
+
+.nav-tabs li a:hover{
+  background-color: $white !important;
+  color: $black !important;
+  border: none !important;
 }
