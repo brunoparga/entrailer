@@ -1,11 +1,10 @@
 .screening {
-  border: 1px solid $black;
+  border: solid $black 1px;
   border-radius: $border-radius;
   position: relative;
   margin-top: 20px;
-  margin-right: 10px;
-  margin-left: 10px;
-  position: relative;
+  margin-right: 30px;
+  margin-left: 30px;
 
 }
 
@@ -14,7 +13,14 @@
 }
 
 .screening-info {
-  padding: 5px;
+  padding: 10px;
+  position: relative;
+  text-decoration: none;
+  color: $black;
+}
+
+.screening-info h1 {
+  margin-bottom: 10px;
 }
 
 .screening-info p {
@@ -29,6 +35,7 @@
 .screening-img img {
   width: 100%;
   height: 250px;
+
 }
 
 .screening-img p {
