@@ -4,10 +4,10 @@
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#day0" aria-controls="day0" role="tab" data-toggle="tab"><p><%= (DateTime.now).strftime("%e/%m") %></p></a></li>
-    <li role="presentation"><a href="#day1" aria-controls="day1" role="tab" data-toggle="tab"> <p><%= (DateTime.now).strftime("%e/%m") %></p></a></li>
-    <li role="presentation"><a href="#day2" aria-controls="day2" role="tab" data-toggle="tab"> <p><%= (DateTime.now).strftime("%e/%m") %></p></a></li>
-    <li role="presentation"><a href="#day3" aria-controls="sday3" role="tab" data-toggle="tab"> <p><%= (DateTime.now).strftime("%e/%m") %></p></a></li>
+    <li role="presentation" class="active"><a href="#day0" aria-controls="day0" role="tab" data-toggle="tab"><p><%= (Date.today).strftime("%e/%m") %></p></a></li>
+    <li role="presentation"><a href="#day1" aria-controls="day1" role="tab" data-toggle="tab"> <p><%= (Date.today + 1).strftime("%a %e/%m") %></p></a></li>
+    <li role="presentation"><a href="#day2" aria-controls="day2" role="tab" data-toggle="tab"> <p><%= (Date.today + 2).strftime("%a %e/%m") %></p></a></li>
+    <li role="presentation"><a href="#day3" aria-controls="sday3" role="tab" data-toggle="tab"> <p><%= (Date.today + 3).strftime("%a %e/%m") %></p></a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -27,30 +27,36 @@
     <div role="tabpanel" class="tab-pane" id="day1">
       <% @film_titles.each do |film| %>
         <% film.screenings.each do |screening| %>
-        <%= render 'screenings/screening_card',
-               screening: screening,
-               film: film,
-               display_title: true %>
+          <% if screening.session_time.strftime("%e/%m") == (Date.today + 1).strftime("%e/%m") %>
+            <%= render 'screenings/screening_card',
+                  screening: screening,
+                  film: film,
+                  display_title: true %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
     <div role="tabpanel" class="tab-pane" id="day2  ">
       <% @film_titles.each do |film| %>
         <% film.screenings.each do |screening| %>
-        <%= render 'screenings/screening_card',
-               screening: screening,
-               film: film,
-               display_title: true %>
+          <% if screening.session_time.strftime("%e/%m") == (Date.today + 2).strftime("%e/%m") %>
+            <%= render 'screenings/screening_card',
+                   screening: screening,
+                   film: film,
+                   display_title: true %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
     <div role="tabpanel" class="tab-pane" id="day3">
       <% @film_titles.each do |film| %>
         <% film.screenings.each do |screening| %>
-        <%= render 'screenings/screening_card',
-               screening: screening,
-               film: film,
-               display_title: true %>
+          <% if screening.session_time.strftime("%e/%m") == (Date.today + 3).strftime("%e/%m") %>
+            <%= render 'screenings/screening_card',
+                   screening: screening,
+                   film: film,
+                   display_title: true %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
