@@ -16,7 +16,7 @@
           <a href=<%= screen_path(@screening.screen) %> style='text-decoration: none;''>
           <h4>Sala: <%= @screening.screen.name %></h4>
           </a>
-          <h4>Horário: <%= @screening.session_time.strftime("%H:%M") %></h4>
+          <h5>Horário: <%= @screening.session_time.strftime("%H:%M") %></h5>
           <p><em><%= @film_title.synopsis %></em></p>
         </div>
       </div>
@@ -34,10 +34,6 @@
           <%= button_to 'Comprar!', [@screening, @ticket], { class: 'btn btn-medium' } %>
         </div>
       </div>
-  </div>
-
-  <div class="map row">
-
   </div>
 
   <h3>Outras sessões do filme: <%= @screening.detailed_film.film_title.title %></h3>

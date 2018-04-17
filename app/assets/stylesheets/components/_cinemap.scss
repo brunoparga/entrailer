@@ -1,16 +1,7 @@
 .cinemap {
   position: relative;
-  margin-top: 35px;
-  p {
-    margin-bottom: 15px;
-  }
+  padding: 0px 0px 0px 0px !important;
+  z-index: -1;
 }
 
-.cinemap  {
-  .cineposition {
-    position: fixed;
-    width: 28%; // vw being viewport-width, so 70% of the width of the viewport
-    height: 100vh;
-    }
-}
 
