@@ -30,19 +30,23 @@
   <div class="row">
     <div class="col-xs-6 col-md-offset-3 col-md-3">
       <p class="text-center">
-        Horário: <%= @ticket.screening.session_time.strftime("%H:%M") %>
+        Horário: <%= @ticket.screening.formatted_time %>
         <% time_to_session = (@ticket.screening.session_time - Time.now) %>
         <% if time_to_session > 0 %>
-          <% minutes = (time_to_session / 60).round %>
-          <% hours = (minutes / 60).round %>
+          <% minutes = (time_to_session / 60).to_i %>
+          <% hours = (minutes / 60).to_i %>
+          <% days = (days / 24).to_i %>
+          <% hours %= 24 %>
           <% minutes %= 60 %>
-          <br><em>(faltam <%= "#{hours} horas e " if hours > 0 %><%= minutes %> minutos para a sua sessão!)</em>
+          <br><em>(faltam <%= "#{days} dias, " if days > 0 %>
+            <%= "#{hours} horas e " if hours > 0 || days > 0 %>
+            <%= minutes %> minutos para a sua sessão!)</em>
         <% end %>
       </p>
     </div>
     <div class="col-xs-6 col-md-3">
       <p class="text-center">
-        Data: <%= @ticket.screening.session_time.strftime("%A, %d/%m/%Y") %>
+        Data: <%= "#{@ticket.screening.formatted_date}" %>
       </p>
     </div>
   </div>
