@@ -1,39 +1,41 @@
 <div class="container">
   <div class="row">
-    <h2 class= "text-center">Ingresso para <%= @ticket.screening.detailed_film.film_title.title %></h2>
+    <h3 class= "text-center">Compre agora o seu ingresso!</h3>
   </div>
   <div class="row">
-    <div class="ticket-info">
-      <div id="ticket-pic">
-        <img src='https://image.tmdb.org/t/p/w200<%=@ticket.screening.detailed_film.film_title.img_url%>'>
-      </div>
-      <div class="ticket-new">
-        <h4>Sala: <%= @ticket.screening.screen.name %></h4>
-        <p><%= @ticket.screening.detailed_film.speech %>, <%= @ticket.screening.detailed_film.format.name %></p>
-        <h4>Horário: <%= "#{@ticket.screening.formatted_date}, às #{@ticket.screening.formatted_time}" %></h4>
-        <%= form_tag ticket_payments_path(@ticket) do %>
-        <article>
-          <label class="price">
-            <span>Preço: <%= @ticket.price %></span>
-          </label>
-        </article>
-
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-        data-name="Film ticket"
-        data-email="<%= current_user.email %>"
-        data-description="Movie <%= @ticket.screening.detailed_film.film_title.title %>"
-        data-amount="<%= @ticket.price_cents %>"
-        data-currency="<%= @ticket.price.currency %>"></script>
-        <% end %>
-      </div>
-    </div>
+          <div class="ticket-details">
+            <img src='https://image.tmdb.org/t/p/w200<%=@ticket.screening.detailed_film.film_title.img_url%>'>
+            <div class="ticket-description">
+                <h3><%= @ticket.screening.detailed_film.film_title.title %></h3>
+                  <p><%= @ticket.screening.detailed_film.speech %></p>
+                  <p><%= @ticket.screening.detailed_film.format.name %></p>
+                <h4>Sala: <%= @ticket.screening.screen.name %></h4>
+                </a>
+                <h4>Horário: <%= "#{@ticket.screening.formatted_date}, às #{@ticket.screening.formatted_time}" %></h4>
+                <p><em><%= @ticket.screening.detailed_film.film_title.synopsis %></em></p>
+                <%= form_tag ticket_payments_path(@ticket) do %>
+                <article>
+                  <label class="price">
+                    <span>Preço: <%= @ticket.price %></span>
+                  </label>
+                </article>
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-name="Film ticket"
+                data-email="<%= current_user.email %>"
+                data-description="Movie <%= @ticket.screening.detailed_film.film_title.title %>"
+                data-amount="<%= @ticket.price_cents %>"
+                data-currency="<%= @ticket.price.currency %>"></script>
+                <% end %>
+            </div>
+          </div>
   </div>
-
+  <% @marker = [] %>
+  <% @marker << { lng: @ticket.screening.screen.longitude, lat: @ticket.screening.screen.latitude } %>
   <div
       id="map"
       style="width: 100%;
-      height: 650px;"
-      data-markers="<%= @markers.to_json %>"
+      height: 400px;"
+      data-markers="<%= @marker.to_json %>"
       ></div>
 </div>
