@@ -1,21 +1,19 @@
-<div class="col-xs-12 col-sm-4 col-md-6">
-  <div class="screening">
-    <%= link_to screening_path(screening) do %>
-      <%# TODO: CSS this p tag %>
-      <p><%= film.title if display_title %></p>
-      <div class="screening-img">
-         <%= image_tag "https://image.tmdb.org/t/p/w200#{film.img_url}" %>
-      </div>
-      <div class='screening-info'>
-        <p><%= screening.session_time.strftime("%d/%m/%Y, %H:%M") %></p>
-        <p><em><%= screening.screen.name %></em></p>
-        <p>Ingressos disponíveis: <strong>
-          <% available_tickets = screening.initial_tickets - screening.tickets.count %>
-          <%= available_tickets %>
-          </strong>
-        </p>
-        <p>A partir de <%= screening.calculate_price(Time.now, available_tickets) %> - compre já!</p>
-      </div>
-    <% end %>
-  </div>
-</div>
+  <%= link_to screening_path(screening) do %>
+    <%# TODO: CSS this p tag %>
+    <div class="screening">
+        <div class="screening-img">
+           <%= image_tag "https://image.tmdb.org/t/p/w200#{film.img_url}" %>
+        </div>
+        <span class='screening-info'>
+          <p><%= screening.session_time.strftime("%d/%m/%Y, %H:%M") %></p>
+          <p><em><%= screening.screen.name %></em></p>
+          <p>Ingressos disponíveis: <strong>
+            <% available_tickets = screening.initial_tickets - screening.tickets.count %>
+            <%= available_tickets %>
+            </strong>
+          </p>
+          <p>A partir de <%= screening.calculate_price(Time.now, available_tickets) %> - compre já!</p>
+        </span>
+    </div>
+  <% end %>
+

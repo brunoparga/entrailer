@@ -2,12 +2,9 @@
 body {
   margin-top: 70px;
   background-color: $white; //TODO: I Think the minimun-Height of the page should be set here, not in the container
+  height: 3000px;
 }
 
 .mini {
   height: 300px !important;
-}
-
-.container {
-  height: 2000px; //TODO: Review this!! What's the meening?
 }
