@@ -11,11 +11,13 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="day0">
       <% @screenings.each do |screening| %>
-        <% if screening.session_time.strftime("%e/%m") == (DateTime.now).strftime("%e/%m") %>
-          <%= render 'screenings/screening_card',
-                     screening: screening,
-                     film: screening.detailed_film.film_title,
-                     display_title: true %>
+        <% if screening.session_time.strftime("%H/%M") >= (DateTime.now).strftime("%H/%M") %>
+          <% if screening.session_time.strftime("%e/%m") == (DateTime.now).strftime("%e/%m") %>
+            <%= render 'screenings/screening_card',
+                       screening: screening,
+                       film: screening.detailed_film.film_title,
+                       display_title: true %>
+          <% end %>
         <% end %>
       <% end %>
     </div>

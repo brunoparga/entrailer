@@ -3,8 +3,13 @@ body {
   margin-top: 60px;
   background-color: $white; //TODO: I Think the minimun-Height of the page should be set here, not in the container
   height: 3000px;
+  a:hover {
+    text-decoration: none;
+  }
 }
+
 
 .mini {
   height: 300px !important;
 }
+

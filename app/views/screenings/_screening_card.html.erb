@@ -3,17 +3,20 @@
         <div class="screening-img">
            <%= image_tag "https://image.tmdb.org/t/p/w200#{film.img_url}" %>
         </div>
-        <span class='screening-info'>
-           <p><%= "#{screening.formatted_date.capitalize} às #{screening.formatted_time}" %></p>
-          <p><em><%= screening.screen.name %></em></p>
+        <div class='screening-info'>
+          <p><%= "#{screening.formatted_date.capitalize}" %></p>
+          <p><%= "#{screening.formatted_time}" %></p>
+          <p><%= screening.screen.name %></p>
           <p>Ingressos disponíveis: <strong>
             <% available_tickets = screening.initial_tickets - screening.tickets.count %>
             <%= available_tickets %>
             </strong>
           </p>
+        </div>
+        <div class="price">
           <% price = screening.calculate_price(Time.now, available_tickets) %>
           <% session["screening_#{screening.id}_price".to_sym] = price %>
-          <p>A partir de <%= price %> - compre já!</p>
-        </span>
+          <p><%= price %></p>
+        </div>
     </div>
   <% end %>
