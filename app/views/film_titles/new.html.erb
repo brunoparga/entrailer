@@ -5,17 +5,17 @@
     <input type="text" id="movie_title">
     <button class="btn btn-primary" id="btn-search">Search</button>
 
-    <!-- <div class="hidden"> -->
       <%= simple_form_for @film_title do |f| %>
       <%= f.input :title %>
+      <div class="hidden">
       <%= f.input :imdb_id %>
       <%= f.input :img_url %>
       <%= f.input :banner_url %>
+       </div>
 
       <p></p>
       <%= f.button :submit, id: 'Criar filme' %>
       <% end %>
-      <!-- </div> -->
       <ul id="movie_list"></ul>
   </div>
 </div>
