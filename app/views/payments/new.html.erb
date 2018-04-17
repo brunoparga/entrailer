@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Ingreso para <%= @ticket.screening.detailed_film.film_title.title %></h2>
-  <p><%= "#{@ticket.screening.screen.name}, #{@ticket.screening.session_time.strftime('%H:%M')}" %></p>
+  <p><%= "#{@ticket.screening.screen.name}, #{@ticket.screening.formatted_date.capitalize} às #{@ticket.screening.formatted_time}" %></p>
   <%= form_tag ticket_payments_path(@ticket) do %>
   <article>
     <label class="price">

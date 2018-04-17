@@ -21,6 +21,22 @@ class Screening < ApplicationRecord
       tsearch: { prefix: true }
     }
 
+  def formatted_date
+    session_date = Date.new(session_time.year, session_time.month, session_time.day)
+    now = Time.now
+    todays_date = Date.new(now.year, now.month, now.day)
+    date = case session_date
+    when todays_date then 'hoje'
+    when todays_date + 1 then 'amanhã'
+    else session_date.strftime('%d/%m')
+    end
+    date
+  end
+
+  def formatted_time
+    session_time.strftime('%H:%M')
+  end
+
   def calculate_price(purchase_time, available_tickets)
     # purchase_time is the time the controller calls this method
     # returns a price in centavos as an integer
@@ -52,6 +68,8 @@ class Screening < ApplicationRecord
       .format(symbol_before_without_space: false)
   end
 
+  private
+
   def occupancy(available_tickets)
     fraction = 1 - (available_tickets / initial_tickets.to_f)
     case fraction
@@ -60,8 +78,6 @@ class Screening < ApplicationRecord
     else return (fraction - 0.1) * 1.25
     end
   end
-
-  private
 
   def price_calculator(interval, price_params)
     # interval: the duration between reference time and session start time

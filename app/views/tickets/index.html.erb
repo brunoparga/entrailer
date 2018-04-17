@@ -18,8 +18,8 @@
             </a>
             <p>Preço: <%= ticket.price.format(symbol_before_without_space: false) %></p>
             <span>
-              <p>Data: <%= ticket.screening.session_time.strftime("%d/%m/%y") %></p>
-              <p>Horário: <%= ticket.screening.session_time.strftime("%H:%M") %></p>
+              <p>Data: <%= ticket.screening.formatted_date %></p>
+              <p>Horário: <%= ticket.screening.formatted_time %></p>
             </span>
             <a href=<%= screen_path(ticket.screening.screen.id)%>>
               <p> Local: <%= ticket.screening.screen.name %></p>
@@ -43,8 +43,8 @@
             <h1><%= ticket.title %></h1>
           </a>
           <span>
-            <p>Data: <%= ticket.screening.session_time.strftime("%d/%m/%y") %></p>
-            <p>Horário: <%= ticket.screening.session_time.strftime("%H:%M") %></p>
+            <p>Data: <%= ticket.screening.formatted_date %></p>
+            <p>Horário: <%= ticket.screening.formatted_time %></p>
           </span>
         </div>
         <div class="col-xs-12 col-sm-6">
