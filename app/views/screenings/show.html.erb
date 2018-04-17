@@ -5,8 +5,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12">
       <div class="movie-details">
-        <a href=<%= film_title_path(@screening.detailed_film.film_title) %>>
-        <img src='https://image.tmdb.org/t/p/w200<%=@screening.detailed_film.film_title.img_url%>'></a>
+        <img src='https://image.tmdb.org/t/p/w200<%=@screening.detailed_film.film_title.img_url%>'>
         <div class="movie-description">
           <h1><%= @screening.detailed_film.film_title.title %></h1>
           <h5>
