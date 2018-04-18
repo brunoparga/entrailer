@@ -14,11 +14,11 @@
 
 
 .price {
-  font-size: 44px;
+  font-size: 32px;
   color: $dark-red;
   flex-grow: 2;
   text-align: right;
-  padding-right: 20px;
+  padding-right: 25px;
   padding-top: 20px;
 
 }
@@ -44,6 +44,9 @@
 
 }
 
+.screening-card-hover:hover{
+  box-shadow: 0 1px 5px rgba(0,0,0,0.6);
+}
 
 
 

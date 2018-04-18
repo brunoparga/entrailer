@@ -1,11 +1,11 @@
   <%= link_to screening_path(screening) do %>
+  <div class="screening-card-hover">
     <div class="screening">
         <div class="screening-img">
            <%= image_tag "https://image.tmdb.org/t/p/w200#{film.img_url}" %>
         </div>
         <div class='screening-info'>
-          <p><%= "#{screening.formatted_date.capitalize}" %></p>
-          <p><%= "#{screening.formatted_time}" %></p>
+          <p><%= "#{screening.formatted_date.capitalize}" %> às <%= "#{screening.formatted_time}" %></p>
           <p><%= screening.screen.name %></p>
           <p>Ingressos disponíveis: <strong>
             <% available_tickets = screening.initial_tickets - screening.tickets.count %>
@@ -19,4 +19,5 @@
           <p><%= price %></p>
         </div>
     </div>
+  </div>
   <% end %>
