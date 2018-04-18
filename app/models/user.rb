@@ -11,4 +11,10 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true, length: { minimum: 1 }
   validates :last_name, presence: true, length: { minimum: 1 }
+  validates :cnpj, presence: true, if: :is_owner?
+  validates :address, presence: true, if: :is_owner?
+
+  def is_owner?
+    role == 'theater_owner'
+  end
 end
