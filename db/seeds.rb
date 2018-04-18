@@ -105,6 +105,7 @@ ownit = User.create!(email: 'owner@entrailer.com',
                      last_name: 'Owner',
                      password: 'ownerowner',
                      cnpj: '66.768.332/0001-29',
+                     address: 'R. Domingos de Morais, 2564',
                      confirmed_at: Time.now)
 
 puts 'Creating screens...'

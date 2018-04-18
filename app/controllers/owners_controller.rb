@@ -1,19 +1,27 @@
 class OwnersController < ApplicationController
-  def new
-    @owner = current_user
-    authorize @owner
-  end
+  before_action :set_owner
+
+  def new; end
 
   def update
-    @owner = current_user
     @owner.role = 'theater_owner'
-    if @owner.save
+    if @owner.update(owner_params)
       redirect_to owner_path(@owner)
     else
       render :new
     end
   end
 
-  def show
+  def show; end
+
+  private
+
+  def set_owner
+    @owner = current_user
+    authorize @owner
+  end
+
+  def owner_params
+    params.require(:user).permit(:cnpj, :address)
   end
 end

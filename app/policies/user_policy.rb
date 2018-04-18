@@ -7,12 +7,16 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
-  def create?
+  def new?
+    user.role != 'theater_owner'
+  end
+
+  def update?
     user.role != 'theater_owner'
   end
 
   def show?
     user.role == 'theater_owner'
-    record.user == user
+    record == user
   end
 end

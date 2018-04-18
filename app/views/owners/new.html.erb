@@ -1,7 +1,8 @@
 <div class="container">
   <h4>Cadastre-se como dono de cinema</h4>
-  <%= simple_form_for @owner, as: :user, url: owners_path do |f| %>
-    <%= f.input :cnpj %>
+  <%= simple_form_for @owner, as: :user, url: owner_path(id: current_user.id) do |f| %>
+    <%= f.input :cnpj, label: 'CNPJ' %>
+    <%= f.input :address, label: 'Endereço da(s) sala(s)' %>
     <%= f.submit label: 'Cadastrar' %>
   <% end %>
 </div>
