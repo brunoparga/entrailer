@@ -14,7 +14,7 @@
                 <h4>Horário: <%= "#{@ticket.screening.formatted_date}, às #{@ticket.screening.formatted_time}" %></h4>
                 <p><em><%= @ticket.screening.detailed_film.film_title.synopsis %></em></p>
                 <%= form_tag ticket_payments_path(@ticket) do %>
-                <article>
+                <article style="padding-bottom: 15px;">
                   <label class="price">
                     <span>Preço: <%= @ticket.price %></span>
                   </label>
