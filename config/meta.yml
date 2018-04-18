@@ -1,0 +1,5 @@
+meta_product_name: "Entrailer"
+meta_title: "Entrailer - Cinema com desconto"
+meta_description: "O Entrailer é uma plataforma de venda de ingressos de cinema com preço diferenciado conforme horário e demanda."
+meta_image: "cover.png"                       # should exist in `app/assets/images/`
+twitter_account: "@entrailer_cine"   # required for Twitter Cards
