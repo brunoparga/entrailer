@@ -12,7 +12,14 @@ class OwnersController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @film_titles = policy_scope(FilmTitle)
+    authorize @film_titles
+    @screens = policy_scope(Screen.where(user: current_user))
+    @screens.each { |screen| authorize screen }
+    @past_screenings = current_user.screenings.past(Time.zone.now)
+    @open_screenings = current_user.screenings.open(Time.zone.now)
+  end
 
   private
 

@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :tickets
   has_many :screens
+  has_many :screenings, through: :screens
 
   validates :first_name, presence: true, length: { minimum: 1 }
   validates :last_name, presence: true, length: { minimum: 1 }

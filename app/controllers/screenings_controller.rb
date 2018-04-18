@@ -22,6 +22,7 @@ class ScreeningsController < ApplicationController
     authorize @screening
     @films = DetailedFilm.all.map { |film| film.prepare_for_display }
     @screens = current_user.screens.map { |screen| screen.prepare_for_display }
+    @current_screen = Screen.find(params[:screen_id]).prepare_for_display if params[:screen_id]
   end
 
   def create

@@ -14,6 +14,9 @@ class Screening < ApplicationRecord
   monetize :min_price_cents, as: :min_price
   monetize :max_price_cents, as: :max_price
 
+  scope :past, -> (date) { where('screenings.session_time <= ?', date) }
+  scope :open, -> (date) { where('screenings.session_time > ?', date) }
+
   include PgSearch
   pg_search_scope :search_by_session_time,
     against: [ :session_time ],

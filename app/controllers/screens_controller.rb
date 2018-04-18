@@ -11,7 +11,7 @@ class ScreensController < ApplicationController
   end
 
   def new
-    @screen = Screen.new
+    @screen = current_user.screens.build
     authorize @screen
   end
 
@@ -20,7 +20,7 @@ class ScreensController < ApplicationController
     @screen.user = current_user
     authorize @screen
     if @screen.save
-      redirect_to screen_path(@screen)
+      redirect_to owner_path(current_user)
     else
       render :new
     end
