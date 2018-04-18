@@ -11,7 +11,7 @@ class Ticket < ApplicationRecord
   monetize :price_cents, as: :price
 
   def title
-    self.screening.detailed_film.film_title.title
+    self.screening.detailed_film.title
   end
 
   private

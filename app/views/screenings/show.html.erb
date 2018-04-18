@@ -8,7 +8,7 @@
       <div class="movie-details">
         <img src='https://image.tmdb.org/t/p/w200<%=@screening.detailed_film.film_title.img_url%>'>
         <div class="movie-description">
-          <h1><%= @screening.detailed_film.film_title.title %></h1>
+          <h1><%= @screening.detailed_film.title %></h1>
           <h5>
             <span class='tag'><%= @screening.detailed_film.speech %></span>
             <span class='tag'><%= @screening.detailed_film.format.name %></span>
@@ -38,7 +38,7 @@
   </div>
 
   <div class="row minicard-wrapper">
-    <h3>Outras sessões do filme: <%= @screening.detailed_film.film_title.title %></h3>
+    <h3>Outras sessões do filme: <%= @screening.detailed_film.title %></h3>
     <% @film_title.screenings.each do |screening| %>
       <%= render 'shared/minicards',
                  screening: screening,

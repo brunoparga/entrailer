@@ -1,5 +1,7 @@
 class DetailedFilm < ApplicationRecord
   belongs_to :film_title
+  delegate :title, to: :film_title
+
   belongs_to :format
 
   has_many :screenings

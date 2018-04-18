@@ -1,6 +1,6 @@
 <div class="container">
   <%@screenings.each do |screening| %>
-  <p><%= screening.detailed_film.film_title.title %></p>
+  <p><%= screening.detailed_film.title %></p>
   <% end %>
 
   <%= link_to "Nova sessão", new_screening_path %>
