@@ -2,12 +2,12 @@
   <div class="banner-content text-center">
     <h1>Em cartaz:</h1>
     <p>Ingressos de cinema mais baratos</p>
-    <div>
+    <div class="home-form">
       <%= form_tag search_index_path, method: :get do %>
         <%= text_field_tag :query,
                            params[:query],
                            id: "banner-typed-text" %>
-        <%= submit_tag 'Buscar' , class: 'btn btn-medium-home'%>
+        <%= submit_tag 'Buscar' , class: 'btn btn-medium-home' %>
       <% end %>
     </div>
   </div>
