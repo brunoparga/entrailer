@@ -23,7 +23,7 @@ class Screening < ApplicationRecord
 
   def formatted_date
     session_date = Date.new(session_time.year, session_time.month, session_time.day)
-    now = Time.now
+    now = Time.zone.now
     todays_date = Date.new(now.year, now.month, now.day)
     date = case session_date
     when todays_date then 'hoje'

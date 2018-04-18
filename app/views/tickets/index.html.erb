@@ -6,7 +6,7 @@
 
   <div class="row">
   <% @tickets.each do |ticket| %>
-    <% if ticket.screening.session_time > DateTime.now %>
+    <% if ticket.screening.session_time > Time.zone.now %>
       <% if t == 0 %>
         <h2>Ingressos para sessões futuras:</h2>
       <% end %>

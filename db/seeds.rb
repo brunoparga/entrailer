@@ -19,7 +19,7 @@ Screen.destroy_all
 Format.destroy_all
 User.destroy_all
 
-time = Time.now
+time = Time.zone.now
 
 puts 'Creating film titles...'
 FilmTitle
@@ -93,12 +93,12 @@ roberto = User.create!(email: 'roberto@roberto.rob',
                        first_name: 'Roberto',
                        last_name: 'Barros',
                        password: 'modelosmodelos',
-                       confirmed_at: Time.now)
+                       confirmed_at: time)
 banana = User.create!(email: 'banana@example.com',
                       first_name: 'Banana',
                       last_name: 'Caturra',
                       password: 'senhasenha',
-                      confirmed_at: Time.now)
+                      confirmed_at: time)
 ownit = User.create!(email: 'owner@entrailer.com',
                      role: 'theater_owner',
                      first_name: 'Owner',
@@ -106,7 +106,7 @@ ownit = User.create!(email: 'owner@entrailer.com',
                      password: 'ownerowner',
                      cnpj: '66.768.332/0001-29',
                      address: 'R. Domingos de Morais, 2564',
-                     confirmed_at: Time.now)
+                     confirmed_at: time)
 
 puts 'Creating screens...'
 screen1 = Screen.create!(name: 'Cinemark Metrô Santa Cruz 3',

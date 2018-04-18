@@ -13,8 +13,8 @@ RSpec.describe Screening, type: :model do
       screening = Screening.new(detailed_film: detailed,
                                 screen: screen,
                                 initial_tickets: 200,
-                                session_time: Time.now,
-                                closing_time: Time.now)
+                                session_time: Time.zone.now,
+                                closing_time: Time.zone.now)
 
       # expect(screening.valid?).to eq true
     end
@@ -23,8 +23,8 @@ RSpec.describe Screening, type: :model do
       screening = Screening.new(detailed_film: detailed,
                                 screen: screen,
                                 initial_tickets: 201,
-                                session_time: Time.now,
-                                closing_time: Time.now)
+                                session_time: Time.zone.now,
+                                closing_time: Time.zone.now)
 
       expect(screening.valid?).to eq false
     end
@@ -37,7 +37,7 @@ RSpec.describe Screening, type: :model do
     let(:aranha_detailed) { DetailedFilm.new(film_title: aranha,
                                              format: std,
                                              speech: 0) }
-    let(:hora) { Time.local(2018, 4, 13, 16) }
+    let(:hora) { Time.zone.local(2018, 4, 13, 16) }
     let(:screening) do
       Screening.new(initial_tickets: 200,
                     session_time: hora,

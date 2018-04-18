@@ -9,7 +9,7 @@
           <%= available_tickets %>
           </strong>
         </p>
-        <p>A partir de <%= screening.calculate_price(Time.now, available_tickets) %> - compre já!</p>
+        <p>A partir de <%= screening.calculate_price(Time.zone.now, available_tickets) %> - compre já!</p>
       </div>
     </div>
   <% end %>
