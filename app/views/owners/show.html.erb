@@ -1,2 +1,49 @@
-<h1>Owners#show</h1>
-<p>Find me in app/views/owners/show.html.erb</p>
+<div class="container">
+  <h3>Bem-vindo/a, <%= @owner.first_name %>!</h3>
+  <p>Filmes disponíveis (<%= link_to 'Adicionar filme', new_film_title_path %>)</p>
+  <ul class="film-title-list">
+    <% @film_titles.each do |film_title| %>
+      <li>
+        <%= film_title.title %>
+        (<small><%= link_to 'Adicionar versão', new_film_title_detailed_film_path(film_title) %></small>)
+      </li>
+    <% end %>
+  </ul>
+  <p>Minhas salas (<%= link_to 'Adicionar sala', new_screen_path %>)</p>
+  <ul class="my-screens-list">
+    <% @screens.each do |screen| %>
+      <li>
+        <%= screen.name %> - <%= screen.capacity %> lugares (<small>
+          <%= link_to 'Criar sessão nesta sala', new_screening_path(screen_id: screen.id) %>
+        </small>)
+      </li>
+    <% end %>
+  </ul>
+  <p>Minhas sessões</p>
+  <ul class='my-screenings-list'>
+    <li>Sessões anteriores</li>
+      <ul class="past-screenings-list">
+        <% @past_screenings.each do |scg| %>
+        <li>
+          <%= scg.detailed_film.title %> - <%= scg.formatted_date %> às <%= scg.formatted_time %><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<%= scg.tickets.count %> ingressos vendidos de <%= scg.initial_tickets %> -
+          Receita: <%= Money
+                        .new(scg.tickets.inject(0) { |accum, tkt| accum + tkt.price }, 'BRL')
+                        .format(symbol_before_without_space: false) %>
+        </li>
+        <% end %>
+      </ul>
+    <li>Sessões abertas</li>
+      <ul class="open-screenings-list">
+        <% @open_screenings.each do |scg| %>
+        <li>
+          <%= scg.detailed_film.title %> - <%= scg.formatted_date %> às <%= scg.formatted_time %><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;Até agora, <%= scg.tickets.count %> ingressos vendidos de <%= scg.initial_tickets %> -
+          Preço atual: <%= scg.calculate_price(Time.zone.now, scg.initial_tickets - scg.tickets.count) %> -
+          Preço mínimo: <%= scg.min_price.format(symbol_before_without_space: false) %> -
+          Preço máximo: <%= scg.max_price.format(symbol_before_without_space: false) %>
+        </li>
+        <% end %>
+      </ul>
+  </ul>
+</div>
