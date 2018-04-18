@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module Entrailer
   class Application < Rails::Application
+    config.time_zone = 'America/Sao_Paulo'
+    config.active_record.default_timezone = :local
+    
     config.generators do |generate|
       generate.assets false
       generate.helper false

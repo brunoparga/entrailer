@@ -17,7 +17,7 @@ class TicketsController < ApplicationController
     cents = session["screening_#{@screening.id}_price".to_sym].match(/(\d+,\d{0,2})/)[1].sub(',', '').to_i
     @ticket = @screening.tickets.build(
       price_cents: cents,
-      purchase_time: Time.now,
+      purchase_time: Time.zone.now,
       status: 'pending',
       user: current_user
     )

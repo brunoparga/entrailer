@@ -14,7 +14,7 @@
           </p>
         </div>
         <div class="price">
-          <% price = screening.calculate_price(Time.now, available_tickets) %>
+          <% price = screening.calculate_price(Time.zone.now, available_tickets) %>
           <% session["screening_#{screening.id}_price".to_sym] = price %>
           <p><%= price %></p>
         </div>

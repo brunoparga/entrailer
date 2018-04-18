@@ -14,7 +14,7 @@ class ScreeningsController < ApplicationController
     @detailed_film = DetailedFilm.find(id = @screening.detailed_film_id)
     @film_title = FilmTitle.find(id = @detailed_film.film_title_id)
     authorize @film_title
-    session["screening_#{@screening.id}_price".to_sym] ||= @screening.calculate_price(Time.now, @available_tickets)
+    session["screening_#{@screening.id}_price".to_sym] ||= @screening.calculate_price(Time.zone.now, @available_tickets)
   end
 
   def new
