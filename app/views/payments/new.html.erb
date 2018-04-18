@@ -6,7 +6,7 @@
           <div class="ticket-details">
             <img src='https://image.tmdb.org/t/p/w200<%=@ticket.screening.detailed_film.film_title.img_url%>'>
             <div class="ticket-description">
-                <h3><%= @ticket.screening.detailed_film.film_title.title %></h3>
+                <h3><%= @ticket.screening.detailed_film.title %></h3>
                   <p><%= @ticket.screening.detailed_film.speech %></p>
                   <p><%= @ticket.screening.detailed_film.format.name %></p>
                 <h4>Sala: <%= @ticket.screening.screen.name %></h4>
@@ -23,7 +23,7 @@
                 data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
                 data-name="Film ticket"
                 data-email="<%= current_user.email %>"
-                data-description="Movie <%= @ticket.screening.detailed_film.film_title.title %>"
+                data-description="Movie <%= @ticket.screening.detailed_film.title %>"
                 data-amount="<%= @ticket.price_cents %>"
                 data-currency="<%= @ticket.price.currency %>"></script>
                 <% end %>
