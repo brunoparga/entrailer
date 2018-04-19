@@ -1,10 +1,11 @@
 .movie {
-  margin-top: -160px;
+  margin-top: -190px;
 }
 
 .movie h1 {
-  font-size: 56px;
-  margin-bottom: 30px;
+  font-size: 32px;
+  margin-bottom: 0px;
+  padding-top: 10px;
   color: $white;
 }
 
@@ -38,6 +39,21 @@
 .movie-info {
   margin-top: 5px;
   margin-left: 10px;
+}
+
+.scg-title p {
+  margin-left: 10px;
+  margin-bottom: 4px;
+  margin-top: 8px;
+}
+
+.movie-tag {
+  font-size: 12px;
+  color: $white;
+  font-weight: lighter;
+  border: solid 1px $white;
+  border-radius: $border-radius;
+  padding: 3px 3px 3px 3px;
 }
 
 
