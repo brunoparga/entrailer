@@ -1,11 +1,11 @@
 <%= link_to screening_path(screening) do %>
 
-  <div class="card row">
-    <% if display_image %>
-      <div class="">
-        <img class="img-responsive" src="https://image.tmdb.org/t/p/w200<%=screening.detailed_film.film_title.img_url%>">
-      </div>
-    <% end %>
+<% available_tickets = screening.initial_tickets - screening.tickets.count %>
+<% price = screening.calculate_price(Time.zone.now, available_tickets) %>
+        <% discount = (100 * (1 - (price.match(/(\d+,\d{0,2})/)[1].sub(',', '').to_f / screening.max_price_cents))).to_i %>
+      <% session["screening_#{screening.id}_price".to_sym] = price %>
+
+<div class="card row">
 
     <div class="card-details">
 
@@ -16,21 +16,21 @@
       </div>
 
     <div class="card-scg">
+
       <p><%= screening.screen.name %></p>
       <p><%= screening.session_time.strftime("%e/%m")%> <%= screening.session_time.strftime("%H:%M") %> </p>
     </div>
 
+  </div>
+
     <div class="card-price">
-      <% available_tickets = screening.initial_tickets - screening.tickets.count %>
-      <p> <%= available_tickets %> lugares disponíveis. </p>
-      <% price = screening.calculate_price(Time.zone.now, available_tickets) %>
-      <% discount = (100 * (1 - (price.match(/(\d+,\d{0,2})/)[1].sub(',', '').to_f / screening.max_price_cents))).to_i %>
-      <% session["screening_#{screening.id}_price".to_sym] = price %>
-      <p><%= price %></p>
+      <div><%= available_tickets %> lugares disponíveis</div>
+      <div><p><%= price %></p></div>
       <% if discount >= 10 %>
-        <p><%= discount %>% de desconto.</p>
+        <div><%= discount %>% de desconto</div>
       <% end %>
     </div>
+
   </div>
 
 <% end %>
