@@ -13,7 +13,7 @@
       <% @screenings.each do |screening| %>
         <% if screening.session_time.strftime("%H/%M") >= (Time.zone.now).strftime("%H/%M") %>
           <% if screening.session_time.strftime("%e/%m") == (Time.zone.now).strftime("%e/%m") %>
-            <%= render 'screenings/screening_card',
+            <%= render 'shared/cards',
                        screening: screening,
                        film: screening.detailed_film.film_title,
                        display_title: true %>
@@ -24,7 +24,7 @@
     <div role="tabpanel" class="tab-pane" id="day1">
       <% @screenings.each do |screening| %>
         <% if screening.session_time.strftime("%e/%m") == (Time.zone.today + 1).strftime("%e/%m") %>
-          <%= render 'screenings/screening_card',
+          <%= render 'shared/cards',
                      screening: screening,
                      film: screening.detailed_film.film_title,
                      display_title: true %>
@@ -34,7 +34,7 @@
     <div role="tabpanel" class="tab-pane" id="day2">
       <% @screenings.each do |screening| %>
         <% if screening.session_time.strftime("%e/%m") == (Time.zone.today + 2).strftime("%e/%m") %>
-          <%= render 'screenings/screening_card',
+          <%= render 'shared/cards',
                      screening: screening,
                      film: screening.detailed_film.film_title,
                      display_title: true %>
@@ -44,7 +44,7 @@
     <div role="tabpanel" class="tab-pane" id="day3">
       <% @screenings.each do |screening| %>
         <% if screening.session_time.strftime("%e/%m") == (Time.zone.today + 3).strftime("%e/%m") %>
-          <%= render 'screenings/screening_card',
+          <%= render 'shared/cards',
                      screening: screening,
                      film: screening.detailed_film.film_title,
                      display_title: true %>

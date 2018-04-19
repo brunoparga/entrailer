@@ -5,8 +5,7 @@
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: left;
 h1 {
   color: white;
   font-weight: bold;
@@ -15,9 +14,10 @@ h1 {
 p {
   color: white;
   opacity: .8;
-  font-size: 25px;
+  font-size: 44px;
   font-weight: lighter;
-  margin-bottom: 30px;
+  margin-left: 20px;
+  margin-bottom: 0px;
 }
 .btn {
     padding: 15px 50px;
