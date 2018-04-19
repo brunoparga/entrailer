@@ -2,30 +2,31 @@
 
 <div class="card row">
 
-  <div class="col-xs-4 col-sm-3 col-md-4 col-lg-3 col-sm-absolute no-padding">
+  <div class="">
     <img class="img-responsive" src="https://image.tmdb.org/t/p/w200<%=screening.detailed_film.film_title.img_url%>">
   </div>
 
-  <div class="col-xs-8 col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-4 col-lg-9 col-lg-offset-3">
+  <div class="card-details">
 
     <div class="card-info">
       <h4><%= screening.detailed_film.title %></h4>
-      <span class='card-tag'><%= screening.detailed_film.speech %></span>
-            <span class='card-tag'><%= screening.detailed_film.format.name %></span>
-      <div class="card-price">
-        <% available_tickets = screening.initial_tickets - screening.tickets.count %>
-        <p> <%= available_tickets %> lugares disponíveis. </p>
-        <% price = screening.calculate_price(Time.zone.now, available_tickets) %>
-        <% discount = (100 * (1 - (price.match(/(\d+,\d{0,2})/)[1].sub(',', '').to_f / screening.max_price_cents))).to_i %>
-        <% session["screening_#{screening.id}_price".to_sym] = price %>
-        <p><%= price %></p>
-        <% if discount >= 10 %>
-          <p><%= discount %>% de desconto.</p>
-        <% end %>
-      </div>
+        <span class='card-tag'><%= screening.detailed_film.speech %></span>
+        <span class='card-tag'><%= screening.detailed_film.format.name %></span>
+    </div>
+
+    <div class="card-price">
+      <% available_tickets = screening.initial_tickets - screening.tickets.count %>
+      <p> <%= available_tickets %> lugares disponíveis. </p>
+      <% price = screening.calculate_price(Time.zone.now, available_tickets) %>
+      <% discount = (100 * (1 - (price.match(/(\d+,\d{0,2})/)[1].sub(',', '').to_f / screening.max_price_cents))).to_i %>
+      <% session["screening_#{screening.id}_price".to_sym] = price %>
+      <p><%= price %></p>
+      <% if discount >= 10 %>
+        <p><%= discount %>% de desconto.</p>
+      <% end %>
     </div>
   </div>
-
 </div>
+
 
 <% end %>
