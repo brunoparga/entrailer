@@ -157,8 +157,8 @@ FormatsScreen.create!(format: formats[1], screen: screen3)
 puts 'Creating screenings...'
 screening1 = Screening.create!(screen: screen1,
                                initial_tickets: 250,
-                               session_time: DateTime.parse("19th Apr 2018 13:20:00-03:00"),      # dez minutos
-                               closing_time: DateTime.parse("19th Apr 2018 13:30:00-03:00"),
+                               session_time: DateTime.parse("19th Apr 2018 17:20:00-03:00"),      # dez minutos
+                               closing_time: DateTime.parse("19th Apr 2018 17:30:00-03:00"),
                                min_price_cents: 800,
                                max_price_cents: 3000,
                                detailed_film: films[6])
@@ -218,6 +218,13 @@ screening9 = Screening.create!(screen: screen3,
                                min_price_cents: 800,
                                max_price_cents: 3000,
                                detailed_film: films[14])
+screening10 = Screening.create!(screen: screen2,
+                               initial_tickets: 30,
+                               session_time: DateTime.parse("19th Apr 2018 16:30:00-03:00"),      # 7.5 minutos
+                               closing_time: DateTime.parse("19th Apr 2018 16:40:00-03:00"),
+                               min_price_cents: 800,
+                               max_price_cents: 3000,
+                               detailed_film: films[6])
 screeningA = Screening.create!(screen: screen5,
                                initial_tickets: 20,
                                session_time: DateTime.parse("20th Apr 2018 21:20:00-03:00"),      # dez minutos atrás
@@ -259,6 +266,35 @@ screeningE = Screening.create!(screen: screen7,
                                max_price_cents: 3000,
                                detailed_film: films[13])
 
+screeningF = Screening.create!(screen: screen2,
+                               initial_tickets: 20,
+                               session_time: DateTime.parse("22th Apr 2018 17:10:00-03:00"),      # dez minutos atrás
+                               closing_time: DateTime.parse("22th Apr 2018 17:20:00-03:00"),
+                               min_price_cents: 800,
+                               max_price_cents: 3000,
+                               detailed_film: films[13])
+
+screeningG = Screening.create!(screen: screen2,
+                               initial_tickets: 20,
+                               session_time: DateTime.parse("22th Apr 2018 20:15:00-03:00"),      # dez minutos atrás
+                               closing_time: DateTime.parse("22th Apr 2018 20:25:00-03:00"),
+                               min_price_cents: 800,
+                               max_price_cents: 3000,
+                               detailed_film: films[13])
+screeningH = Screening.create!(screen: screen4,
+                               initial_tickets: 45,
+                               session_time: DateTime.parse("22th Apr 2018 20:15:00-03:00"),      # dez minutos atrás
+                               closing_time: DateTime.parse("22th Apr 2018 20:25:00-03:00"),
+                               min_price_cents: 800,
+                               max_price_cents: 3000,
+                               detailed_film: films[11])
+screeningI = Screening.create!(screen: screen5,
+                               initial_tickets: 40,
+                               session_time: DateTime.parse("22th Apr 2018 21:30:00-03:00"),      # dez minutos atrás
+                               closing_time: DateTime.parse("22th Apr 2018 21:40:00-03:00"),
+                               min_price_cents: 800,
+                               max_price_cents: 3000,
+                               detailed_film: films[12])
 puts 'Creating tickets...'
 Ticket.create!(purchase_time: time,
                    screening: screening1,
