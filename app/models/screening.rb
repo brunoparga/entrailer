@@ -24,6 +24,49 @@ class Screening < ApplicationRecord
       tsearch: { prefix: true }
     }
 
+  def title
+    detailed_film.title
+  end
+
+  def self.pick_four
+    # The array that will be returned
+    four = []
+
+    # Get all screenings whose time is before 01:00 tomorrow
+    screenings_today = self.where('screenings.session_time <= ?', Time.zone.tomorrow.midnight + 3600 )
+
+    # Populate a hash with the number of screenings of each film
+    screenings_by_title = Hash.new(0)
+    screenings_today.each do |scg|
+      screenings_by_title[scg.detailed_film.title] += 1
+    end
+
+    # An array of the top four film titles by number of screenings
+    top_four_titles = screenings_by_title.sort[0..3]
+    top_four_titles.map! { |array| array[0] }
+
+    # Screening list discards screenings whose films are not in the top 4
+    screenings_today = screenings_today.select { |scg| top_four_titles.include?(scg.detailed_film.title) }
+
+    # For all films in the top 4, pair each screening with its current price (an Integer)
+    screenings_with_prices = {}
+    screenings_today.each do |scg|
+      screenings_with_prices[scg] = scg.calculate_price(Time.zone.now, scg.initial_tickets - scg.tickets.count).match(/(\d+,\d{0,2})/)[1].sub(',', '').to_i
+    end
+
+    # Push the four cheapest screenings (of different films) onto the return array
+    screenings_with_prices = screenings_with_prices.sort
+    four_titles = []
+    screenings_with_prices.each do |array|
+      unless four_titles.include? array[0].title
+        four << array[0]
+        four_titles << array[0].title
+      end
+      break if four.length == 4
+    end
+    four
+  end
+
   def formatted_date
     session_date = Date.new(session_time.year, session_time.month, session_time.day)
     now = Time.zone.now
