@@ -13,9 +13,16 @@
   flex-wrap: wrap;
 }
 
+.card:hover {
+  text-decoration: none;
+}
+
 .card-details {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+  margin-left: 5px;
+  color: $black;
 }
 
 .card-info h4 {
@@ -27,17 +34,28 @@
   margin-bottom: 0px;
 }
 
-.card:hover {
-  text-decoration: none;
-}
-
 .card-info {
   color: $black;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .card-price {
-  margin-top: 4px;
+  font-size: 18px;
+  p {
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+}
+
+.card-scg {
+  margin-top: 12px;
+  margin-bottom: 10px;
+  font-size: 17px;
+  p {
+    margin-bottom: 0px;
+    margin-top: 0px;
+
+  }
 }
 
 .card-tag {
