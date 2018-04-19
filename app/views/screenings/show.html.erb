@@ -1,46 +1,54 @@
 <div class="mini banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://image.tmdb.org/t/p/original<%=@screening.detailed_film.film_title.banner_url%>');">
+  <p><%= @screening.detailed_film.title %></p>
 </div>
 
 <div class="container">
 
-  <div class="row">
-    <div class="col-xs-12 col-sm-12">
-      <div class="movie-details">
-        <img src='https://image.tmdb.org/t/p/w200<%=@screening.detailed_film.film_title.img_url%>'>
-        <div class="movie-description">
-          <h1><%= @screening.detailed_film.title %></h1>
-          <h5>
-            <span class='tag'><%= @screening.detailed_film.speech %></span>
-            <span class='tag'><%= @screening.detailed_film.format.name %></span>
-          </h5>
-          <a href=<%= screen_path(@screening.screen) %> style='text-decoration: none;''>
-          <h4>Sala: <%= @screening.screen.name %></h4>
-          </a>
-          <h4>Horário: <%= "#{@screening.formatted_date}, às #{@screening.formatted_time}" %></h4>
-          <p><em><%= @film_title.synopsis %></em></p>
+  <div class="movie row">
+
+    <div class="col-xs-5 col-sm-3 col-md-4 col-lg-3 col-sm-absolute">
+      <img class="img-responsive"
+      src="https://image.tmdb.org/t/p/w200<%=@screening.detailed_film.film_title.img_url%>">
+    </div>
+
+    <div class="col-xs-7 col-sm-9 col-sm-offset-3
+     col-md-8 col-md-offset-4 col-lg-9 col-lg-offset-3">
+
+      <div class="movie-info">
+        <span class='movie-tag'><%= @screening.detailed_film.speech %></span>
+              <span class='movie-tag'><%= @screening.detailed_film.format.name %></span>
+        <div class="movie-price">
+          <% available_tickets = @screening.initial_tickets - @screening.tickets.count %>
+          <p> <%= available_tickets %> lugares disponíveis. </p>
+          <% price = @screening.calculate_price(Time.zone.now, available_tickets) %>
+          <% discount = (100 * (1 - (price.match(/(\d+,\d{0,2})/)[1].sub(',', '').to_f / @screening.max_price_cents))).to_i %>
+          <% session["screening_#{@screening.id}_price".to_sym] = price %>
+          <p><%= price %></p>
+          <% if discount >= 10 %>
+            <p><%= discount %>% de desconto.</p>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="row">
-      <div class="buy-options">
-        <div class="col-xs-12 col-sm-4">
+  <div class="buy-options row">
+    <div class="col-xs-5 col-sm-3 col-md-4 col-lg-3 col-sm-absolute">
           <h4><%= @available_tickets %> ingressos disponíveis.</h4>
-        </div>
-        <div class="col-xs-12 col-sm-4">
-          <h4>Por apenas <%= session["screening_#{@screening.id}_price".to_sym] %>!</h4>
-        </div>
-        <div class="col-xs-12 col-sm-4">
+
+    </div>
+
+    <div class="col-xs-7 col-sm-9 col-sm-offset-3
+     col-md-8 col-md-offset-4 col-lg-9 col-lg-offset-3">
           <%= button_to 'Comprar!', [@screening, @ticket], { class: 'btn btn-medium' } %>
-        </div>
-      </div>
+    </div>
+
   </div>
 
-  <div class="row minicard-wrapper">
-    <h3>Outras sessões do filme: <%= @screening.detailed_film.title %></h3>
+  <div class="cards">
+    <h5>Em outras salas:</h5>
     <% @film_title.screenings.each do |screening| %>
-      <%= render 'shared/minicards',
+      <%= render 'shared/cards',
                  screening: screening,
                  film: @screening.detailed_film.film_title,
                  display_title: false %>

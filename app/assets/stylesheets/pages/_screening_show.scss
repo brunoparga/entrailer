@@ -1,67 +1,47 @@
-.movie-details {
-  display: flex;
-  margin-top: -160px;
-  margin-left: 30px;
-  margin-right: 30px;
+.movie {
+  margin-top: -170px;
 }
 
-.movie-details h1 {
+.movie h1 {
   font-size: 56px;
   margin-bottom: 30px;
   color: $white;
 }
 
-.movie-details h4 {
+.movie h4 {
   padding-top: 5px;
   color: $black;
 }
 
-.movie-details h5 {
+.movie h5 {
   margin-top: 5px;
   margin-bottom: 35px;
 }
 
-.movie-details img {
+.movie img {
   position: absolute;
-  padding-top: -50px;
+  padding-left: 10px;
 }
 
 .buy-options {
-  border: 1px solid $black;
   border-radius: $border-radius;
   justify-content: space-between;
   display: flex;
   margin-top: 80px;
   margin-bottom: 30px;
-  margin-right: 30px;
-  margin-left: 30px;
+  margin-right: 10px;
+  margin-left: 10px;
   padding: 20px 20px 20px 0px;
   text-align: right;
 }
 
-.movie-description {
-  margin-left: 240px;
+.movie-info {
+  margin-top: 5px;
+  margin-left: 10px;
 }
 
-.movie-description a {
-  text-decoration: none;
+
+.mini {
+  height: 240px !important;
 }
 
-.movie-description a:hover {
-    text-decoration: none;
-}
-
-.tag {
-  font-size: 18px;
-  color: $white;
-  font-weight: lighter;
-  border: solid 1px $white;
-  border-radius: $border-radius;
-  padding: 5px 5px 5px 5px;
-  margin-right: 10px;
-}
-
-.tag-container {
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
