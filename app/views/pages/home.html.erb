@@ -3,7 +3,8 @@
     <%= render 'shared/cards',
                  screening: screening,
                  film: screening.detailed_film.film_title,
-                 display_title: true %>
+                 display_title: true,
+                 display_image: true %>
   <% end %>
   <div class="search-bar">
     <%= form_tag(search_index_path, method: :get, class: "form-inline") do %>
