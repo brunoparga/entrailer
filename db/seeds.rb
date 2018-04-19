@@ -58,7 +58,18 @@ FilmTitle
            img_url: '/ugw07fJIZMVrrIGeN1MO7Xecj5h.jpg',
            banner_url: '/z30NXJEY4YDBWEL0ICHGtv4Mt26.jpg',
            synopsis: 'Se passando no início dos tempos, quando os dinossauros e mamutes ainda percorriam a face da terra, Homem das Cavernas conta a história de um corajoso homem das cavernas')
-
+FilmTitle
+  .create!(title: 'A Quiet Place',
+           imdb_id: '447332',
+           img_url: '/nAU74GmpUk7t5iklEp3bufwDq4n.jpg',
+           banner_url: '/nIrDm42dy5PaXtUAzUfPmxM4mQm.jpg',
+           synopsis: 'Em uma fazenda dos Estados Unidos, uma família do meio-oeste é perseguida por uma entidade fantasmagórica assustadora.')
+FilmTitle
+  .create!(title: 'Ready Player One',
+           imdb_id: '333339',
+           img_url: '/pU1ULUq8D3iRxl1fdX2lZIzdHuI.jpg',
+           banner_url: '/q7fXcrDPJcf6t3rzutaNwTzuKP1.jpg',
+           synopsis: 'Num futuro distópico, situado em 2044, Wade Watts, como o resto da humanidade, prefere a realidade virtual do jogo OASIS ao mundo real. ')
 
 puts 'Creating film formats...'
 formats = %w[convencional 3D IMAX]
