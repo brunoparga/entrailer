@@ -55,7 +55,7 @@ class Screening < ApplicationRecord
     end
 
     # Push the four cheapest screenings (of different films) onto the return array
-    screenings_with_prices = screenings_with_prices.sort
+    screenings_with_prices = screenings_with_prices.sort.reverse
     four_titles = []
     screenings_with_prices.each do |array|
       unless four_titles.include? array[0].title
