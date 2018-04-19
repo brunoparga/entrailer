@@ -23,53 +23,53 @@ time = Time.zone.now
 
 puts 'Creating film titles...'
 FilmTitle
-  .create!(title: 'Spider-Man',
-           imdb_id: '557',
-           img_url: '/rZd0y1X1Gw4t5B3f01Qzj8DYY66.jpg',
-           banner_url: '/5yAEbTXiJZQpNx7eCyyOhnY9MYw.jpg',
-           synopsis: 'Homem-Aranha, Homem-Aranha: nunca bate, só apanha')
+  .create!(title: 'Submergence',
+           imdb_id: '375327',
+           img_url: '/jYhm5wpUdKSWHybNS5953q8r6jk.jpg',
+           banner_url: '/slkrakwwwRX7MjMWqqXMHTxLrzL.jpg',
+           synopsis: 'Danielle (Alicia Vikander) é uma exploradora do oceano que descobre um novo desafio: uma terrível, porém pioneira, descida ao abismo Ártico. James (James McAvoy) é um empreiteiro acusado de ser um espião que irá se unir à moça para ajudá-la em sua missão.')
 FilmTitle
-  .create!(title: 'The Departed',
-           imdb_id: '1422',
-           img_url: '/tGLO9zw5ZtCeyyEWgbYGgsFxC6i.jpg',
-           banner_url: '/8Od5zV7Q7zNOX0y9tyNgpTmoiGA.jpg',
-           synopsis: 'Dois infiltrados, um tenta pegar o outro, um acaba pegando a mina do outro')
+  .create!(title: '7 Days in Entebbe',
+           imdb_id: '433627',
+           img_url: '/hKbZWIMyMThZ5rXrwlImXYpXMMo.jpg',
+           banner_url: '/x9JU7olOsRM4xgesgWAqMupygLT.jpg',
+           synopsis: 'Em julho de 1976, um voo da Air France de Tel-Aviv à Paris foi sequestrado e forçado a pousar em Entebbe, na Uganda.')
 FilmTitle
-  .create!(title: 'Inception',
-           imdb_id: '27205',
-           img_url: '/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg',
-           banner_url: '/s2bT29y0ngXxxu2IA8AOzzXTRhd.jpg',
-           synopsis: 'Temos que ir mais fundo!! *Buóóóin*')
+  .create!(title: 'Rampage',
+           imdb_id: '427641',
+           img_url: '/30oXQKwibh0uANGMs0Sytw3uN22.jpg',
+           banner_url: '/wrqUiMXttHE4UBFMhLHlN601MZh.jpg',
+           synopsis: 'O primatologista Davis Okoye (Dwayne Johnson) é um homem fechado que compartilha um vínculo inabalável com George, um gorila muito inteligente, que está sob seus cuidados desde o nascimento. ')
 FilmTitle
-  .create!(title: 'Fantasia',
-           imdb_id: '756',
-           img_url: '/dYZ1r3MJnXVGBBSYKgpd8UWGyFw.jpg',
-           banner_url: '/oZBj2o3JVULRe1SlBalBpnkfp6x.jpg',
-           synopsis: 'Melhor metáfora de inteligência artificial que há')
+  .create!(title: 'Love, Simon',
+           imdb_id: '449176',
+           img_url: '/5YUYg5q7QfC4IoNwNUtiwdiYKPr.jpg',
+           banner_url: '/rqMEeajyzSF4PpJtdCB816Iz8Vr.jpg',
+           synopsis: 'Aos 16 anos, Simon Spier (Nick Robinson) não é abertamente gay, preferindo guardar seu drama para o musical da escola. ')
 FilmTitle
-  .create!(title: 'Friday the 13th',
-           imdb_id: '13207',
-           img_url: '/ewNYItHBmxHj3IEDhj1VnnLoTmb.jpg',
-           banner_url: '/m7vZl6YTFIHm917fCBgNOb9c4Sp.jpg',
-           synopsis: 'Cuidado, ele vai te pegar!')
+  .create!(title: 'The Crucifixion',
+           imdb_id: '394830',
+           img_url: '/aN1drk3BqIzCUICR436t3t0lq9H.jpg',
+           banner_url: '/kowMKjNYHXK3jglafTRvotMPQiS.jpg',
+           synopsis: 'Quando um padre é sentenciado à prisão após a morte de uma freira em que praticou um exorcismo, uma jornalista investigativa se esforça para desvendar')
 FilmTitle
-  .create!(title: 'Freddy vs. Jason',
-           imdb_id: '6466',
-           img_url: '/smD9JEIKuvsllgjgrGTOzzbATeN.jpg',
-           banner_url: '/pHPi34ysBhhLVM9LVKwJ0nJPFqN.jpg',
-           synopsis: 'O crossover mais ambicioso da história')
+  .create!(title: 'Early Man',
+           imdb_id: '387592',
+           img_url: '/ugw07fJIZMVrrIGeN1MO7Xecj5h.jpg',
+           banner_url: '/z30NXJEY4YDBWEL0ICHGtv4Mt26.jpg',
+           synopsis: 'Se passando no início dos tempos, quando os dinossauros e mamutes ainda percorriam a face da terra, Homem das Cavernas conta a história de um corajoso homem das cavernas')
 FilmTitle
-  .create!(title: 'Friday the 13th Part VIII: Jason Takes Manhattan',
-           imdb_id: '10283',
-           img_url: '/oAZTwZDHu56IUyq5OQM3q1xX9To.jpg',
-           banner_url: '/pCTwz9ggIcfHTQrzb1xi3UQLPxb.jpg',
-           synopsis: 'Olha, dessa vez é sério, ele vai te pegar mesmo hein')
+  .create!(title: 'A Quiet Place',
+           imdb_id: '447332',
+           img_url: '/nAU74GmpUk7t5iklEp3bufwDq4n.jpg',
+           banner_url: '/nIrDm42dy5PaXtUAzUfPmxM4mQm.jpg',
+           synopsis: 'Em uma fazenda dos Estados Unidos, uma família do meio-oeste é perseguida por uma entidade fantasmagórica assustadora.')
 FilmTitle
-  .create!(title: 'Demon in the Freezer',
-           imdb_id: '397973',
-           img_url: '/1AD6EIKrWsiuRdyeTkBZW9iIu8w.jpg',
-           banner_url: '/dMU9M4RYi9DOnaebljtjSt0BSXm.jpg',
-           synopsis: 'Sabe aquele frango que você botou pra congelar e esqueceu?')
+  .create!(title: 'Ready Player One',
+           imdb_id: '333339',
+           img_url: '/pU1ULUq8D3iRxl1fdX2lZIzdHuI.jpg',
+           banner_url: '/q7fXcrDPJcf6t3rzutaNwTzuKP1.jpg',
+           synopsis: 'Num futuro distópico, situado em 2044, Wade Watts, como o resto da humanidade, prefere a realidade virtual do jogo OASIS ao mundo real. ')
 
 puts 'Creating film formats...'
 formats = %w[convencional 3D IMAX]
@@ -109,42 +109,42 @@ ownit = User.create!(email: 'owner@entrailer.com',
                      confirmed_at: time)
 
 puts 'Creating screens...'
-screen1 = Screen.create!(name: 'Cinemark Metrô Santa Cruz 3',
-                         address: 'Rua Pedro de Toledo 125',
+screen1 = Screen.create!(name: 'Shopping Patio Paulista 1',
+                         address: 'Av. Paulista, 487 - São Paulo',
                          capacity: 250,
                          screen_img: 'http://img2.thejournal.ie/article/3275421/river?version=3275440&width=1340',
                          user: ownit)
-screen2 = Screen.create!(name: 'Espaço Itaú Augusta 5',
-                         address: 'Rua Augusta 920',
+screen2 = Screen.create!(name: 'Cinemark Cidade São Paulo 1',
+                         address: 'Av. Paulista, 149, São Paulo',
                          screen_img: 'https://itpworld.files.wordpress.com/2015/12/empty-cinema-and-white-screen.jpg',
                          capacity: 50,
                          user: ownit)
-screen3 = Screen.create!(name: 'Playarte Bristol 8',
-                         address: 'Av. Paulista 1405',
+screen3 = Screen.create!(name: 'Reserva Cultural 1',
+                         address: 'Av. Paulista 900',
                          screen_img: 'http://www.coop-himmelblau.at/uploads/made/uploads/images/Projects/0508_BCC/P_0508_F44_DM_1500_1004_85.jpg',
                          capacity: 180,
                          user: ownit)
 
-screen4 = Screen.create!(name: 'Playarte Bristol 5',
-                         address: 'Av. Paulista 1405',
+screen4 = Screen.create!(name: 'Reserva Cultural 2',
+                         address: 'Av. Paulista 900',
                          screen_img: 'http://www.coop-himmelblau.at/uploads/made/uploads/images/Projects/0508_BCC/P_0508_F44_DM_1500_1004_85.jpg',
                          capacity: 180,
                          user: ownit)
 
-screen5 = Screen.create!(name: 'Playarte Bristol 2',
-                         address: 'Av. Paulista 1405',
+screen5 = Screen.create!(name: 'Reserva Cultural 3',
+                         address: 'Av. Paulista 900',
                          screen_img: 'http://www.coop-himmelblau.at/uploads/made/uploads/images/Projects/0508_BCC/P_0508_F44_DM_1500_1004_85.jpg',
                          capacity: 180,
                          user: ownit)
 
-screen6 = Screen.create!(name: 'Espaço Itaú Augusta 2',
-                         address: 'Rua Augusta 920',
+screen6 = Screen.create!(name: 'Cinemark Cidade São Paulo 2',
+                         address: 'Av. Paulista, 149, São Paulo',
                          screen_img: 'https://itpworld.files.wordpress.com/2015/12/empty-cinema-and-white-screen.jpg',
                          capacity: 50,
                          user: ownit)
 
-screen7 = Screen.create!(name: 'Cinemark Metrô Santa Cruz 1',
-                         address: 'Rua Pedro de Toledo 125',
+screen7 = Screen.create!(name: 'Shopping Patio Paulista 2',
+                         address: 'Av. Paulista, 487 - São Paulo',
                          capacity: 250,
                          screen_img: 'http://img2.thejournal.ie/article/3275421/river?version=3275440&width=1340',
                          user: ownit)
@@ -157,74 +157,107 @@ FormatsScreen.create!(format: formats[1], screen: screen3)
 puts 'Creating screenings...'
 screening1 = Screening.create!(screen: screen1,
                                initial_tickets: 250,
-                               session_time: time + 600,      # dez minutos
-                               closing_time: time + 600,
-                               min_price_cents: 462,
-                               max_price_cents: 5705,
+                               session_time: DateTime.parse("19th Apr 2018 13:20:00-03:00"),      # dez minutos
+                               closing_time: DateTime.parse("19th Apr 2018 13:30:00-03:00"),
+                               min_price_cents: 800,
+                               max_price_cents: 3000,
                                detailed_film: films[6])
 screening2 = Screening.create!(screen: screen2,
                                initial_tickets: 50,
-                               session_time: time + 306_000,  # meia semana
-                               closing_time: time + 306_000,  # + 3 horas
-                               min_price_cents: 360,
-                               max_price_cents: 4750,
-                               detailed_film: films[1])
+                               session_time: DateTime.parse("19th Apr 2018 16:25:00-03:00"),  # meia semana
+                               closing_time: DateTime.parse("19th Apr 2018 16:35:00-03:00"),  # + 3 horas
+                               min_price_cents: 800,
+                               max_price_cents: 3000,
+                               detailed_film: films[6])
 screening3 = Screening.create!(screen: screen3,
                                initial_tickets: 120,
-                               session_time: time + 3600,     # uma hora
-                               closing_time: time + 3600,
-                               min_price_cents: 360,
-                               max_price_cents: 3200,
+                               session_time: DateTime.parse("19th Apr 2018 16:35:00-03:00"),     # uma hora
+                               closing_time: DateTime.parse("19th Apr 2018 16:45:00-03:00"),
+                               min_price_cents: 800,
+                               max_price_cents: 3000,
                                detailed_film: films[3])
 screening4 = Screening.create!(screen: screen4,
                                initial_tickets: 50,
-                               session_time: time + 14_400,   # quatro horas
-                               closing_time: time + 14_400,
-                               min_price_cents: 340,
-                               max_price_cents: 6000,
-                               detailed_film: films[10])
+                               session_time: DateTime.parse("19th Apr 2018 20:05:00-03:00"),   # quatro horas
+                               closing_time: DateTime.parse("19th Apr 2018 20:15:00-03:00"),
+                               min_price_cents: 800,
+                               max_price_cents: 3000,
+                               detailed_film: films[3])
 screening5 = Screening.create!(screen: screen5,
                                initial_tickets: 50,
-                               session_time: time + 86_400,   # um dia
-                               closing_time: time + 86_400,
-                               min_price_cents: 360,
-                               max_price_cents: 8200,
+                               session_time: DateTime.parse("19th Apr 2018 17:10:00-03:00"),   # um dia
+                               closing_time: DateTime.parse("19th Apr 2018 17:20:00-03:00"),
+                               min_price_cents: 800,
+                               max_price_cents: 3000,
                                detailed_film: films[8])
 screening6 = Screening.create!(screen: screen6,
                                initial_tickets: 20,
-                               session_time: time + 604_800,  # uma semana
-                               closing_time: time + 604_800,
-                               min_price_cents: 1120,
-                               max_price_cents: 4000,
-                               detailed_film: films[2])
+                               session_time: DateTime.parse("20th Apr 2018 20:15:00-03:00"),  # uma semana
+                               closing_time: DateTime.parse("20th Apr 2018 20:25:00-03:00"),
+                               min_price_cents: 800,
+                               max_price_cents: 3000,
+                               detailed_film: films[4])
 screening7 = Screening.create!(screen: screen7,
                                initial_tickets: 50,
-                               session_time: time + 691_200,  # 8 dias
-                               closing_time: time + 691_200,
-                               min_price_cents: 730,
-                               max_price_cents: 3750,
-                               detailed_film: films[10])
+                               session_time: DateTime.parse("20th Apr 2018 14:35:00-03:00"),  # 8 dias
+                               closing_time: DateTime.parse("20th Apr 2018 14:45:00-03:00"),
+                               min_price_cents: 800,
+                               max_price_cents: 3000,
+                               detailed_film: films[3])
 screening8 = Screening.create!(screen: screen1,
                                initial_tickets: 40,
-                               session_time: time + 300,      # 5 minutos
-                               closing_time: time + 300,
-                               min_price_cents: 360,
-                               max_price_cents: 4750,
+                               session_time: DateTime.parse("20th Apr 2018 16:45:00-03:00"),      # 5 minutos
+                               closing_time: DateTime.parse("20th Apr 2018 16:55:00-03:00"),
+                               min_price_cents: 800,
+                               max_price_cents: 3000,
                                detailed_film: films[15])
 screening9 = Screening.create!(screen: screen3,
                                initial_tickets: 100,
-                               session_time: time + 450,      # 7.5 minutos
-                               closing_time: time + 450,
-                               min_price_cents: 120,
-                               max_price_cents: 4750,
+                               session_time: DateTime.parse("20th Apr 2018 19:20:00-03:00"),      # 7.5 minutos
+                               closing_time: DateTime.parse("20th Apr 2018 19:30:00-03:00"),
+                               min_price_cents: 800,
+                               max_price_cents: 3000,
                                detailed_film: films[14])
 screeningA = Screening.create!(screen: screen5,
                                initial_tickets: 20,
-                               session_time: time - 600,      # dez minutos atrás
-                               closing_time: time - 600,
-                               min_price_cents: 400,
-                               max_price_cents: 4750,
+                               session_time: DateTime.parse("20th Apr 2018 21:20:00-03:00"),      # dez minutos atrás
+                               closing_time: DateTime.parse("20th Apr 2018 21:30:00-03:00"),
+                               min_price_cents: 800,
+                               max_price_cents: 3000,
+                               detailed_film: films[14])
+
+screeningB = Screening.create!(screen: screen1,
+                               initial_tickets: 20,
+                               session_time: DateTime.parse("21th Apr 2018 13:20:00-03:00"),      # dez minutos atrás
+                               closing_time: DateTime.parse("21th Apr 2018 13:30:00-03:00"),
+                               min_price_cents: 800,
+                               max_price_cents: 3000,
                                detailed_film: films[9])
+
+screeningC = Screening.create!(screen: screen4,
+                               initial_tickets: 20,
+                               session_time: DateTime.parse("21th Apr 2018 17:05:00-03:00"),      # dez minutos atrás
+                               closing_time: DateTime.parse("21th Apr 2018 17:15:00-03:00"),
+                               min_price_cents: 800,
+                               max_price_cents: 3000,
+                               detailed_film: films[9])
+
+
+screeningD = Screening.create!(screen: screen6,
+                               initial_tickets: 20,
+                               session_time: DateTime.parse("21th Apr 2018 17:35:00-03:00"),      # dez minutos atrás
+                               closing_time: DateTime.parse("21th Apr 2018 17:45:00-03:00"),
+                               min_price_cents: 800,
+                               max_price_cents: 3000,
+                               detailed_film: films[13])
+
+screeningE = Screening.create!(screen: screen7,
+                               initial_tickets: 20,
+                               session_time: DateTime.parse("21th Apr 2018 17:50:00-03:00"),      # dez minutos atrás
+                               closing_time: DateTime.parse("21th Apr 2018 18:00:00-03:00"),
+                               min_price_cents: 800,
+                               max_price_cents: 3000,
+                               detailed_film: films[13])
 
 puts 'Creating tickets...'
 Ticket.create!(purchase_time: time,

@@ -3,8 +3,8 @@
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#day0" aria-controls="day0" role="tab" data-toggle="tab"><p>Hoje</p></a></li>
     <li role="presentation"><a href="#day1" aria-controls="day1" role="tab" data-toggle="tab"> <p>Amanhã</p></a></li>
-    <li role="presentation"><a href="#day2" aria-controls="day2" role="tab" data-toggle="tab"> <p><%= (Time.zone.today + 2).strftime("%a %e/%m") %></p></a></li>
-    <li role="presentation"><a href="#day3" aria-controls="sday3" role="tab" data-toggle="tab"> <p><%= (Time.zone.today + 3).strftime("%a %e/%m") %></p></a></li>
+    <li role="presentation"><a href="#day2" aria-controls="day2" role="tab" data-toggle="tab"> <p><%= (Time.zone.today + 2).strftime("%e/%m") %></p></a></li>
+    <li role="presentation"><a href="#day3" aria-controls="sday3" role="tab" data-toggle="tab"> <p><%= (Time.zone.today + 3).strftime("%e/%m") %></p></a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -31,7 +31,7 @@
         <% end %>
       <% end %>
     </div>
-    <div role="tabpanel" class="tab-pane" id="day2  ">
+    <div role="tabpanel" class="tab-pane" id="day2">
       <% @screenings.each do |screening| %>
         <% if screening.session_time.strftime("%e/%m") == (Time.zone.today + 2).strftime("%e/%m") %>
           <%= render 'screenings/screening_card',
