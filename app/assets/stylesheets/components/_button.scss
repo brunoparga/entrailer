@@ -16,7 +16,7 @@
 
 .btn-medium-home {
   color: $white;
-  font-size: 24px;
+  font-size: 16px;
   background-color: $dark-red;
   border: 1px solid $dark-red;
   border-radius: 0 2px 2px 0;
@@ -28,6 +28,11 @@
   text-decoration: none;
   }
 
+}
+
+.search-control {
+  font-size: 8px;
+  line-height: 0px;
 }
 
 /* Build your own button classes ! */

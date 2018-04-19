@@ -14,6 +14,11 @@
         <span class='card-tag'><%= screening.detailed_film.format.name %></span>
     </div>
 
+    <div class="card-scg">
+      <p><%= screening.screen.name %></p>
+      <p><%= screening.session_time.strftime("%e/%m")%> <%= screening.session_time.strftime("%H:%M") %> </p>
+    </div>
+
     <div class="card-price">
       <% available_tickets = screening.initial_tickets - screening.tickets.count %>
       <p> <%= available_tickets %> lugares disponíveis. </p>
