@@ -1,9 +1,30 @@
-<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
-  <div class="card-category">Popular</div>
-  <div class="card-description">
-    <h2>Le Wagon Shanghai</h2>
-    <p>Very cool city, the best</p>
+<%= link_to screening_path(screening) do %>
+
+<div class="card row">
+
+  <div class="col-xs-4 col-sm-3 col-md-4 col-lg-3 col-sm-absolute">
+    <img class="img-responsive" src="https://image.tmdb.org/t/p/w200<%=screening.detailed_film.film_title.img_url%>">
   </div>
-  <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-  <a class="card-link" href="#" ></a>
+
+  <div class="col-xs-8 col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-4 col-lg-9 col-lg-offset-3">
+
+    <div class="card-info">
+      <h4><%= screening.detailed_film.title %></h4>
+      <span> </span>
+      <div class="card-price">
+        <% available_tickets = screening.initial_tickets - screening.tickets.count %>
+        <p> <%= available_tickets %> lugares disponíveis. </p>
+        <% price = screening.calculate_price(Time.zone.now, available_tickets) %>
+        <% discount = (100 * (1 - (price.match(/(\d+,\d{0,2})/)[1].sub(',', '').to_f / screening.max_price_cents))).to_i %>
+        <% session["screening_#{screening.id}_price".to_sym] = price %>
+        <p><%= price %></p>
+        <% if discount >= 10 %>
+          <p><%= discount %>% de desconto.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
 </div>
+
+<% end %>
