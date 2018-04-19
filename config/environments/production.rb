@@ -1,6 +1,6 @@
 Rails.application.configure do
   config.action_mailer.delivery_method = :letter_opener
-  config.action_mailer.default_url_options = { host: "http://entrailer.herokuapp.com" }
+  config.action_mailer.default_url_options = { host: "https://www.entrailer.com" }
   # Verifies that versions and hashed value of the package contents in the project's package.json
   config.webpacker.check_yarn_integrity = false
 
