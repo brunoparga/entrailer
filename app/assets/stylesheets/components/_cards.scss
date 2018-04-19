@@ -2,29 +2,64 @@
   padding-top: 1px;
 }
 .card img {
-  width: 100%;
+  width: 150px;
   height: 100%;
 }
 
 .card {
   box-shadow: 1px 0px 2px 1px rgba(0,0,0,0.3);
   margin: 10px 10px 10px 10px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .card:hover {
   text-decoration: none;
 }
 
-.card-info {
+.card-details {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-left: 5px;
   color: $black;
 }
 
+.card-info h4 {
+  margin-top: 3px;
+  margin-bottom: 0px;
+}
+
+.card-info p {
+  margin-bottom: 0px;
+}
+
+.card-info {
+  color: $black;
+  font-size: 18px;
+}
+
 .card-price {
-  font-size: 10px;
+  font-size: 18px;
+  p {
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+}
+
+.card-scg {
+  margin-top: 12px;
+  margin-bottom: 10px;
+  font-size: 17px;
+  p {
+    margin-bottom: 0px;
+    margin-top: 0px;
+
+  }
 }
 
 .card-tag {
-  font-size: 8px;
+  font-size: 12px;
   color: $black;
   font-weight: lighter;
   border: solid 1px $black;
