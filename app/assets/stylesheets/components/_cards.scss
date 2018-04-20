@@ -1,4 +1,4 @@
-@media (max-width: 376px) {
+@media (max-width: 420px) {
 
 .cards {
   padding-top: 1px;
@@ -43,15 +43,8 @@
   margin: solid $black;
   padding: 4px 4px 4px 4px;
   display: flex;
-<<<<<<< HEAD
-  flex-wrap: wrap-reverse;
-  justify-content: space-between;
-  align-items: center;
-
-=======
   flex-wrap: wrap;
   justify-content: space-between;
->>>>>>> bfedf737abde90c20108fd2b0a471d071be24779
   font-size: 14px;
   color: $dark-red;
   margin-left: 10px;
@@ -61,11 +54,7 @@
     margin-top: 0px;
     font-weight: 900;
     font-size: 18px;
-<<<<<<< HEAD
-
-=======
     align-self: flex-end;
->>>>>>> bfedf737abde90c20108fd2b0a471d071be24779
   }
 }
 
@@ -88,6 +77,4 @@
   padding: 3px 3px 3px 3px;
 }
 
-
 }
-
