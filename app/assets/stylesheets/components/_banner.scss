@@ -1,27 +1,18 @@
 .banner {
   color: black;
-  text-align: center;
+  text-align: left;
   height: calc(100vh - 60px);
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
   justify-content: left;
 h1 {
-  color: white;
+  color: $white;
   font-weight: bold;
-  font-size: 40px;
+  font-size: 32px;
+  margin-left: 8px;
 }
-p {
-  color: white;
-  opacity: .8;
-  font-size: 44px;
-  font-weight: lighter;
-  margin-left: 20px;
-  margin-bottom: 0px;
-}
-.btn {
-    padding: 15px 50px;
-  }
+
 }
 /* .banner {
   height: 100vh;
