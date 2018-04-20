@@ -2,8 +2,9 @@
 
 <% available_tickets = screening.initial_tickets - screening.tickets.count %>
 <% price = screening.calculate_price(Time.zone.now, available_tickets) %>
-        <% discount = (100 * (1 - (price.match(/(\d+,\d{0,2})/)[1].sub(',', '').to_f / screening.max_price_cents))).to_i %>
-      <% session["screening_#{screening.id}_price".to_sym] = price %>
+<% discount = (100 * (1 - (price.match(/(\d+,\d{0,2})/)[1].sub(',', '').to_f / screening.max_price_cents))).to_i %>
+<% session["screening_#{screening.id}_price".to_sym] = price %>
+
 
 <div class="card row">
   <% if display_image %>
@@ -24,6 +25,7 @@
 
     <p><%= screening.screen.name %></p>
     <p><%= screening.session_time.strftime("%e/%m")%> <%= screening.session_time.strftime("%H:%M") %> </p>
+
   </div>
 
 </div>
