@@ -2,9 +2,9 @@
 
 <% available_tickets = screening.initial_tickets - screening.tickets.count %>
 <% price = screening.calculate_price(Time.zone.now, available_tickets) %>
+<<<<<<< HEAD
 <% discount = (100 * (1 - (price.match(/(\d+,\d{0,2})/)[1].sub(',', '').to_f / screening.max_price_cents))).to_i %>
 <% session["screening_#{screening.id}_price".to_sym] = price %>
-
 
 <div class="card row">
   <% if display_image %>
@@ -37,6 +37,7 @@
     <% if discount >= 10 %>
       <div><%= discount %>% de desconto</div>
     <% end %>
+
   </div>
 
 </div>

@@ -17,6 +17,7 @@
 
   <div class="col-xs-7 col-sm-9 col-sm-offset-3
    col-md-8 col-md-offset-4 col-lg-9 col-lg-offset-3">
+<<<<<<< HEAD
 
     <div class="movie-info">
         <span class='movie-tag'><%= @screening.detailed_film.speech %></span>
@@ -26,6 +27,15 @@
         <p><%= @screening.session_time.strftime("%H:%M") %></p>
     </div>
 
+=======
+
+    <div class="movie-info">
+        <span class='movie-tag'><%= @screening.detailed_film.speech %></span>
+        <span class='movie-tag'><%= @screening.detailed_film.format.name %></span>
+        <p><%= @screening.screen.name %></p>
+          <p><%= @screening.session_time.strftime("%e/%m")%> <%= @screening.session_time.strftime("%H:%M") %> </p>
+    </div>
+>>>>>>> bfedf737abde90c20108fd2b0a471d071be24779
 
   </div>
 </div>
@@ -36,14 +46,19 @@
     <% if discount >= 10 %>
       <p><%= discount %>% de desconto.</p>
     <% end %>
+<<<<<<< HEAD
     <div class="btn-buy"><%= button_to 'Comprar!', [@screening, @ticket], { class: 'btn btn-medium' } %></div>
 
+=======
+    <%= button_to 'Comprar!', [@screening, @ticket], { class: 'btn btn-medium' } %>
+>>>>>>> bfedf737abde90c20108fd2b0a471d071be24779
   </div>
 </div>
 
 
 </div>
 
+<<<<<<< HEAD
 
 <div class="scg-title">
   <p>Em outras salas:</p>
@@ -60,3 +75,18 @@
   <% end %>
 </div>
 
+=======
+<div class="scg-title">
+  <p>Em outras salas:</p>
+</div>
+
+<div class="cards">
+  <% @film_title.screenings.each do |screening| %>
+    <%= render 'shared/cards',
+               screening: screening,
+               film: @screening.detailed_film.film_title,
+               display_title: false %>
+  <% end %>
+</div>
+
+>>>>>>> bfedf737abde90c20108fd2b0a471d071be24779
