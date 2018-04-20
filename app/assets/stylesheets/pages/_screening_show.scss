@@ -51,7 +51,7 @@
 .scg-title p {
   margin-left: 10px;
   margin-bottom: 4px;
-  margin-top: 8px;
+  margin-top: 20px;
 }
 
 .movie-tag {
@@ -67,7 +67,7 @@
   position: relative;
   margin-top: 70px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   flex-wrap: wrap-reverse;
   padding: 20px 30px 20px 30px;
   p {
