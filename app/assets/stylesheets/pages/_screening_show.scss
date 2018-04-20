@@ -64,10 +64,12 @@
 }
 
 .movie-price {
+  margin-left: 170px;
   position: relative;
   margin-top: 70px;
   display: flex;
   justify-content: flex-end;
+  flex-direction: column;
   flex-wrap: wrap-reverse;
   padding: 20px 30px 20px 30px;
   p {
@@ -86,7 +88,7 @@
 
 .btn-pay {
   position: absolute;
-  bottom: 100px;
+  bottom: 110px;
   right: 55px;
   }
 
