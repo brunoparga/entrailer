@@ -22,7 +22,8 @@
         <span class='movie-tag'><%= @screening.detailed_film.speech %></span>
         <span class='movie-tag'><%= @screening.detailed_film.format.name %></span>
         <p><%= @screening.screen.name %></p>
-          <p><%= @screening.session_time.strftime("%e/%m")%> <%= @screening.session_time.strftime("%H:%M") %> </p>
+        <p><%= @screening.session_time.strftime("%e/%m")%></p>
+        <p><%= @screening.session_time.strftime("%H:%M") %></p>
     </div>
 
   </div>
@@ -34,7 +35,8 @@
     <% if discount >= 10 %>
       <p><%= discount %>% de desconto.</p>
     <% end %>
-    <%= button_to 'Comprar!', [@screening, @ticket], { class: 'btn btn-medium' } %>
+    <div class="btn-buy"><%= button_to 'Comprar!', [@screening, @ticket], { class: 'btn btn-medium' } %></div>
+
   </div>
 </div>
 
@@ -50,7 +52,8 @@
     <%= render 'shared/cards',
                screening: screening,
                film: @screening.detailed_film.film_title,
-               display_title: false %>
+               display_title: false,
+               display_image: false %>
   <% end %>
 </div>
 

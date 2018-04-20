@@ -1,54 +1,59 @@
 <div class="mini banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://image.tmdb.org/t/p/original<%=@ticket.screening.detailed_film.film_title.banner_url%>');">
-  <p><%= @ticket.screening.detailed_film.title %></p>
+  <h1><%= @ticket.screening.detailed_film.title %></h1>
 </div>
 
-<div class="container">
+<% available_tickets = @ticket.screening.initial_tickets - @ticket.screening.tickets.count %>
+<% price = @ticket.screening.calculate_price(Time.zone.now, available_tickets) %>
+    <% discount = (100 * (1 - (price.match(/(\d+,\d{0,2})/)[1].sub(',', '').to_f / @ticket.screening.max_price_cents))).to_i %>
+    <% session["screening_#{@ticket.screening.id}_price".to_sym] = price %>
+    <p><%= price %></p>
 
-  <div class="movie row">
+<div class="movie row">
 
-    <div class="col-xs-5 col-sm-3 col-md-4 col-lg-3 col-sm-absolute">
-      <img class="img-responsive"
-      src="https://image.tmdb.org/t/p/w200<%=@ticket.screening.detailed_film.film_title.img_url%>">
-    </div>
-
-    <div class="col-xs-7 col-sm-9 col-sm-offset-3
-     col-md-8 col-md-offset-4 col-lg-9 col-lg-offset-3">
-
-      <div class="movie-info">
-        <span class='movie-tag'><%= @ticket.screening.detailed_film.speech %></span>
-              <span class='movie-tag'><%= @ticket.screening.detailed_film.format.name %></span>
-        <div class="movie-price">
-          <% available_tickets = @ticket.screening.initial_tickets - @ticket.screening.tickets.count %>
-          <p> <%= available_tickets %> lugares disponíveis. </p>
-          <% price = @ticket.screening.calculate_price(Time.zone.now, available_tickets) %>
-          <% discount = (100 * (1 - (price.match(/(\d+,\d{0,2})/)[1].sub(',', '').to_f / @ticket.screening.max_price_cents))).to_i %>
-          <% session["screening_#{@ticket.screening.id}_price".to_sym] = price %>
-          <p><%= price %></p>
-          <% if discount >= 10 %>
-            <p><%= discount %>% de desconto.</p>
-          <% end %>
-          <%= form_tag ticket_payments_path(@ticket) do %>
-            <button class='btn btn-medium'> Pagar
-              <div class="hide">
-                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                data-name="Film ticket"
-                data-email="<%= current_user.email %>"
-                data-description="Movie <%= @ticket.screening.detailed_film.title %>"
-                data-amount="<%= @ticket.price_cents %>"
-                data-currency="<%= @ticket.price.currency %>"></script>
-                <% end %>
-              </div>
-            </button>
-        </div>
-      </div>
-    </div>
+  <div class="col-xs-5 col-sm-3 col-md-4 col-lg-3 col-sm-absolute">
+    <img class="img-responsive"
+    src="https://image.tmdb.org/t/p/w200<%=@ticket.screening.detailed_film.film_title.img_url%>">
   </div>
 
+  <div class="col-xs-7 col-sm-9 col-sm-offset-3
+   col-md-8 col-md-offset-4 col-lg-9 col-lg-offset-3">
 
+    <div class="movie-info">
+        <span class='movie-tag'><%= @ticket.screening.detailed_film.speech %></span>
+        <span class='movie-tag'><%= @ticket.screening.detailed_film.format.name %></span>
+        <p><%= @ticket.screening.screen.name %></p>
+        <p><%= @ticket.screening.session_time.strftime("%e/%m")%></p>
+        <p><%= @ticket.screening.session_time.strftime("%H:%M") %></p>
+    </div>
 
+  </div>
+</div>
 
-<div class="hidden-xs">
+<div class="row">
+  <div class="movie-price">
+    <p> <%= available_tickets %> lugares disponíveis</p>
+    <% if discount >= 10 %>
+      <p><%= discount %>% de desconto</p>
+    <% end %>
+    <div class="btn-pay">
+      <%= form_tag ticket_payments_path(@ticket) do %>
+        <button class='btn btn-medium'>Pagar!
+          <div class="hide">
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-name="Film ticket"
+            data-email="<%= current_user.email %>"
+            data-description="Movie <%= @ticket.screening.detailed_film.title %>"
+            data-amount="<%= @ticket.price_cents %>"
+            data-currency="<%= @ticket.price.currency %>"></script>
+            <% end %>
+          </div>
+        </button>
+    </div>
+  </div>
+</div>
+
+<div class="cinemap">
 
     <% @marker = [] %>
     <% @marker << { lng: @ticket.screening.screen.longitude, lat: @ticket.screening.screen.latitude } %>

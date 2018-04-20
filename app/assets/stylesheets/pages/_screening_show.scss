@@ -37,8 +37,14 @@
 }
 
 .movie-info {
-  margin-top: 5px;
+  margin-top: 10px;
   margin-left: 10px;
+}
+
+.movie-info p {
+  color: $white;
+  margin-bottom: 0px;
+  margin-top: 4px;
 }
 
 .scg-title p {
@@ -56,8 +62,37 @@
   padding: 3px 3px 3px 3px;
 }
 
+.movie-price {
+  position: relative;
+  margin-top: 70px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap-reverse;
+  padding: 20px 30px 20px 30px;
+  p {
+    margin-bottom: 0px;
+    margin-left: 10px;
+    color: $black;
+  }
+
+}
+
+.btn-buy {
+  position: absolute;
+  bottom: 100px;
+  right: 45px;
+  }
+
+.btn-pay {
+  position: absolute;
+  bottom: 100px;
+  right: 55px;
+  }
 
 .mini {
   height: 240px !important;
+  h1 {
+    font-size: 28px;
+  }
 }
 
