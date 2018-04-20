@@ -4,7 +4,6 @@
     <li role="presentation" class="active"><a href="#day0" aria-controls="day0" role="tab" data-toggle="tab"><p>Hoje</p></a></li>
     <li role="presentation"><a href="#day1" aria-controls="day1" role="tab" data-toggle="tab"> <p>Amanhã</p></a></li>
     <li role="presentation"><a href="#day2" aria-controls="day2" role="tab" data-toggle="tab"> <p><%= (Time.zone.today + 2).strftime("%e/%m") %></p></a></li>
-    <li role="presentation"><a href="#day3" aria-controls="sday3" role="tab" data-toggle="tab"> <p><%= (Time.zone.today + 3).strftime("%e/%m") %></p></a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -17,7 +16,7 @@
                        screening: screening,
                        film: screening.detailed_film.film_title,
                        display_title: true,
-                       display_image: true %>
+                       display_image: false %>
           <% end %>
         <% end %>
       <% end %>
@@ -29,7 +28,7 @@
                      screening: screening,
                      film: screening.detailed_film.film_title,
                      display_title: true,
-                     display_image: true %>
+                     display_image: false %>
         <% end %>
       <% end %>
     </div>
@@ -40,18 +39,7 @@
                      screening: screening,
                      film: screening.detailed_film.film_title,
                      display_title: true,
-                     display_image: true %>
-        <% end %>
-      <% end %>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="day3">
-      <% @screenings.each do |screening| %>
-        <% if screening.session_time.strftime("%e/%m") == (Time.zone.today + 3).strftime("%e/%m") %>
-          <%= render 'shared/cards',
-                     screening: screening,
-                     film: screening.detailed_film.film_title,
-                     display_title: true,
-                     display_image: true %>
+                     display_image: false %>
         <% end %>
       <% end %>
     </div>
