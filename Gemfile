@@ -19,7 +19,7 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
 gem 'puma'
-gem 'rails', '5.1.6'
+gem 'rails', '5.2.3'
 gem 'redis'
 
 # Default Rails gems
