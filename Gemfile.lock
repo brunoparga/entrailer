@@ -306,7 +306,7 @@ DEPENDENCIES
   stripe
   uglifier
   web-console (>= 3.3.0)
-  webpacker
+  webpacker (~> 4.x)
 
 RUBY VERSION
    ruby 2.4.3p205
